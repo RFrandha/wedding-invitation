@@ -7,18 +7,18 @@ export default function EventDetails() {
   const events = [
     {
       title: 'Akad Nikah',
-      date: 'Minggu, 25 Desember 2024',
-      time: '08.00 - 10.00 WIB',
-      venue: 'Masjid Al-Ikhlas',
-      address: 'Jl. Merdeka No. 123, Jakarta Pusat',
+      date: 'Minggu, 06 Desember 2025',
+      time: '09.00 - 10.00 WIB',
+      venue: 'Balai prajurit Pulanggeni Pekanbaru',
+      address: 'Jl. Perhentian Marpoyan, Marpoyan Damai, Pekanbaru',
       icon: '🕌'
     },
     {
       title: 'Resepsi',
-      date: 'Minggu, 25 Desember 2024',
-      time: '11.00 - 15.00 WIB',
-      venue: 'Gedung Serbaguna Harmoni',
-      address: 'Jl. Harmoni No. 456, Jakarta Pusat',
+      date: 'Minggu, 06 Desember 2025',
+      time: '11.00 - 17.00 WIB',
+      venue: 'Balai prajurit Pulanggeni Pekanbaru',
+      address: 'Jl. Perhentian Marpoyan, Marpoyan Damai, Pekanbaru',
       icon: '🎉'
     }
   ]

@@ -6,8 +6,7 @@ import { MapPin, Navigation } from 'lucide-react'
 
 export default function LocationMap() {
   const openGoogleMaps = () => {
-    // Replace with actual coordinates
-    const mapsUrl = "https://www.google.com/maps/search/Gedung+Serbaguna+Harmoni+Jakarta"
+    const mapsUrl = "https://www.google.com/maps/search/Balai+Prajurit+Pulanggeni+Pekanbaru"
     window.open(mapsUrl, '_blank')
   }
 
@@ -38,8 +37,8 @@ export default function LocationMap() {
             <div className="h-64 md:h-80 bg-gradient-to-br from-wedding-primary/20 to-wedding-secondary/20 flex items-center justify-center relative">
               <div className="text-center">
                 <MapPin className="w-16 h-16 text-wedding-primary mx-auto mb-4" />
-                <h3 className="text-xl font-playfair text-gray-800 mb-2">Gedung Serbaguna Harmoni</h3>
-                <p className="text-gray-600 font-inter">Jl. Harmoni No. 456, Jakarta Pusat</p>
+                <h3 className="text-xl font-playfair text-gray-800 mb-2">Balai Prajurit Pulanggeni</h3>
+                <p className="text-gray-600 font-inter">Jl Perhentian Marpoyan, Marpoyan Damai, Pekanbaru</p>
               </div>
               
               {/* You can replace this with actual Google Maps embed */}

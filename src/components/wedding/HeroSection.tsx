@@ -1,6 +1,5 @@
 'use client'
 import { motion } from 'framer-motion'
-import { Card } from '@/components/ui/card'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 export default function HeroSection() {
@@ -19,7 +18,7 @@ export default function HeroSection() {
           transition={{ duration: 1, delay: 0.3 }}
         >
           <h1 className="text-2xl md:text-3xl font-playfair text-gray-800 mb-6">
-            Assalamu'alaikum Wr. Wb.
+            Assalamualaikum Wr. Wb.
           </h1>
           
           <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed font-inter">
@@ -42,8 +41,8 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <Avatar className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-4 border-4 border-wedding-primary/20">
-                <AvatarImage src="/images/groom.jpg" alt="Andi Rahman Hakim" />
-                <AvatarFallback className="text-2xl font-playfair bg-wedding-primary/10">A</AvatarFallback>
+                <AvatarImage src="/images/groom.jpg" alt="Restow Frandha" />
+                <AvatarFallback className="text-2xl font-playfair bg-wedding-primary/10">R</AvatarFallback>
               </Avatar>
             </motion.div>
             
@@ -53,11 +52,11 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 1 }}
             >
               <h3 className="text-2xl md:text-3xl font-playfair text-gray-800 mb-2">
-                Andi Rahman Hakim
+                Restow Frandha
               </h3>
               <p className="text-gray-600 font-inter">
                 Putra dari<br />
-                Bapak Ahmad & Ibu Fatimah
+                Bapak Andi & Ibu Ilfita Onenda
               </p>
             </motion.div>
           </div>
@@ -80,8 +79,8 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 1.4 }}
             >
               <Avatar className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-4 border-4 border-wedding-secondary/20">
-                <AvatarImage src="/images/bride.jpg" alt="Sari Dewi Lestari" />
-                <AvatarFallback className="text-2xl font-playfair bg-wedding-secondary/10">S</AvatarFallback>
+                <AvatarImage src="/images/bride.jpg" alt="Verina Mardhatillah" />
+                <AvatarFallback className="text-2xl font-playfair bg-wedding-secondary/10">V</AvatarFallback>
               </Avatar>
             </motion.div>
             
@@ -91,11 +90,11 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 1.6 }}
             >
               <h3 className="text-2xl md:text-3xl font-playfair text-gray-800 mb-2">
-                Sari Dewi Lestari
+                Verina Mardhatillah
               </h3>
               <p className="text-gray-600 font-inter">
                 Putri dari<br />
-                Bapak Bambang & Ibu Siti
+                Bapak Anveriyendi & Ibu Machdalena
               </p>
             </motion.div>
           </div>
