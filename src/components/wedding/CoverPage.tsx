@@ -1,144 +1,334 @@
-'use client'
-import { useState, useEffect } from 'react'
-import { useSearchParams } from 'next/navigation'
-import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
-import { Heart, Mail, Sparkles } from 'lucide-react'
+import React, { useState, useEffect } from 'react';
+import { Heart, Mail, Sparkles, Star } from 'lucide-react';
 
 interface CoverPageProps {
-  onOpen: () => void
-  groomName: string
-  brideName: string
-  weddingDate: Date
+  onOpen: () => void;
+  groomName: string;
+  brideName: string;
+  weddingDate: Date;
 }
 
-const heartPositions = [
-  { left: '10%', top: '20%' },
-  { left: '85%', top: '15%' },
-  { left: '20%', top: '70%' },
-  { left: '90%', top: '80%' },
-  { left: '15%', top: '45%' },
-  { left: '75%', top: '60%' }
-]
-
-export default function CoverPage({ onOpen, groomName, brideName, weddingDate }: CoverPageProps) {
-  const [isClient, setIsClient] = useState(false)
-  const searchParams = useSearchParams()
-  const invitedName = searchParams.get('name') || 'Tamu Undangan'
+export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }: CoverPageProps) {
+  const [isClient, setIsClient] = useState(false);
+  
+  // Get invited name from URL parameters (you can handle this in your parent component)
+  const [invitedName, setInvitedName] = useState('Bapak/Ibu/Saudara/i');
 
   useEffect(() => {
-    setIsClient(true)
-  }, [])
+    setIsClient(true);
+    
+    // Get invited name from URL parameters (similar to your original useSearchParams)
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const nameFromUrl = urlParams.get('name');
+      if (nameFromUrl) {
+        setInvitedName(nameFromUrl);
+      }
+    }
+  }, []);
+
+  const handleOpen = () => {
+    alert('Opening wedding invitation...');
+  };
+
+  // Sample pre-wedding photos (using your provided URLs plus some backups)
+  const preWeddingPhotos = [
+    'https://london.bridestory.com/images/c_fill,dpr_1.0,f_auto,fl_progressive,pg_1,q_80,w_680/v1/assets/l1000377-y2_tZ0GX5/lemia-project_black-white-prewedding-studio_1.webp',
+    'https://images.weddingku.com/images/upload/articles/images/u85ctg1srm7p41120191113.jpg',
+    'https://images.weddingku.com/images/upload/articles/images/imd5gtr21ah141120191113.jpg',
+    'https://assets.satumomen.com/images/posts/ide-foto-prewedding-hitam-5-1686106681.jpg',
+    'https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=400&h=300&fit=crop'
+  ];
+
+  // Create abstract bouncing photos with random trajectories
+  const bouncingPhotos = Array.from({ length: 8 }, (_, i) => ({
+    id: i,
+    photo: preWeddingPhotos[i % preWeddingPhotos.length],
+    startX: Math.random() * 80 + 10, // Random start position (10% to 90%)
+    startY: Math.random() * 80 + 10,
+    velocityX: (Math.random() - 0.5) * 4, // Random velocity between -2 and 2
+    velocityY: (Math.random() - 0.5) * 4,
+    delay: Math.random() * 8, // Random delay up to 8 seconds
+    duration: 20 + Math.random() * 15, // 20-35 second cycles
+    scale: 0.7 + Math.random() * 0.4, // Random size
+    rotation: Math.random() * 360, // Random initial rotation
+    rotationSpeed: (Math.random() - 0.5) * 2, // Rotation during movement
+    opacity: 0.15 + Math.random() * 0.15 // Random opacity between 15-30%
+  }));
+
+  const floatingElements = Array.from({ length: 12 }, (_, i) => ({
+    id: i,
+    left: `${10 + Math.random() * 80}%`,
+    top: `${10 + Math.random() * 80}%`,
+    delay: Math.random() * 3,
+    duration: 4 + Math.random() * 3
+  }));
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-wedding-primary via-wedding-secondary to-wedding-primary flex items-center justify-center relative overflow-hidden">
-      {/* Animated Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        {/* Rotating circles */}
-        <motion.div className="absolute top-10 left-10 w-20 h-20 border border-white rounded-full"
-          animate={isClient ? { rotate: 360 } : {}} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} />
-        <motion.div className="absolute top-32 right-16 w-16 h-16 border border-white rounded-full"
-          animate={isClient ? { rotate: -360 } : {}} transition={{ duration: 25, repeat: Infinity, ease: "linear" }} />
-        <motion.div className="absolute bottom-20 left-20 w-24 h-24 border border-white rounded-full"
-          animate={isClient ? { rotate: 360 } : {}} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} />
-        <motion.div className="absolute bottom-32 right-10 w-12 h-12 border border-white rounded-full"
-          animate={isClient ? { rotate: -360 } : {}} transition={{ duration: 15, repeat: Infinity, ease: "linear" }} />
-      </div>
-
-      {/* Floating Hearts */}
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-700 to-slate-900">
+      {/* Bouncing Pre-wedding Photos */}
       {isClient && (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {heartPositions.map((pos, i) => (
-            <motion.div key={i} className="absolute text-white/20" style={pos}
-              animate={{ y: [-20, -40, -20], opacity: [0.2, 0.5, 0.2] }}
-              transition={{ duration: 3 + i * 0.5, repeat: Infinity, delay: i * 0.3 }}>
-              <Heart className="w-4 h-4" />
-            </motion.div>
+          {bouncingPhotos.map((item) => (
+            <div
+              key={item.id}
+              className="absolute transition-opacity duration-700 hover:opacity-60"
+              style={{
+                left: `${item.startX}%`,
+                top: `${item.startY}%`,
+                opacity: item.opacity,
+                transform: `scale(${item.scale}) rotate(${item.rotation}deg)`,
+                animation: `bounce-abstract-${item.id} ${item.duration}s infinite linear`,
+                animationDelay: `${item.delay}s`
+              }}
+            >
+              <div className="relative group">
+                <img
+                  src={item.photo}
+                  alt={`Pre-wedding ${item.id + 1}`}
+                  className="w-40 h-32 md:w-48 md:h-36 object-cover rounded-2xl shadow-2xl border-2 border-white/20 group-hover:border-pink-300/50 transition-all duration-500"
+                  style={{
+                    filter: 'grayscale(20%) sepia(10%) saturate(120%) brightness(0.8) contrast(1.1)',
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/30 rounded-2xl" />
+                
+                {/* Romantic overlay effects */}
+                <div className="absolute inset-0 rounded-2xl bg-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                {/* Floating heart */}
+                <div className="absolute -top-2 -right-2 opacity-80">
+                  <Heart className="w-4 h-4 text-pink-400 fill-current animate-pulse" />
+                </div>
+                
+                {/* Corner sparkles */}
+                <div className="absolute -bottom-1 -left-1 opacity-60">
+                  <Sparkles className="w-3 h-3 text-yellow-300 animate-ping" />
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       )}
 
-      <div className="max-w-md mx-auto px-6 text-center text-white relative z-10">
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="space-y-8">
-          
-          {/* Wedding Icon */}
-          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.6, delay: 0.2, type: "spring", stiffness: 200 }} className="flex justify-center">
-            <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/30">
-              <motion.div animate={isClient ? { rotate: [0, 10, -10, 0] } : {}} transition={{ duration: 2, repeat: Infinity, delay: 1 }}>
-                <Heart className="w-10 h-10 text-white fill-white/20" />
-              </motion.div>
-            </div>
-          </motion.div>
-
-          {/* Invitation Text */}
-          <div className="space-y-4">
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.4 }} className="text-lg font-inter tracking-wide">
-              Bismillahirrahmanirrahim
-            </motion.p>
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6 }} className="text-3xl font-playfair font-bold relative">
-              Undangan Pernikahan
-              {isClient && (
-                <motion.div className="absolute -top-2 -right-2" animate={{ rotate: [0, 10, -10, 0] }} transition={{ duration: 3, repeat: Infinity, delay: 2 }}>
-                  <Sparkles className="w-6 h-6 text-yellow-300" />
-                </motion.div>
-              )}
-            </motion.h1>
-
-            {/* Guest Name */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="relative flex flex-col items-center space-y-2"
+      {/* Floating decorative elements */}
+      {isClient && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
+          {floatingElements.map((item) => (
+            <div
+              key={item.id}
+              className="absolute text-white/30 animate-pulse"
+              style={{
+                left: item.left,
+                top: item.top,
+                animationDelay: `${item.delay}s`,
+                animationDuration: `${item.duration}s`
+              }}
             >
-              <p className="text-lg font-inter text-white/80">
-                Kepada Yth.
-              </p>
-              <div className="relative">
-                <p className="text-2xl font-playfair font-semibold text-wedding-secondary drop-shadow-md">
-                  {invitedName}
-                </p>
-                {/* Gold underline */}
-                <motion.div
-                  className="absolute left-0 right-0 h-0.5 bg-wedding-accent rounded-full mt-1"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 0.8, delay: 1 }}
-                  style={{ transformOrigin: 'left' }}
-                />
-                {/* Sparkle effect */}
-                <motion.div
-                  className="absolute -top-4 -right-6"
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, delay: 1 }}
-                >
-                  <Sparkles className="w-5 h-5 text-wedding-accent" />
-                </motion.div>
-              </div>
-            </motion.div>
-            
+              {item.id % 3 === 0 ? (
+                <Heart className="w-4 h-4" />
+              ) : item.id % 3 === 1 ? (
+                <Sparkles className="w-3 h-3" />
+              ) : (
+                <Star className="w-3 h-3" />
+              )}
+            </div>
+          ))}
+        </div>
+      )}
 
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 1 }} className="space-y-2">
-              <p className="text-2xl font-playfair font-semibold">{groomName}</p>
-              <p className="text-2xl font-playfair font-semibold">&</p>
-              <p className="text-2xl font-playfair font-semibold">{brideName}</p>
-              <p className="text-sm font-inter opacity-90">
-                {weddingDate.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
+      {/* CSS Animation Styles */}
+      <style jsx>{`
+        ${bouncingPhotos.map((item, index) => `
+          @keyframes bounce-abstract-${index} {
+            0% {
+              transform: translate(0px, 0px) scale(${item.scale}) rotate(${item.rotation}deg);
+            }
+            12.5% {
+              transform: translate(${item.velocityX * 15}vw, ${item.velocityY * 10}vh) scale(${item.scale * 1.1}) rotate(${item.rotation + item.rotationSpeed * 45}deg);
+            }
+            25% {
+              transform: translate(${item.velocityX * 25}vw, ${item.velocityY * 20}vh) scale(${item.scale}) rotate(${item.rotation + item.rotationSpeed * 90}deg);
+            }
+            37.5% {
+              transform: translate(${item.velocityX * 15}vw, ${item.velocityY * 30}vh) scale(${item.scale * 0.9}) rotate(${item.rotation + item.rotationSpeed * 135}deg);
+            }
+            50% {
+              transform: translate(${item.velocityX * -10}vw, ${item.velocityY * 25}vh) scale(${item.scale * 1.05}) rotate(${item.rotation + item.rotationSpeed * 180}deg);
+            }
+            62.5% {
+              transform: translate(${item.velocityX * -20}vw, ${item.velocityX * 15}vh) scale(${item.scale}) rotate(${item.rotation + item.rotationSpeed * 225}deg);
+            }
+            75% {
+              transform: translate(${item.velocityY * -15}vw, ${item.velocityX * -10}vh) scale(${item.scale * 1.1}) rotate(${item.rotation + item.rotationSpeed * 270}deg);
+            }
+            87.5% {
+              transform: translate(${item.velocityY * -5}vw, ${item.velocityX * -20}vh) scale(${item.scale * 0.95}) rotate(${item.rotation + item.rotationSpeed * 315}deg);
+            }
+            100% {
+              transform: translate(0px, 0px) scale(${item.scale}) rotate(${item.rotation + item.rotationSpeed * 360}deg);
+            }
+          }
+        `).join('')}
+        
+        /* Ensure photos bounce off screen edges */
+        .absolute img {
+          transition: filter 0.3s ease;
+        }
+        
+        .absolute:hover img {
+          filter: grayscale(0%) sepia(5%) saturate(140%) brightness(0.9) contrast(1.1) !important;
+        }
+      `}</style>
+
+      {/* Elegant border frame */}
+      <div className="absolute inset-4 border border-white/20 rounded-lg pointer-events-none">
+        <div className="absolute inset-2 border border-white/10 rounded-md" />
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-20 min-h-screen flex items-center justify-center p-6">
+        <div className="max-w-lg w-full text-center text-white space-y-8 bg-black/20 backdrop-blur-md rounded-2xl p-8 border border-white/10 shadow-2xl"
+          style={{
+            background: 'linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(255,255,255,0.1) 100%)'
+          }}
+        >
+          
+          {/* Decorative Top Element */}
+          <div className="flex items-center justify-center space-x-4 mb-8">
+            <div className="h-px bg-gradient-to-r from-transparent via-white/40 to-transparent flex-1" />
+            <div className="flex space-x-1">
+              <div className="w-1 h-1 rounded-full bg-white/40" />
+              <div className="w-1 h-1 rounded-full bg-white/40" />
+              <div className="w-1 h-1 rounded-full bg-white/40" />
+            </div>
+            <div className="h-px bg-gradient-to-r from-transparent via-white/40 to-transparent flex-1" />
+          </div>
+
+          {/* Islamic Opening */}
+          <div className="space-y-2">
+            <p className="text-sm font-light tracking-wider opacity-90 italic">
+              Bismillahirrahmanirrahim
+            </p>
+            <p className="text-base font-light tracking-wide opacity-80">
+              Kindly join us with our families for
+            </p>
+          </div>
+
+          {/* Main Title */}
+          <div className="space-y-6">
+            <h1 className="text-2xl font-light tracking-[0.2em] opacity-90">
+              The Wedding of
+            </h1>
+
+            {/* Couple Names */}
+            <div className="space-y-2">
+              <h2 className="text-4xl md:text-5xl font-serif font-light tracking-wider text-white">
+                {brideName}
+              </h2>
+              <div className="flex items-center justify-center space-x-6 my-4">
+                <div className="h-px bg-white/30 w-16" />
+                <Heart className="w-6 h-6" />
+                <div className="h-px bg-white/30 w-16" />
+              </div>
+              <h2 className="text-4xl md:text-5xl font-serif font-light tracking-wider text-white">
+                {groomName}
+              </h2>
+            </div>
+          </div>
+
+          {/* Wedding Date */}
+          <div className="space-y-2">
+            <p className="text-lg font-light tracking-wide">
+              {weddingDate.toLocaleDateString('en-US', { 
+                month: 'long', 
+                day: 'numeric', 
+                year: 'numeric' 
+              })}
+            </p>
+            <p className="text-sm opacity-80">
+              {weddingDate.toLocaleDateString('id-ID', { 
+                weekday: 'long' 
+              })}
+            </p>
+            <p className="text-sm opacity-80 font-light">
+              123 Anywhere St.<br />
+              Any City, ST 12345
+            </p>
+          </div>
+
+          {/* Decorative Middle Element */}
+          <div className="flex justify-center py-4">
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-px bg-gradient-to-r from-transparent to-white/40" />
+              <div className="w-2 h-2 rounded-full bg-white/40" />
+              <div className="w-12 h-px bg-white/40" />
+              <div className="w-2 h-2 rounded-full bg-white/40" />
+              <div className="w-8 h-px bg-gradient-to-l from-transparent to-white/40" />
+            </div>
+          </div>
+
+          {/* Guest Name Section */}
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+            <p className="text-sm font-light tracking-wide opacity-90 mb-3">
+              Kepada Yth.
+            </p>
+            <div className="space-y-2">
+              <p className="text-2xl font-serif font-semibold text-yellow-200 drop-shadow-md">
+                {invitedName}
               </p>
-            </motion.div>
+              {/* Gold underline effect */}
+              <div className="h-0.5 bg-gradient-to-r from-transparent via-yellow-300 to-transparent rounded-full mx-auto w-3/4" />
+              
+              {/* Only show input in demo mode */}
+              {invitedName === 'Bapak/Ibu/Saudara/i' && (
+                <div className="pt-2">
+                  <input
+                    type="text"
+                    value={invitedName}
+                    onChange={(e) => setInvitedName(e.target.value)}
+                    className="w-full text-center text-lg font-light tracking-wide bg-transparent border-b border-white/30 pb-2 focus:outline-none focus:border-white/60 transition-colors text-yellow-200"
+                    placeholder="Enter guest name..."
+                  />
+                  <p className="text-xs opacity-70 italic mt-2">
+                    (Demo: customize guest name, in real use this comes from URL ?name=GuestName)
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Open Invitation Button */}
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 1.2 }}>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button onClick={onOpen} className="bg-white text-wedding-primary hover:bg-white/90 px-8 py-3 rounded-full font-inter font-semibold shadow-lg border-2 border-white/50 hover:shadow-xl transition-all duration-300" size="lg">
-                <Mail className="w-5 h-5 mr-2" />
-                Buka Undangan
-              </Button>
-            </motion.div>
-          </motion.div>
-        </motion.div>
+          <div className="pt-4">
+            <button
+              onClick={onOpen}
+              className="group relative bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 hover:border-white/50 text-white px-8 py-4 rounded-full font-light tracking-wide transition-all duration-300 hover:scale-105 active:scale-95"
+            >
+              <div className="flex items-center space-x-3">
+                <Mail className="w-5 h-5 group-hover:animate-pulse" />
+                <span>Buka Undangan</span>
+                <Sparkles className="w-4 h-4 group-hover:animate-spin" />
+              </div>
+              
+              {/* Button glow effect */}
+              <div className="absolute inset-0 rounded-full bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </button>
+          </div>
+
+          {/* Bottom Decorative Element */}
+          <div className="flex items-center justify-center space-x-4 mt-8">
+            <div className="h-px bg-gradient-to-r from-transparent via-white/40 to-transparent flex-1" />
+            <div className="flex space-x-1">
+              <div className="w-1 h-1 rounded-full bg-white/40" />
+              <div className="w-1 h-1 rounded-full bg-white/40" />
+              <div className="w-1 h-1 rounded-full bg-white/40" />
+            </div>
+            <div className="h-px bg-gradient-to-r from-transparent via-white/40 to-transparent flex-1" />
+          </div>
+
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
