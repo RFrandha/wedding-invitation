@@ -27,10 +27,6 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
     }
   }, []);
 
-  const handleOpen = () => {
-    alert('Opening wedding invitation...');
-  };
-
   // Sample pre-wedding photos (using your provided URLs plus some backups)
   const preWeddingPhotos = [
     'https://london.bridestory.com/images/c_fill,dpr_1.0,f_auto,fl_progressive,pg_1,q_80,w_680/v1/assets/l1000377-y2_tZ0GX5/lemia-project_black-white-prewedding-studio_1.webp',
@@ -66,7 +62,7 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
   }));
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-700 to-slate-900">
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
       {/* Bouncing Pre-wedding Photos */}
       {isClient && (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -87,24 +83,24 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
                 <img
                   src={item.photo}
                   alt={`Pre-wedding ${item.id + 1}`}
-                  className="w-40 h-32 md:w-48 md:h-36 object-cover rounded-2xl shadow-2xl border-2 border-white/20 group-hover:border-pink-300/50 transition-all duration-500"
+                  className="w-40 h-32 md:w-48 md:h-36 object-cover rounded-2xl shadow-2xl border-2 border-white/20 group-hover:border-sky-300/50 transition-all duration-500"
                   style={{
-                    filter: 'grayscale(20%) sepia(10%) saturate(120%) brightness(0.8) contrast(1.1)',
+                    filter: 'grayscale(20%) sepia(15%) saturate(120%) brightness(0.8) contrast(1.1) hue-rotate(200deg)',
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/30 rounded-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-blue-500/10 to-indigo-600/20 rounded-2xl" />
                 
                 {/* Romantic overlay effects */}
-                <div className="absolute inset-0 rounded-2xl bg-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 rounded-2xl bg-blue-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 {/* Floating heart */}
                 <div className="absolute -top-2 -right-2 opacity-80">
-                  <Heart className="w-4 h-4 text-pink-400 fill-current animate-pulse" />
+                  <Heart className="w-4 h-4 text-sky-300 fill-current animate-pulse" />
                 </div>
                 
                 {/* Corner sparkles */}
                 <div className="absolute -bottom-1 -left-1 opacity-60">
-                  <Sparkles className="w-3 h-3 text-yellow-300 animate-ping" />
+                  <Sparkles className="w-3 h-3 text-blue-200 animate-ping" />
                 </div>
               </div>
             </div>
@@ -127,11 +123,11 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
               }}
             >
               {item.id % 3 === 0 ? (
-                <Heart className="w-4 h-4" />
+                <Heart className="w-4 h-4 text-sky-300/50" />
               ) : item.id % 3 === 1 ? (
-                <Sparkles className="w-3 h-3" />
+                <Sparkles className="w-3 h-3 text-blue-200/50" />
               ) : (
-                <Star className="w-3 h-3" />
+                <Star className="w-3 h-3 text-indigo-200/50" />
               )}
             </div>
           ))}
@@ -178,7 +174,7 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
         }
         
         .absolute:hover img {
-          filter: grayscale(0%) sepia(5%) saturate(140%) brightness(0.9) contrast(1.1) !important;
+          filter: grayscale(0%) sepia(10%) saturate(140%) brightness(0.9) contrast(1.1) hue-rotate(200deg) !important;
         }
       `}</style>
 
@@ -191,19 +187,19 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
       <div className="relative z-20 min-h-screen flex items-center justify-center p-6">
         <div className="max-w-lg w-full text-center text-white space-y-8 bg-black/20 backdrop-blur-md rounded-2xl p-8 border border-white/10 shadow-2xl"
           style={{
-            background: 'linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(255,255,255,0.1) 100%)'
+            background: 'linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(59,130,246,0.1) 100%)'
           }}
         >
           
           {/* Decorative Top Element */}
           <div className="flex items-center justify-center space-x-4 mb-8">
-            <div className="h-px bg-gradient-to-r from-transparent via-white/40 to-transparent flex-1" />
+            <div className="h-px bg-gradient-to-r from-transparent via-sky-300/40 to-transparent flex-1" />
             <div className="flex space-x-1">
-              <div className="w-1 h-1 rounded-full bg-white/40" />
-              <div className="w-1 h-1 rounded-full bg-white/40" />
-              <div className="w-1 h-1 rounded-full bg-white/40" />
+              <div className="w-1 h-1 rounded-full bg-sky-300/40" />
+              <div className="w-1 h-1 rounded-full bg-blue-300/40" />
+              <div className="w-1 h-1 rounded-full bg-indigo-300/40" />
             </div>
-            <div className="h-px bg-gradient-to-r from-transparent via-white/40 to-transparent flex-1" />
+            <div className="h-px bg-gradient-to-r from-transparent via-sky-300/40 to-transparent flex-1" />
           </div>
 
           {/* Islamic Opening */}
@@ -224,15 +220,15 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
 
             {/* Couple Names */}
             <div className="space-y-2">
-              <h2 className="text-4xl md:text-5xl font-serif font-light tracking-wider text-white">
+              <h2 className="text-4xl md:text-5xl font-serif font-light tracking-wider text-transparent bg-gradient-to-r from-sky-200 via-blue-100 to-indigo-200 bg-clip-text">
                 {brideName}
               </h2>
               <div className="flex items-center justify-center space-x-6 my-4">
-                <div className="h-px bg-white/30 w-16" />
-                <Heart className="w-6 h-6" />
-                <div className="h-px bg-white/30 w-16" />
+                <div className="h-px bg-sky-300/30 w-16" />
+                <Heart className="w-6 h-6 text-sky-300" />
+                <div className="h-px bg-sky-300/30 w-16" />
               </div>
-              <h2 className="text-4xl md:text-5xl font-serif font-light tracking-wider text-white">
+              <h2 className="text-4xl md:text-5xl font-serif font-light tracking-wider text-transparent bg-gradient-to-r from-blue-200 via-indigo-100 to-sky-200 bg-clip-text">
                 {groomName}
               </h2>
             </div>
@@ -253,19 +249,19 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
               })}
             </p>
             <p className="text-sm opacity-80 font-light">
-              123 Anywhere St.<br />
-              Any City, ST 12345
+              Balai Prajurit Pulanggeni<br />
+              Pekanbaru, Riau
             </p>
           </div>
 
           {/* Decorative Middle Element */}
           <div className="flex justify-center py-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-px bg-gradient-to-r from-transparent to-white/40" />
-              <div className="w-2 h-2 rounded-full bg-white/40" />
-              <div className="w-12 h-px bg-white/40" />
-              <div className="w-2 h-2 rounded-full bg-white/40" />
-              <div className="w-8 h-px bg-gradient-to-l from-transparent to-white/40" />
+              <div className="w-8 h-px bg-gradient-to-r from-transparent to-sky-300/40" />
+              <div className="w-2 h-2 rounded-full bg-sky-300/40" />
+              <div className="w-12 h-px bg-sky-300/40" />
+              <div className="w-2 h-2 rounded-full bg-blue-300/40" />
+              <div className="w-8 h-px bg-gradient-to-l from-transparent to-blue-300/40" />
             </div>
           </div>
 
@@ -275,11 +271,11 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
               Kepada Yth.
             </p>
             <div className="space-y-2">
-              <p className="text-2xl font-serif font-semibold text-yellow-200 drop-shadow-md">
+              <p className="text-2xl font-serif font-semibold text-transparent bg-gradient-to-r from-sky-200 to-blue-200 bg-clip-text drop-shadow-md">
                 {invitedName}
               </p>
-              {/* Gold underline effect */}
-              <div className="h-0.5 bg-gradient-to-r from-transparent via-yellow-300 to-transparent rounded-full mx-auto w-3/4" />
+              {/* Blue underline effect */}
+              <div className="h-0.5 bg-gradient-to-r from-transparent via-sky-300 to-transparent rounded-full mx-auto w-3/4" />
               
               {/* Only show input in demo mode */}
               {invitedName === 'Bapak/Ibu/Saudara/i' && (
@@ -288,7 +284,7 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
                     type="text"
                     value={invitedName}
                     onChange={(e) => setInvitedName(e.target.value)}
-                    className="w-full text-center text-lg font-light tracking-wide bg-transparent border-b border-white/30 pb-2 focus:outline-none focus:border-white/60 transition-colors text-yellow-200"
+                    className="w-full text-center text-lg font-light tracking-wide bg-transparent border-b border-white/30 pb-2 focus:outline-none focus:border-sky-300/60 transition-colors text-transparent bg-gradient-to-r from-sky-200 to-blue-200 bg-clip-text"
                     placeholder="Enter guest name..."
                   />
                   <p className="text-xs opacity-70 italic mt-2">
@@ -303,28 +299,32 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
           <div className="pt-4">
             <button
               onClick={onOpen}
-              className="group relative bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 hover:border-white/50 text-white px-8 py-4 rounded-full font-light tracking-wide transition-all duration-300 hover:scale-105 active:scale-95"
+              className="group relative bg-gradient-to-r from-sky-500/20 to-blue-600/20 hover:from-sky-500/30 hover:to-blue-600/30 backdrop-blur-sm border border-sky-300/30 hover:border-sky-300/50 text-white px-8 py-4 rounded-full font-light tracking-wide transition-all duration-300 hover:scale-105 active:scale-95"
             >
               <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 group-hover:animate-pulse" />
+                <div className="p-1 bg-sky-400/20 rounded-full group-hover:bg-sky-400/30 transition-colors duration-300">
+                  <Mail className="w-4 h-4 group-hover:animate-pulse" />
+                </div>
                 <span>Buka Undangan</span>
-                <Sparkles className="w-4 h-4 group-hover:animate-spin" />
+                <div className="p-1 bg-blue-400/20 rounded-full group-hover:bg-blue-400/30 transition-colors duration-300">
+                  <Sparkles className="w-3 h-3 group-hover:animate-spin" />
+                </div>
               </div>
               
               {/* Button glow effect */}
-              <div className="absolute inset-0 rounded-full bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-sky-400/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </button>
           </div>
 
           {/* Bottom Decorative Element */}
           <div className="flex items-center justify-center space-x-4 mt-8">
-            <div className="h-px bg-gradient-to-r from-transparent via-white/40 to-transparent flex-1" />
+            <div className="h-px bg-gradient-to-r from-transparent via-blue-300/40 to-transparent flex-1" />
             <div className="flex space-x-1">
-              <div className="w-1 h-1 rounded-full bg-white/40" />
-              <div className="w-1 h-1 rounded-full bg-white/40" />
-              <div className="w-1 h-1 rounded-full bg-white/40" />
+              <div className="w-1 h-1 rounded-full bg-sky-300/40" />
+              <div className="w-1 h-1 rounded-full bg-blue-300/40" />
+              <div className="w-1 h-1 rounded-full bg-indigo-300/40" />
             </div>
-            <div className="h-px bg-gradient-to-r from-transparent via-white/40 to-transparent flex-1" />
+            <div className="h-px bg-gradient-to-r from-transparent via-blue-300/40 to-transparent flex-1" />
           </div>
 
         </div>
