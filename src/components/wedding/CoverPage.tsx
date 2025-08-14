@@ -27,14 +27,16 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
     }
   }, []);
 
-  // Sample pre-wedding photos (using your provided URLs plus some backups)
+  // Sample pre-wedding photos with enhanced modern wedding imagery
   const preWeddingPhotos = [
-    'https://london.bridestory.com/images/c_fill,dpr_1.0,f_auto,fl_progressive,pg_1,q_80,w_680/v1/assets/l1000377-y2_tZ0GX5/lemia-project_black-white-prewedding-studio_1.webp',
-    'https://images.weddingku.com/images/upload/articles/images/u85ctg1srm7p41120191113.jpg',
-    'https://images.weddingku.com/images/upload/articles/images/imd5gtr21ah141120191113.jpg',
-    'https://assets.satumomen.com/images/posts/ide-foto-prewedding-hitam-5-1686106681.jpg',
-    'https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=300&fit=crop',
-    'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=400&h=300&fit=crop'
+    'https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=300&fit=crop&auto=format',
+    'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=400&h=300&fit=crop&auto=format',
+    'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&auto=format',
+    'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=400&h=300&fit=crop&auto=format',
+    'https://images.unsplash.com/photo-1594736797933-d0c62c7e4bc8?w=400&h=300&fit=crop&auto=format',
+    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&h=300&fit=crop&auto=format',
+    'https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=400&h=300&fit=crop&auto=format',
+    'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=400&h=300&fit=crop&auto=format'
   ];
 
   // Create abstract bouncing photos with random trajectories
@@ -299,20 +301,26 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
           <div className="pt-4">
             <button
               onClick={onOpen}
-              className="group relative bg-gradient-to-r from-sky-500/20 to-blue-600/20 hover:from-sky-500/30 hover:to-blue-600/30 backdrop-blur-sm border border-sky-300/30 hover:border-sky-300/50 text-white px-8 py-4 rounded-full font-light tracking-wide transition-all duration-300 hover:scale-105 active:scale-95"
+              className="group relative bg-gradient-to-r from-sky-500/20 to-blue-600/20 hover:from-sky-500/30 hover:to-blue-600/30 backdrop-blur-sm border border-sky-300/30 hover:border-sky-300/50 text-white px-8 py-4 rounded-full font-light tracking-wide transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden"
             >
-              <div className="flex items-center space-x-3">
+              {/* Subtle shimmer effect */}
+              <div className="absolute inset-0 -top-2 -bottom-2 bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-out" />
+              
+              <div className="flex items-center space-x-3 relative z-10">
                 <div className="p-1 bg-sky-400/20 rounded-full group-hover:bg-sky-400/30 transition-colors duration-300">
                   <Mail className="w-4 h-4 group-hover:animate-pulse" />
                 </div>
-                <span>Buka Undangan</span>
+                <span className="font-medium">Buka Undangan</span>
                 <div className="p-1 bg-blue-400/20 rounded-full group-hover:bg-blue-400/30 transition-colors duration-300">
                   <Sparkles className="w-3 h-3 group-hover:animate-spin" />
                 </div>
               </div>
               
-              {/* Button glow effect */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-sky-400/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              {/* Enhanced button glow effect */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-sky-400/10 via-blue-400/10 to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              {/* Soft border highlight */}
+              <div className="absolute inset-0 rounded-full border border-sky-200/20 opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
             </button>
           </div>
 

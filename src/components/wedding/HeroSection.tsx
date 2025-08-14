@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 export default function HeroSection() {
   return (
-    <section className="min-h-screen bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-100 flex items-center justify-center p-4 relative overflow-hidden">
+    <section className="min-h-screen bg-gradient-to-br from-sky-100 via-blue-100 to-indigo-200 flex items-center justify-center p-4 relative overflow-hidden">
       {/* Background Pattern - Enhanced */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-sky-300 to-blue-400 rounded-full blur-3xl"></div>
@@ -68,7 +68,7 @@ export default function HeroSection() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-sky-200/50 to-blue-300/50 rounded-full blur-md transform scale-110"></div>
               <Avatar className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-4 border-4 border-white/60 shadow-2xl relative z-10">
-                <AvatarImage src="/images/groom.jpg" alt="Restow Frandha" />
+                <AvatarImage src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face&auto=format" alt="Restow Frandha" />
                 <AvatarFallback className="text-2xl font-serif bg-gradient-to-br from-sky-100 to-blue-100 text-sky-700">R</AvatarFallback>
               </Avatar>
             </motion.div>
@@ -109,7 +109,7 @@ export default function HeroSection() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-200/50 to-indigo-300/50 rounded-full blur-md transform scale-110"></div>
               <Avatar className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-4 border-4 border-white/60 shadow-2xl relative z-10">
-                <AvatarImage src="/images/bride.jpg" alt="Verina Mardhatillah" />
+                <AvatarImage src="https://images.unsplash.com/photo-1494790108755-2616b332e234?w=300&h=300&fit=crop&crop=face&auto=format" alt="Verina Mardhatillah" />
                 <AvatarFallback className="text-2xl font-serif bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-700">V</AvatarFallback>
               </Avatar>
             </motion.div>

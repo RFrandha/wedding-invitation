@@ -66,33 +66,54 @@ export default function LocationMap() {
           className="group"
         >
           <Card className="overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 border-0 bg-white/90 backdrop-blur-sm">
-            {/* Map Placeholder */}
-            <div className="h-64 md:h-80 bg-gradient-to-br from-sky-100 via-blue-100 to-indigo-100 flex items-center justify-center relative overflow-hidden">
-              {/* Subtle pattern overlay */}
-              <div className="absolute inset-0 opacity-20">
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-sky-200/30 via-transparent to-blue-200/30"></div>
-                <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-sky-300/20 to-blue-400/20 rounded-full blur-2xl"></div>
-                <div className="absolute bottom-10 right-10 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-indigo-500/20 rounded-full blur-2xl"></div>
-              </div>
+            {/* Embedded Google Maps */}
+            <div className="h-64 md:h-80 relative overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.664308892143!2d101.40447917437488!3d0.46943679951773286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5a8b1d1d1d1d1%3A0x1d1d1d1d1d1d1d1d!2sBalai%20Prajurit%20Pulanggeni%20Pekanbaru!5e0!3m2!1sen!2sid!4v1234567890123!5m2!1sen!2sid"
+                width="100%"
+                height="100%"
+                style={{ border: 0, filter: 'grayscale(20%) sepia(10%) saturate(120%) hue-rotate(200deg)' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="rounded-t-lg"
+                title="Balai Prajurit Pulanggeni Pekanbaru Location"
+              />
               
-              <div className="text-center z-10 relative">
-                <div className="relative mb-6">
-                  <div className="absolute inset-0 bg-gradient-to-br from-sky-400/20 to-blue-500/20 rounded-full blur-lg transform scale-150"></div>
-                  <div className="relative p-4 bg-gradient-to-br from-sky-500 to-blue-600 rounded-full shadow-xl">
-                    <MapPin className="w-12 h-12 text-white" />
+              {/* Map overlay with location info */}
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent p-4">
+                <div className="text-white text-center">
+                  <div className="flex items-center justify-center mb-2">
+                    <div className="p-2 bg-white/20 backdrop-blur-sm rounded-full mr-3">
+                      <MapPin className="w-5 h-5" />
+                    </div>
+                    <div className="text-left">
+                      <h3 className="font-serif font-medium text-lg">
+                        Balai Prajurit Pulanggeni
+                      </h3>
+                      <p className="text-sm opacity-90">
+                        Jl Perhentian Marpoyan, Marpoyan Damai, Pekanbaru
+                      </p>
+                    </div>
                   </div>
                 </div>
-                <h3 className="text-xl md:text-2xl font-serif font-light text-slate-800 mb-3">
-                  Balai Prajurit Pulanggeni
-                </h3>
-                <div className="h-0.5 bg-gradient-to-r from-sky-400 to-blue-500 rounded-full mx-auto w-24 mb-4 opacity-70" />
-                <p className="text-slate-600 font-light leading-relaxed px-4">
-                  Jl Perhentian Marpoyan, Marpoyan Damai<br />Pekanbaru, Riau
-                </p>
+              </div>
+              
+              {/* Loading fallback */}
+              <div className="absolute inset-0 bg-gradient-to-br from-sky-100 via-blue-100 to-indigo-100 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="relative mb-4">
+                    <div className="absolute inset-0 bg-gradient-to-br from-sky-400/20 to-blue-500/20 rounded-full blur-lg transform scale-150"></div>
+                    <div className="relative p-3 bg-gradient-to-br from-sky-500 to-blue-600 rounded-full shadow-lg">
+                      <MapPin className="w-8 h-8 text-white animate-pulse" />
+                    </div>
+                  </div>
+                  <p className="text-slate-600 text-sm font-light">Loading map...</p>
+                </div>
               </div>
               
               {/* Decorative border */}
-              <div className="absolute inset-0 border border-white/30 group-hover:border-sky-200/50 transition-colors duration-500"></div>
+              <div className="absolute inset-0 border border-white/30 group-hover:border-sky-200/50 transition-colors duration-500 rounded-t-lg pointer-events-none"></div>
             </div>
             
             <div className="p-8 text-center bg-gradient-to-br from-white to-sky-50/20">

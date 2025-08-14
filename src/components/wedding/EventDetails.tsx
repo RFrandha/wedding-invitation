@@ -91,11 +91,11 @@ export default function EventDetails() {
                 <div className="absolute inset-0 rounded-lg border border-white/20 group-hover:border-sky-200/50 transition-colors duration-500"></div>
                 
                 <div className="relative z-10">
-                  <div className="text-4xl mb-6 transform group-hover:scale-110 transition-transform duration-500">
+                  <div className="text-5xl mb-8 transform group-hover:scale-110 transition-transform duration-500 filter drop-shadow-lg">
                     {event.icon}
                   </div>
                   
-                  <h3 className="text-2xl font-serif font-light text-transparent bg-gradient-to-br from-sky-600 to-blue-700 bg-clip-text mb-6">
+                  <h3 className="text-3xl font-serif font-medium text-transparent bg-gradient-to-br from-sky-600 via-blue-600 to-indigo-700 bg-clip-text mb-6 tracking-wide">
                     {event.title}
                   </h3>
                   
