@@ -35,7 +35,7 @@ export default function EventDetails() {
 
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 0 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
@@ -77,23 +77,73 @@ export default function EventDetails() {
           {events.map((event, index) => (
             <motion.div
               key={event.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
+              whileHover={{
+                y: -8,
+                scale: 1.02,
+                transition: { 
+                  type: "spring", 
+                  stiffness: 400, 
+                  damping: 10 
+                }
+              }}
               className="group"
             >
               <Card className="p-8 text-center border-0 shadow-xl hover:shadow-2xl transition-all duration-500 relative overflow-hidden bg-white/80 backdrop-blur-sm">
                 {/* Gradient overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${event.gradient} opacity-5 group-hover:opacity-10 transition-opacity duration-500`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-br ${event.gradient} opacity-5 group-hover:opacity-15 transition-opacity duration-500`}></div>
                 
                 {/* Border glow effect */}
                 <div className="absolute inset-0 rounded-lg border border-white/20 group-hover:border-sky-200/50 transition-colors duration-500"></div>
                 
+                {/* Floating particles effect */}
+                <motion.div 
+                  className="absolute inset-0 pointer-events-none"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {[...Array(6)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className={`absolute w-1 h-1 rounded-full bg-gradient-to-r ${event.gradient}`}
+                      style={{
+                        left: `${20 + i * 12}%`,
+                        top: `${30 + (i % 2) * 40}%`
+                      }}
+                      animate={{
+                        y: [0, -20, 0],
+                        opacity: [0.6, 1, 0.6],
+                        scale: [0.8, 1.2, 0.8]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: i * 0.2
+                      }}
+                    />
+                  ))}
+                </motion.div>
+                
                 <div className="relative z-10">
-                  <div className="text-5xl mb-8 transform group-hover:scale-110 transition-transform duration-500 filter drop-shadow-lg">
+                  <motion.div 
+                    className="text-5xl mb-8 filter drop-shadow-lg"
+                    whileHover={{
+                      scale: 1.1,
+                      rotateZ: 5,
+                      y: -5,
+                      transition: {
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 8
+                      }
+                    }}
+                  >
                     {event.icon}
-                  </div>
+                  </motion.div>
                   
                   <h3 className="text-3xl font-serif font-medium text-transparent bg-gradient-to-br from-sky-600 via-blue-600 to-indigo-700 bg-clip-text mb-6 tracking-wide">
                     {event.title}

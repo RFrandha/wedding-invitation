@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Heart, Mail, Sparkles, Star } from 'lucide-react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 interface CoverPageProps {
   onOpen: () => void;
@@ -10,6 +13,8 @@ interface CoverPageProps {
 
 export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }: CoverPageProps) {
   const [isClient, setIsClient] = useState(false);
+  const [bouncingPhotos, setBouncingPhotos] = useState<any[]>([]);
+  const [floatingElements, setFloatingElements] = useState<any[]>([]);
   
   // Get invited name from URL parameters (you can handle this in your parent component)
   const [invitedName, setInvitedName] = useState('Bapak/Ibu/Saudara/i');
@@ -25,46 +30,54 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
         setInvitedName(nameFromUrl);
       }
     }
+
+    // Generate random data on client side only
+    const generatedBouncingPhotos = Array.from({ length: 8 }, (_, i) => ({
+      id: i,
+      photo: preWeddingPhotos[i % preWeddingPhotos.length],
+      startX: Math.random() * 80 + 10,
+      startY: Math.random() * 80 + 10,
+      velocityX: (Math.random() - 0.5) * 4,
+      velocityY: (Math.random() - 0.5) * 4,
+      delay: Math.random() * 8,
+      duration: 20 + Math.random() * 15,
+      scale: 0.7 + Math.random() * 0.4,
+      rotation: Math.random() * 360,
+      rotationSpeed: (Math.random() - 0.5) * 2,
+      opacity: 0.15 + Math.random() * 0.15
+    }));
+
+    const generatedFloatingElements = Array.from({ length: 12 }, (_, i) => ({
+      id: i,
+      left: `${10 + Math.random() * 80}%`,
+      top: `${10 + Math.random() * 80}%`,
+      delay: Math.random() * 3,
+      duration: 4 + Math.random() * 3
+    }));
+
+    setBouncingPhotos(generatedBouncingPhotos);
+    setFloatingElements(generatedFloatingElements);
   }, []);
 
   // Sample pre-wedding photos with enhanced modern wedding imagery
   const preWeddingPhotos = [
-    'https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=300&fit=crop&auto=format',
-    'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=400&h=300&fit=crop&auto=format',
-    'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&auto=format',
-    'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=400&h=300&fit=crop&auto=format',
-    'https://images.unsplash.com/photo-1594736797933-d0c62c7e4bc8?w=400&h=300&fit=crop&auto=format',
-    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&h=300&fit=crop&auto=format',
-    'https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=400&h=300&fit=crop&auto=format',
-    'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=400&h=300&fit=crop&auto=format'
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOIvMg6ZLVtyUqT1FHbkE8GJrd-EH0c7GBGA&s',
+    'https://images.weddingku.com/images/upload/articles/images682/d28kb54aau0x41120191113.jpg',
+    'https://alexandra.bridestory.com/image/upload/assets/l1000458-min-0I-Z6SATm.jpg',
+    'https://i.pinimg.com/736x/32/85/ab/3285ab841670cc2bb1c680973ff07e14.jpg',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-qX3nrHOmcuFcRkpv8ZyBx0n3H6hivlTMuA&s',
+    'https://www.lesecretdaudrey.com/wp-content/uploads/2021/05/paris-pre-wedding-audrey-paris-photo-8-1200x1614.jpg',
+    'https://thumbs.dreamstime.com/b/romantic-silhouette-couple-love-flowing-veil-stunning-prewedding-photoshoot-captivating-black-white-photo-338046548.jpg',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5mYydYuiFcZeRrolZGQwuOYval2-TZlNDRA&s',
+    'https://images.weddingku.com/images/upload/articles/images/u85ctg1srm7p41120191113.jpg',
+    'https://bensonyin.com/main/wp-content/uploads/25-6940-post/paris_prewedding-1024x683.jpg',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAKlwFJ-qsifFFTJT3zhssmE8fKXauDV4A8g&s',
+    'https://media.weddingz.in/images/6f798ce01007e6623c18d9c2881def1d/black-and-white-pre-wedding-shoot-romantic-creative-ideas-goa2.jpg'
   ];
 
-  // Create abstract bouncing photos with random trajectories
-  const bouncingPhotos = Array.from({ length: 8 }, (_, i) => ({
-    id: i,
-    photo: preWeddingPhotos[i % preWeddingPhotos.length],
-    startX: Math.random() * 80 + 10, // Random start position (10% to 90%)
-    startY: Math.random() * 80 + 10,
-    velocityX: (Math.random() - 0.5) * 4, // Random velocity between -2 and 2
-    velocityY: (Math.random() - 0.5) * 4,
-    delay: Math.random() * 8, // Random delay up to 8 seconds
-    duration: 20 + Math.random() * 15, // 20-35 second cycles
-    scale: 0.7 + Math.random() * 0.4, // Random size
-    rotation: Math.random() * 360, // Random initial rotation
-    rotationSpeed: (Math.random() - 0.5) * 2, // Rotation during movement
-    opacity: 0.15 + Math.random() * 0.15 // Random opacity between 15-30%
-  }));
-
-  const floatingElements = Array.from({ length: 12 }, (_, i) => ({
-    id: i,
-    left: `${10 + Math.random() * 80}%`,
-    top: `${10 + Math.random() * 80}%`,
-    delay: Math.random() * 3,
-    duration: 4 + Math.random() * 3
-  }));
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-800 via-blue-900 to-sky-900">
       {/* Bouncing Pre-wedding Photos */}
       {isClient && (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -90,19 +103,19 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
                     filter: 'grayscale(20%) sepia(15%) saturate(120%) brightness(0.8) contrast(1.1) hue-rotate(200deg)',
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-blue-500/10 to-indigo-600/20 rounded-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-br from-sky-600/15 via-blue-600/15 to-blue-700/25 rounded-2xl" />
                 
                 {/* Romantic overlay effects */}
-                <div className="absolute inset-0 rounded-2xl bg-blue-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 rounded-2xl bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 {/* Floating heart */}
                 <div className="absolute -top-2 -right-2 opacity-80">
-                  <Heart className="w-4 h-4 text-sky-300 fill-current animate-pulse" />
+                  <Heart className="w-4 h-4 text-sky-600 fill-current animate-pulse" />
                 </div>
                 
                 {/* Corner sparkles */}
                 <div className="absolute -bottom-1 -left-1 opacity-60">
-                  <Sparkles className="w-3 h-3 text-blue-200 animate-ping" />
+                  <Sparkles className="w-3 h-3 text-blue-600 animate-ping" />
                 </div>
               </div>
             </div>
@@ -116,7 +129,7 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
           {floatingElements.map((item) => (
             <div
               key={item.id}
-              className="absolute text-white/30 animate-pulse"
+              className="absolute animate-pulse"
               style={{
                 left: item.left,
                 top: item.top,
@@ -125,11 +138,11 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
               }}
             >
               {item.id % 3 === 0 ? (
-                <Heart className="w-4 h-4 text-sky-300/50" />
+                <Heart className="w-4 h-4 text-sky-600/60" />
               ) : item.id % 3 === 1 ? (
-                <Sparkles className="w-3 h-3 text-blue-200/50" />
+                <Sparkles className="w-3 h-3 text-blue-600/60" />
               ) : (
-                <Star className="w-3 h-3 text-indigo-200/50" />
+                <Star className="w-3 h-3 text-blue-700/60" />
               )}
             </div>
           ))}
@@ -166,6 +179,39 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
             }
             100% {
               transform: translate(0px, 0px) scale(${item.scale}) rotate(${item.rotation + item.rotationSpeed * 360}deg);
+            }
+          }
+          
+          /* Mobile-specific vertical animations */
+          @media (max-width: 768px) {
+            @keyframes bounce-abstract-${index} {
+              0% {
+                transform: translate(0px, 0px) scale(${item.scale * 0.8}) rotate(${item.rotation}deg);
+              }
+              12.5% {
+                transform: translate(0px, ${item.velocityY * 8}vh) scale(${item.scale * 0.9}) rotate(${item.rotation + item.rotationSpeed * 45}deg);
+              }
+              25% {
+                transform: translate(0px, ${item.velocityY * 15}vh) scale(${item.scale * 0.8}) rotate(${item.rotation + item.rotationSpeed * 90}deg);
+              }
+              37.5% {
+                transform: translate(0px, ${item.velocityY * 22}vh) scale(${item.scale * 0.75}) rotate(${item.rotation + item.rotationSpeed * 135}deg);
+              }
+              50% {
+                transform: translate(0px, ${item.velocityY * 18}vh) scale(${item.scale * 0.85}) rotate(${item.rotation + item.rotationSpeed * 180}deg);
+              }
+              62.5% {
+                transform: translate(0px, ${item.velocityY * 12}vh) scale(${item.scale * 0.8}) rotate(${item.rotation + item.rotationSpeed * 225}deg);
+              }
+              75% {
+                transform: translate(0px, ${item.velocityY * 5}vh) scale(${item.scale * 0.9}) rotate(${item.rotation + item.rotationSpeed * 270}deg);
+              }
+              87.5% {
+                transform: translate(0px, ${item.velocityY * -2}vh) scale(${item.scale * 0.78}) rotate(${item.rotation + item.rotationSpeed * 315}deg);
+              }
+              100% {
+                transform: translate(0px, 0px) scale(${item.scale * 0.8}) rotate(${item.rotation + item.rotationSpeed * 360}deg);
+              }
             }
           }
         `).join('')}
@@ -282,7 +328,7 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
               {/* Only show input in demo mode */}
               {invitedName === 'Bapak/Ibu/Saudara/i' && (
                 <div className="pt-2">
-                  <input
+                  <Input
                     type="text"
                     value={invitedName}
                     onChange={(e) => setInvitedName(e.target.value)}
@@ -299,8 +345,9 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
 
           {/* Open Invitation Button */}
           <div className="pt-4">
-            <button
+            <Button
               onClick={onOpen}
+              size="lg"
               className="group relative bg-gradient-to-r from-sky-500/20 to-blue-600/20 hover:from-sky-500/30 hover:to-blue-600/30 backdrop-blur-sm border border-sky-300/30 hover:border-sky-300/50 text-white px-8 py-4 rounded-full font-light tracking-wide transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden"
             >
               {/* Subtle shimmer effect */}
@@ -321,7 +368,7 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
               
               {/* Soft border highlight */}
               <div className="absolute inset-0 rounded-full border border-sky-200/20 opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
-            </button>
+            </Button>
           </div>
 
           {/* Bottom Decorative Element */}

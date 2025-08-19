@@ -6,7 +6,7 @@ import { MapPin, Navigation } from 'lucide-react'
 
 export default function LocationMap() {
   const openGoogleMaps = () => {
-    const mapsUrl = "https://www.google.com/maps/search/Balai+Prajurit+Pulanggeni+Pekanbaru"
+    const mapsUrl = "https://maps.app.goo.gl/rSe2fwgKWjqESxmo6"
     window.open(mapsUrl, '_blank')
   }
 
@@ -69,23 +69,24 @@ export default function LocationMap() {
             {/* Embedded Google Maps */}
             <div className="h-64 md:h-80 relative overflow-hidden">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.664308892143!2d101.40447917437488!3d0.46943679951773286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5a8b1d1d1d1d1%3A0x1d1d1d1d1d1d1d1d!2sBalai%20Prajurit%20Pulanggeni%20Pekanbaru!5e0!3m2!1sen!2sid!4v1234567890123!5m2!1sen!2sid"
-                width="100%"
-                height="100%"
-                style={{ border: 0, filter: 'grayscale(20%) sepia(10%) saturate(120%) hue-rotate(200deg)' }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="rounded-t-lg"
-                title="Balai Prajurit Pulanggeni Pekanbaru Location"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.689759923739!2d101.42348241151502!3d0.4599555637858805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5a91bceae6673%3A0x7b85002e85b38269!2sBalai%20Prajurit%20Pulanggeni!5e0!3m2!1sen!2sid!4v1755594749564!5m2!1sen!2sid"
+                  width="100%"
+                  height="100%"
+                  style={{border: 0, filter: 'grayscale(20%) sepia(10%) saturate(120%) hue-rotate(200deg)'}}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="rounded-t-lg"
+                  title="Balai Prajurit Pulanggeni Pekanbaru Location"
               />
-              
+
               {/* Map overlay with location info */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent p-4">
+              <div
+                  className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent p-4">
                 <div className="text-white text-center">
                   <div className="flex items-center justify-center mb-2">
                     <div className="p-2 bg-white/20 backdrop-blur-sm rounded-full mr-3">
-                      <MapPin className="w-5 h-5" />
+                      <MapPin className="w-5 h-5"/>
                     </div>
                     <div className="text-left">
                       <h3 className="font-serif font-medium text-lg">
@@ -98,33 +99,22 @@ export default function LocationMap() {
                   </div>
                 </div>
               </div>
-              
-              {/* Loading fallback */}
-              <div className="absolute inset-0 bg-gradient-to-br from-sky-100 via-blue-100 to-indigo-100 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="relative mb-4">
-                    <div className="absolute inset-0 bg-gradient-to-br from-sky-400/20 to-blue-500/20 rounded-full blur-lg transform scale-150"></div>
-                    <div className="relative p-3 bg-gradient-to-br from-sky-500 to-blue-600 rounded-full shadow-lg">
-                      <MapPin className="w-8 h-8 text-white animate-pulse" />
-                    </div>
-                  </div>
-                  <p className="text-slate-600 text-sm font-light">Loading map...</p>
-                </div>
-              </div>
-              
+
+
               {/* Decorative border */}
-              <div className="absolute inset-0 border border-white/30 group-hover:border-sky-200/50 transition-colors duration-500 rounded-t-lg pointer-events-none"></div>
+              <div
+                  className="absolute inset-0 border border-white/30 group-hover:border-sky-200/50 transition-colors duration-500 rounded-t-lg pointer-events-none"></div>
             </div>
-            
+
             <div className="p-8 text-center bg-gradient-to-br from-white to-sky-50/20">
               <div className="space-y-4">
                 <p className="text-slate-600 font-light text-sm">
                   Klik tombol di bawah untuk membuka lokasi di Google Maps
                 </p>
-                
-                <Button 
-                  onClick={openGoogleMaps}
-                  className="bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white px-8 py-4 rounded-full font-light tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 group border-0"
+
+                <Button
+                    onClick={openGoogleMaps}
+                    className="bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white px-8 py-4 rounded-full font-light tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 group border-0"
                   size="lg"
                 >
                   <div className="flex items-center space-x-3">

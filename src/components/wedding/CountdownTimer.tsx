@@ -163,10 +163,19 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{
+                  scale: 1.08,
+                  y: -8,
+                  rotateX: 5,
+                  transition: {
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 15
+                  }
+                }}
                 className="relative group"
               >
-                <Card className="p-6 bg-white/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden">
+                <Card className="p-6 bg-white/90 backdrop-blur-sm border border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group">
                   {/* Gradient overlay */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${unit.gradient} opacity-5 group-hover:opacity-10 transition-opacity duration-300`}></div>
                   

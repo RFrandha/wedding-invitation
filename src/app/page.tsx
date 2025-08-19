@@ -8,6 +8,7 @@ import EventDetails from '@/components/wedding/EventDetails'
 import CountdownTimer from '@/components/wedding/CountdownTimer'
 import LocationMap from '@/components/wedding/LocationMap'
 import WishesSection from '@/components/wedding/WishesSection'
+import PhotoMosaic from '@/components/wedding/PhotoMosaic'
 
 export default function Home() {
   const [isOpened, setIsOpened] = useState(false)
@@ -69,51 +70,6 @@ export default function Home() {
         style={{ y: yBg }}
         className="fixed inset-0 pointer-events-none z-0"
       >
-        {/* Fade-in Pre-wedding Photos Background */}
-        <div className="absolute inset-0">
-          {[
-            'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=400&fit=crop&auto=format',
-            'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600&h=400&fit=crop&auto=format',
-            'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&auto=format',
-            'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&h=400&fit=crop&auto=format',
-            'https://images.unsplash.com/photo-1594736797933-d0c62c7e4bc8?w=600&h=400&fit=crop&auto=format',
-            'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&h=400&fit=crop&auto=format'
-          ].map((photo, i) => (
-            <motion.div
-              key={i}
-              className="absolute"
-              style={{
-                left: `${15 + (i % 3) * 25}%`,
-                top: `${20 + Math.floor(i / 3) * 40}%`,
-                y: yFloat
-              }}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ 
-                opacity: [0, 0.15, 0.1, 0.15],
-                scale: [0.8, 1, 0.9, 1]
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                delay: i * 1.5,
-                ease: "easeInOut"
-              }}
-            >
-              <div className="relative">
-                <img
-                  src={photo}
-                  alt={`Pre-wedding photo ${i + 1}`}
-                  className="w-48 h-32 md:w-64 md:h-44 object-cover rounded-2xl shadow-2xl border-2 border-white/20"
-                  style={{
-                    filter: 'grayscale(30%) sepia(20%) saturate(110%) brightness(0.7) contrast(1.1) hue-rotate(200deg)',
-                  }}
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-br from-sky-500/20 via-blue-500/15 to-indigo-600/25 rounded-2xl" />
-              </div>
-            </motion.div>
-          ))}
-        </div>
 
         {/* Dynamic gradient orbs */}
         <div className="absolute top-10 left-10 w-96 h-96 bg-gradient-to-br from-sky-200/15 via-blue-300/15 to-indigo-400/15 rounded-full blur-3xl animate-pulse" />
@@ -154,8 +110,14 @@ export default function Home() {
         </div>
       </motion.div>
 
+      {/* Photo Mosaic Sidebars - Hidden on mobile */}
+      <div className="hidden lg:block">
+        <PhotoMosaic side="left" />
+        <PhotoMosaic side="right" />
+      </div>
+
       {/* Enhanced Section Layouts */}
-      <div className="relative z-10">
+      <div className="relative z-10 mx-4 lg:mx-80">
         {/* Hero Section with Enhanced Visual Depth */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -167,32 +129,50 @@ export default function Home() {
           <HeroSection />
         </motion.div>
 
-        {/* Asymmetric Layout Container */}
-        <div className="relative">
-          {/* Event Details - Floating Left */}
+        {/* Straight Layout Container */}
+        <div className="relative space-y-8">
+          {/* Event Details - Straight Positioning */}
           <motion.div
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
+            initial={{ opacity: 0, y: 60, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="relative z-20 transform -rotate-1 hover:rotate-0 transition-transform duration-500"
-            style={{ marginLeft: '-2rem', marginRight: '4rem' }}
+            whileHover={{
+              y: -12,
+              scale: 1.02,
+              rotateY: 2,
+              transition: { 
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20 
+              }
+            }}
+            className="relative z-20"
           >
-            <div className="bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl border border-white/40 p-4">
+            <div className="bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl border border-white/40 p-2 hover:shadow-3xl transition-shadow duration-500">
               <EventDetails />
             </div>
           </motion.div>
 
-          {/* Countdown Timer - Floating Right */}
+          {/* Countdown Timer - Straight Positioning */}
           <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
+            initial={{ opacity: 0, y: 60, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-            className="relative z-30 transform rotate-1 hover:rotate-0 transition-transform duration-500 -mt-20"
-            style={{ marginLeft: '4rem', marginRight: '-2rem' }}
+            whileHover={{
+              y: -12,
+              scale: 1.02,
+              rotateY: -2,
+              transition: { 
+                type: "spring", 
+                stiffness: 300, 
+                damping: 20 
+              }
+            }}
+            className="relative z-30"
           >
-            <div className="bg-gradient-to-br from-white/90 via-sky-50/80 to-blue-50/90 backdrop-blur-md rounded-3xl shadow-2xl border border-sky-200/40 p-4">
+            <div className="bg-gradient-to-br from-white/90 via-sky-50/80 to-blue-50/90 backdrop-blur-md rounded-3xl shadow-2xl border border-sky-200/40 p-2 hover:shadow-3xl transition-shadow duration-500">
               <CountdownTimer targetDate={config.weddingDate} />
             </div>
           </motion.div>
@@ -205,7 +185,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="relative z-40 -mt-16 mx-4"
           >
-            <div className="bg-white/85 backdrop-blur-md rounded-3xl shadow-2xl border border-white/50 p-4 transform hover:scale-105 transition-transform duration-300">
+            <div className="bg-white/85 backdrop-blur-md rounded-3xl shadow-2xl border border-white/50 p-2 transform hover:scale-105 transition-transform duration-300">
               <LocationMap />
             </div>
           </motion.div>
@@ -218,8 +198,62 @@ export default function Home() {
             viewport={{ once: true }}
             className="relative z-50 -mt-12 mx-2"
           >
-            <div className="bg-gradient-to-br from-white/90 via-blue-50/60 to-indigo-50/80 backdrop-blur-md rounded-3xl shadow-2xl border border-blue-200/30 p-4">
+            <div className="bg-gradient-to-br from-white/90 via-blue-50/60 to-indigo-50/80 backdrop-blur-md rounded-3xl shadow-2xl border border-blue-200/30 p-2">
               <WishesSection />
+            </div>
+          </motion.div>
+
+          {/* Mobile Photo Mosaic - Only visible on mobile */}
+          <motion.div
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1.0 }}
+            viewport={{ once: true }}
+            className="lg:hidden relative z-60 mt-8 mx-2"
+          >
+            <div className="bg-gradient-to-br from-sky-50/90 via-blue-50/80 to-indigo-50/90 backdrop-blur-md rounded-3xl shadow-2xl border border-sky-200/30 p-4">
+              <div className="text-center mb-6">
+                <h3 className="text-xl font-serif font-light text-slate-700 mb-2">
+                  Our Memories
+                </h3>
+                <div className="h-px bg-gradient-to-r from-transparent via-sky-400/60 to-transparent" />
+              </div>
+              
+              {/* Mobile Photo Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {[
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOIvMg6ZLVtyUqT1FHbkE8GJrd-EH0c7GBGA&s',
+                  'https://images.weddingku.com/images/upload/articles/images682/d28kb54aau0x41120191113.jpg',
+                  'https://alexandra.bridestory.com/image/upload/assets/l1000458-min-0I-Z6SATm.jpg',
+                  'https://i.pinimg.com/736x/32/85/ab/3285ab841670cc2bb1c680973ff07e14.jpg',
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-qX3nrHOmcuFcRkpv8ZyBx0n3H6hivlTMuA&s',
+                  'https://www.lesecretdaudrey.com/wp-content/uploads/2021/05/paris-pre-wedding-audrey-paris-photo-8-1200x1614.jpg',
+                  'https://thumbs.dreamstime.com/b/romantic-silhouette-couple-love-flowing-veil-stunning-prewedding-photoshoot-captivating-black-white-photo-338046548.jpg',
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5mYydYuiFcZeRrolZGQwuOYval2-TZlNDRA&s',
+                  'https://images.weddingku.com/images/upload/articles/images/u85ctg1srm7p41120191113.jpg',
+                  'https://bensonyin.com/main/wp-content/uploads/25-6940-post/paris_prewedding-1024x683.jpg',
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAKlwFJ-qsifFFTJT3zhssmE8fKXauDV4A8g&s',
+                  'https://media.weddingz.in/images/6f798ce01007e6623c18d9c2881def1d/black-and-white-pre-wedding-shoot-romantic-creative-ideas-goa2.jpg',
+                ].map((photo, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.05 }}
+                    className="aspect-square rounded-lg overflow-hidden cursor-pointer relative group"
+                  >
+                    <img
+                      src={photo}
+                      alt={`Pre-wedding photo ${index + 1}`}
+                      className="w-full h-full object-cover rounded-lg transition-all duration-300 group-hover:brightness-110"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>
@@ -241,60 +275,182 @@ export default function Home() {
       </motion.button>
       
       {/* Footer */}
-      <footer className="bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 text-white py-16 px-4 relative overflow-hidden">
-        {/* Background decorative elements */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-80 h-80 bg-gradient-to-br from-sky-400 to-blue-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full blur-3xl"></div>
+      <footer className="relative bg-gradient-to-br from-slate-800 via-blue-900 to-sky-900 text-white overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0">
+          {/* Floating gradient orbs */}
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="absolute top-10 left-10 w-96 h-96 bg-gradient-to-br from-sky-400/25 to-blue-500/25 rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{
+              scale: [1.2, 1, 1.2],
+              opacity: [0.4, 0.7, 0.4],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2
+            }}
+            className="absolute bottom-10 right-10 w-80 h-80 bg-gradient-to-br from-blue-400/25 to-sky-600/25 rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.2, 0.5, 0.2],
+            }}
+            transition={{
+              duration: 12,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 4
+            }}
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-sky-500/20 to-blue-400/20 rounded-full blur-3xl"
+          />
         </div>
 
-        {/* Elegant border frame */}
-        <div className="absolute inset-4 border border-white/10 rounded-lg pointer-events-none">
-          <div className="absolute inset-2 border border-white/5 rounded-md" />
+        {/* Sparkle Effects */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[...Array(15)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-white rounded-full"
+              style={{
+                left: `${10 + Math.random() * 80}%`,
+                top: `${20 + Math.random() * 60}%`
+              }}
+              animate={{
+                opacity: [0, 1, 0],
+                scale: [0.5, 1.5, 0.5],
+                y: [0, -30, 0]
+              }}
+              transition={{
+                duration: 3 + Math.random() * 2,
+                repeat: Infinity,
+                delay: i * 0.3
+              }}
+            />
+          ))}
         </div>
-        
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          {/* Top Decorative Element */}
-          <div className="flex items-center justify-center space-x-4 mb-8">
-            <div className="h-px bg-gradient-to-r from-transparent via-white/30 to-transparent flex-1 max-w-32" />
-            <div className="flex space-x-1">
-              <div className="w-1 h-1 rounded-full bg-white/30" />
-              <div className="w-1 h-1 rounded-full bg-white/40" />
-              <div className="w-1 h-1 rounded-full bg-white/30" />
-            </div>
-            <div className="h-px bg-gradient-to-r from-transparent via-white/30 to-transparent flex-1 max-w-32" />
-          </div>
 
-          <p className="text-lg mb-6 font-serif font-light tracking-wide">
-            Wassalamualaikum Wr. Wb.
-          </p>
-          
-          <div className="space-y-3 text-sm opacity-90 font-light">
-            <p>Keluarga Besar {config.groomName.split(' ')[0]}</p>
-            <p>Keluarga Besar {config.brideName.split(' ')[0]}</p>
-          </div>
+        <div className="relative z-10 py-20 px-6">
+          <div className="max-w-6xl mx-auto">
+            {/* Main Content */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              {/* Elegant Header */}
+              <div className="mb-12">
+                <motion.div
+                  animate={{
+                    rotate: [0, 360],
+                  }}
+                  transition={{
+                    duration: 20,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                  className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-sky-400/25 to-blue-500/25 backdrop-blur-md border border-white/10 mb-8"
+                >
+                  <Heart className="w-8 h-8 text-sky-300" />
+                </motion.div>
+                
+                <h2 className="text-4xl md:text-5xl font-serif font-light mb-4 bg-gradient-to-r from-sky-200 via-blue-200 to-sky-100 bg-clip-text text-transparent">
+                  Terima Kasih
+                </h2>
+                
+                <div className="flex items-center justify-center gap-4 mb-8">
+                  <div className="h-px bg-gradient-to-r from-transparent via-sky-300/50 to-transparent w-20" />
+                  <Sparkles className="w-5 h-5 text-sky-300" />
+                  <div className="h-px bg-gradient-to-r from-transparent via-blue-300/50 to-transparent w-20" />
+                </div>
+              </div>
 
-          {/* Bottom Decorative Element */}
-          <div className="flex items-center justify-center space-x-4 mt-8">
-            <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent flex-1 max-w-32" />
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-px bg-gradient-to-r from-transparent to-white/30" />
-              <div className="w-2 h-2 rounded-full bg-white/30" />
-              <div className="w-12 h-px bg-white/30" />
-              <div className="w-2 h-2 rounded-full bg-white/30" />
-              <div className="w-8 h-px bg-gradient-to-l from-transparent to-white/30" />
-            </div>
-            <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent flex-1 max-w-32" />
-          </div>
+              {/* Greeting */}
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="inline-block"
+              >
+                <p className="text-xl md:text-2xl font-serif font-light tracking-wide mb-8 bg-gradient-to-r from-white to-sky-100 bg-clip-text text-transparent">
+                  Wassalamualaikum Wr. Wb.
+                </p>
+              </motion.div>
+              
+              {/* Family Names */}
+              <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto mb-12">
+                <motion.div
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10"
+                >
+                  <div className="text-sky-300 text-sm font-light mb-2">Keluarga Besar</div>
+                  <div className="text-xl font-serif font-medium text-white">{config.groomName.split(' ')[0]}</div>
+                </motion.div>
+                <motion.div
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10"
+                >
+                  <div className="text-blue-300 text-sm font-light mb-2">Keluarga Besar</div>
+                  <div className="text-xl font-serif font-medium text-white">{config.brideName.split(' ')[0]}</div>
+                </motion.div>
+              </div>
 
-          {/* Additional footer text */}
-          <div className="mt-12 pt-8 border-t border-white/10">
-            <p className="text-xs text-white/60 font-light">
-              &ldquo;Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang.&rdquo;
-            </p>
-            <p className="text-xs text-white/50 font-light mt-2">
-              - QS. Ar-Rum: 21 -
-            </p>
+              {/* Quote Section */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="max-w-4xl mx-auto"
+              >
+                <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-3xl p-8 md:p-12 border border-white/10 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-sky-500/5 to-purple-500/5"></div>
+                  <div className="relative z-10">
+                    <div className="text-6xl text-sky-200/30 font-serif mb-4">&ldquo;</div>
+                    <p className="text-sm md:text-base text-white/80 font-light leading-relaxed mb-4 italic">
+                      Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang.
+                    </p>
+                    <div className="flex items-center justify-center gap-2 text-sky-300/60 text-sm font-light">
+                      <Star className="w-4 h-4" />
+                      <span>QS. Ar-Rum: 21</span>
+                      <Star className="w-4 h-4" />
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Bottom Decorative */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.6 }}
+                viewport={{ once: true }}
+                className="flex items-center justify-center gap-6 mt-16"
+              >
+                <div className="h-px bg-gradient-to-r from-transparent via-sky-300/30 to-transparent w-20" />
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                >
+                  <Sparkles className="w-6 h-6 text-sky-300/60" />
+                </motion.div>
+                <div className="h-px bg-gradient-to-r from-transparent via-blue-300/30 to-transparent w-20" />
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </footer>
