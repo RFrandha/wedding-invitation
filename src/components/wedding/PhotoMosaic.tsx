@@ -37,10 +37,13 @@ export default function PhotoMosaic({ side }: PhotoMosaicProps) {
     'https://media.weddingz.in/images/6f798ce01007e6623c18d9c2881def1d/black-and-white-pre-wedding-shoot-romantic-creative-ideas-goa2.jpg',
   ]
 
-  // Available aspect ratios for randomization
+  // Available aspect ratios for randomization - enhanced variety
   const aspectRatios = [
     'aspect-square', 'aspect-[4/3]', 'aspect-[3/4]', 
-    'aspect-video', 'aspect-[5/4]', 'aspect-[3/2]'
+    'aspect-video', 'aspect-[5/4]', 'aspect-[3/2]',
+    'aspect-[2/3]', 'aspect-[16/9]', 'aspect-[9/16]',
+    'aspect-[1/1]', 'aspect-[3/5]', 'aspect-[5/3]',
+    'aspect-[4/5]', 'aspect-[7/5]'
   ]
 
   // Create randomized photo item
@@ -53,12 +56,22 @@ export default function PhotoMosaic({ side }: PhotoMosaicProps) {
     }
   }, [aspectRatios])
 
-  // Get random photos from the master list
+  // Get random photos from the master list - with infinite repeat capability
   const getRandomPhotos = useCallback((count: number, excludeUrls: string[] = []): string[] => {
-    const availablePhotos = photos.filter(url => !excludeUrls.includes(url))
+    let availablePhotos = photos.filter(url => !excludeUrls.includes(url))
     const randomPhotos: string[] = []
     
-    for (let i = 0; i < count && availablePhotos.length > 0; i++) {
+    // If no available photos (all have been used), reset to use all photos again
+    if (availablePhotos.length === 0) {
+      availablePhotos = [...photos]
+    }
+    
+    for (let i = 0; i < count; i++) {
+      // If we run out of available photos during this batch, reset and continue
+      if (availablePhotos.length === 0) {
+        availablePhotos = [...photos]
+      }
+      
       const randomIndex = Math.floor(Math.random() * availablePhotos.length)
       const selectedPhoto = availablePhotos[randomIndex]
       randomPhotos.push(selectedPhoto)
@@ -82,30 +95,28 @@ export default function PhotoMosaic({ side }: PhotoMosaicProps) {
     displayedPhotosRef.current = displayedPhotos
   }, [displayedPhotos])
 
-  // Load more photos on scroll with throttling
+  // Load more photos on scroll with reduced throttling
   const loadMorePhotos = useCallback(() => {
     const now = Date.now()
     
-    // Throttle loading to prevent rapid consecutive loads (minimum 2.5 seconds between loads)
-    if (isLoading || now - lastLoadTimeRef.current < 2500) {
+    // Reduced throttling for smoother experience (minimum 800ms between loads)
+    if (isLoading || now - lastLoadTimeRef.current < 800) {
       return
     }
     
     setIsLoading(true)
     lastLoadTimeRef.current = now
     
-    // Add delay for smoother user experience
-    setTimeout(() => {
-      const loadCount = 2 + Math.floor(Math.random() * 2) // 2 or 3 photos
-      const currentUrls = displayedPhotosRef.current.map(item => item.url)
-      
-      // Get random photos that aren't currently displayed
-      const newPhotoUrls = getRandomPhotos(loadCount, currentUrls)
-      const newPhotoItems = newPhotoUrls.map(url => createPhotoItem(url))
-      
-      setDisplayedPhotos(prev => [...prev, ...newPhotoItems])
-      setIsLoading(false)
-    }, 400) // 400ms delay for smoother fade-in
+    // Immediate loading with smooth fade-in animation
+    const loadCount = 2 + Math.floor(Math.random() * 2) // 2 or 3 photos
+    const currentUrls = displayedPhotosRef.current.map(item => item.url)
+    
+    // Get random photos that aren't currently displayed
+    const newPhotoUrls = getRandomPhotos(loadCount, currentUrls)
+    const newPhotoItems = newPhotoUrls.map(url => createPhotoItem(url))
+    
+    setDisplayedPhotos(prev => [...prev, ...newPhotoItems])
+    setIsLoading(false)
   }, [isLoading]) // Remove callback dependencies to prevent infinite re-renders
 
   // Scroll event handler with higher threshold
@@ -136,7 +147,7 @@ export default function PhotoMosaic({ side }: PhotoMosaicProps) {
       </div>
 
       {/* Photo Mosaic */}
-      <div className="p-4 space-y-3 pb-20">
+      <div className="p-4 space-y-4 pb-20">
         {displayedPhotos.map((photoItem, index) => (
           <motion.div
             key={`${photoItem.url}-${index}`}
@@ -153,11 +164,12 @@ export default function PhotoMosaic({ side }: PhotoMosaicProps) {
               y: 0
             }}
             transition={{ 
-              duration: 0.8, 
-              delay: index * 0.15,
+              duration: 0.6, 
+              delay: index < 6 ? index * 0.1 : 0.1,
               type: "spring",
-              stiffness: 100,
-              damping: 15
+              stiffness: 120,
+              damping: 18,
+              ease: "easeOut"
             }}
             whileHover={{ 
               rotateY: side === 'left' ? 8 : -8,
