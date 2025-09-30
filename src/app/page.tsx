@@ -64,7 +64,7 @@ export default function Home() {
   }
   
   return (
-    <main className="min-h-screen relative overflow-hidden">
+    <main className="min-h-screen relative overflow-hidden scroll-smooth">
       {/* Floating Background Elements with Parallax */}
       <motion.div 
         style={{ y: yBg }}
@@ -129,131 +129,131 @@ export default function Home() {
           <HeroSection />
         </motion.div>
 
-        {/* Straight Layout Container */}
-        <div className="relative space-y-8">
-          {/* Event Details - Straight Positioning */}
+        {/* Continuous Flow Layout Container */}
+        <div className="relative space-y-0">
+          {/* Event Details - Continuous Flow */}
           <motion.div
-            initial={{ opacity: 0, y: 60, scale: 0.95 }}
+            initial={{ opacity: 0, y: 100, scale: 0.8 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            whileHover={{
-              y: -12,
-              scale: 1.02,
-              rotateY: 2,
-              transition: { 
-                type: "spring", 
-                stiffness: 300, 
-                damping: 20 
-              }
+            transition={{ 
+              duration: 1.2, 
+              delay: 0.2,
+              type: "spring",
+              stiffness: 60,
+              damping: 15
             }}
+            viewport={{ once: true, amount: 0.3 }}
             className="relative z-20"
           >
-            <div className="bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl border border-white/40 p-2 hover:shadow-3xl transition-shadow duration-500">
-              <EventDetails />
-            </div>
+            <EventDetails />
           </motion.div>
 
-          {/* Countdown Timer - Straight Positioning */}
+          {/* Countdown Timer - Continuous Flow */}
           <motion.div
-            initial={{ opacity: 0, y: 60, scale: 0.95 }}
+            initial={{ opacity: 0, y: 120, scale: 0.7 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-            whileHover={{
-              y: -12,
-              scale: 1.02,
-              rotateY: -2,
-              transition: { 
-                type: "spring", 
-                stiffness: 300, 
-                damping: 20 
-              }
+            transition={{ 
+              duration: 1.4, 
+              delay: 0.4,
+              type: "spring",
+              stiffness: 50,
+              damping: 12
             }}
+            viewport={{ once: true, amount: 0.3 }}
             className="relative z-30"
           >
-            <div className="bg-gradient-to-br from-white/90 via-sky-50/80 to-blue-50/90 backdrop-blur-md rounded-3xl shadow-2xl border border-sky-200/40 p-2 hover:shadow-3xl transition-shadow duration-500">
-              <CountdownTimer targetDate={config.weddingDate} />
-            </div>
+            <CountdownTimer targetDate={config.weddingDate} />
           </motion.div>
 
-          {/* Location Map - Center Floating */}
+          {/* Location Map - Continuous Flow */}
           <motion.div
-            initial={{ opacity: 0, y: 100, scale: 0.9 }}
+            initial={{ opacity: 0, y: 150, scale: 0.6, rotateX: -15 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
+            transition={{ 
+              duration: 1.6, 
+              delay: 0.6,
+              type: "spring",
+              stiffness: 45,
+              damping: 10
+            }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="relative z-40"
+          >
+            <LocationMap />
+          </motion.div>
+
+          {/* Wishes Section - Continuous Flow */}
+          <motion.div
+            initial={{ opacity: 0, y: 200, scale: 0.5 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 1, delay: 0.6 }}
-            viewport={{ once: true }}
-            className="relative z-40 -mt-16 mx-4"
+            transition={{ 
+              duration: 1.8, 
+              delay: 0.8,
+              type: "spring",
+              stiffness: 40,
+              damping: 8
+            }}
+            viewport={{ once: true, amount: 0.1 }}
+            className="relative z-50"
           >
-            <div className="bg-white/85 backdrop-blur-md rounded-3xl shadow-2xl border border-white/50 p-2 transform hover:scale-105 transition-transform duration-300">
-              <LocationMap />
-            </div>
-          </motion.div>
-
-          {/* Wishes Section - Full Width Floating */}
-          <motion.div
-            initial={{ opacity: 0, y: 80 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            viewport={{ once: true }}
-            className="relative z-50 -mt-12 mx-2"
-          >
-            <div className="bg-gradient-to-br from-white/90 via-blue-50/60 to-indigo-50/80 backdrop-blur-md rounded-3xl shadow-2xl border border-blue-200/30 p-2">
-              <WishesSection />
-            </div>
+            <WishesSection />
           </motion.div>
 
           {/* Mobile Photo Mosaic - Only visible on mobile */}
           <motion.div
-            initial={{ opacity: 0, y: 80 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.0 }}
-            viewport={{ once: true }}
-            className="lg:hidden relative z-60 mt-8 mx-2"
+            initial={{ opacity: 0, y: 250, scale: 0.3 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ 
+              duration: 2.0, 
+              delay: 1.0,
+              type: "spring",
+              stiffness: 35,
+              damping: 6
+            }}
+            viewport={{ once: true, amount: 0.1 }}
+            className="lg:hidden relative z-60"
           >
-            <div className="bg-gradient-to-br from-sky-50/90 via-blue-50/80 to-indigo-50/90 backdrop-blur-md rounded-3xl shadow-2xl border border-sky-200/30 p-4">
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-serif font-light text-slate-700 mb-2">
-                  Our Memories
-                </h3>
-                <div className="h-px bg-gradient-to-r from-transparent via-sky-400/60 to-transparent" />
-              </div>
-              
-              {/* Mobile Photo Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {[
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOIvMg6ZLVtyUqT1FHbkE8GJrd-EH0c7GBGA&s',
-                  'https://images.weddingku.com/images/upload/articles/images682/d28kb54aau0x41120191113.jpg',
-                  'https://alexandra.bridestory.com/image/upload/assets/l1000458-min-0I-Z6SATm.jpg',
-                  'https://i.pinimg.com/736x/32/85/ab/3285ab841670cc2bb1c680973ff07e14.jpg',
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-qX3nrHOmcuFcRkpv8ZyBx0n3H6hivlTMuA&s',
-                  'https://www.lesecretdaudrey.com/wp-content/uploads/2021/05/paris-pre-wedding-audrey-paris-photo-8-1200x1614.jpg',
-                  'https://thumbs.dreamstime.com/b/romantic-silhouette-couple-love-flowing-veil-stunning-prewedding-photoshoot-captivating-black-white-photo-338046548.jpg',
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5mYydYuiFcZeRrolZGQwuOYval2-TZlNDRA&s',
-                  'https://images.weddingku.com/images/upload/articles/images/u85ctg1srm7p41120191113.jpg',
-                  'https://bensonyin.com/main/wp-content/uploads/25-6940-post/paris_prewedding-1024x683.jpg',
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAKlwFJ-qsifFFTJT3zhssmE8fKXauDV4A8g&s',
-                  'https://media.weddingz.in/images/6f798ce01007e6623c18d9c2881def1d/black-and-white-pre-wedding-shoot-romantic-creative-ideas-goa2.jpg',
-                ].map((photo, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    whileHover={{ scale: 1.05 }}
-                    className="aspect-square rounded-lg overflow-hidden cursor-pointer relative group"
-                  >
-                    <img
-                      src={photo}
-                      alt={`Pre-wedding photo ${index + 1}`}
-                      className="w-full h-full object-cover rounded-lg transition-all duration-300 group-hover:brightness-110"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </motion.div>
-                ))}
-              </div>
+            <div className="text-center mb-6">
+              <h3 className="text-xl font-serif font-light text-slate-700 mb-2">
+                Our Memories
+              </h3>
+              <div className="h-px bg-gradient-to-r from-transparent via-sky-400/60 to-transparent" />
+            </div>
+            
+            {/* Mobile Photo Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {[
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOIvMg6ZLVtyUqT1FHbkE8GJrd-EH0c7GBGA&s',
+                'https://images.weddingku.com/images/upload/articles/images682/d28kb54aau0x41120191113.jpg',
+                'https://alexandra.bridestory.com/image/upload/assets/l1000458-min-0I-Z6SATm.jpg',
+                'https://i.pinimg.com/736x/32/85/ab/3285ab841670cc2bb1c680973ff07e14.jpg',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-qX3nrHOmcuFcRkpv8ZyBx0n3H6hivlTMuA&s',
+                'https://www.lesecretdaudrey.com/wp-content/uploads/2021/05/paris-pre-wedding-audrey-paris-photo-8-1200x1614.jpg',
+                'https://thumbs.dreamstime.com/b/romantic-silhouette-couple-love-flowing-veil-stunning-prewedding-photoshoot-captivating-black-white-photo-338046548.jpg',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5mYydYuiFcZeRrolZGQwuOYval2-TZlNDRA&s',
+                'https://images.weddingku.com/images/upload/articles/images/u85ctg1srm7p41120191113.jpg',
+                'https://bensonyin.com/main/wp-content/uploads/25-6940-post/paris_prewedding-1024x683.jpg',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAKlwFJ-qsifFFTJT3zhssmE8fKXauDV4A8g&s',
+                'https://media.weddingz.in/images/6f798ce01007e6623c18d9c2881def1d/black-and-white-pre-wedding-shoot-romantic-creative-ideas-goa2.jpg',
+              ].map((photo, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.05 }}
+                  className="aspect-square rounded-lg overflow-hidden cursor-pointer relative group"
+                >
+                  <img
+                    src={photo}
+                    alt={`Pre-wedding photo ${index + 1}`}
+                    className="w-full h-full object-cover rounded-lg transition-all duration-300 group-hover:brightness-110"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>

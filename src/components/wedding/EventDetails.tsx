@@ -26,7 +26,7 @@ export default function EventDetails() {
   ]
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-white via-sky-50/30 to-blue-50/50 relative overflow-hidden">
+    <section className="py-20 px-4 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-br from-sky-300 to-blue-400 rounded-full blur-3xl"></div>
