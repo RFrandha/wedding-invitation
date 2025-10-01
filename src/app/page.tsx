@@ -9,6 +9,7 @@ import CountdownTimer from '@/components/wedding/CountdownTimer'
 import LocationMap from '@/components/wedding/LocationMap'
 import WishesSection from '@/components/wedding/WishesSection'
 import PhotoMosaic from '@/components/wedding/PhotoMosaic'
+import { theme } from '@/lib/theme'
 
 export default function Home() {
   const [isOpened, setIsOpened] = useState(false)
@@ -72,9 +73,9 @@ export default function Home() {
       >
 
         {/* Dynamic gradient orbs */}
-        <div className="absolute top-10 left-10 w-96 h-96 bg-gradient-to-br from-sky-200/15 via-blue-300/15 to-indigo-400/15 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute top-1/3 right-20 w-80 h-80 bg-gradient-to-br from-blue-300/10 via-indigo-400/10 to-sky-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute bottom-20 left-1/4 w-72 h-72 bg-gradient-to-br from-indigo-300/15 via-blue-400/15 to-sky-400/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }} />
+        <div className="absolute top-10 left-10 w-96 h-96 bg-gradient-to-br from-primary-200/15 via-primary-300/15 to-secondary-300/15 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-1/3 right-20 w-80 h-80 bg-gradient-to-br from-secondary-200/10 via-accent-300/10 to-primary-400/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-20 left-1/4 w-72 h-72 bg-gradient-to-br from-accent-200/15 via-primary-300/15 to-secondary-300/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }} />
         
         {/* Floating decorative elements */}
         <div className="absolute inset-0">
@@ -99,11 +100,11 @@ export default function Home() {
               }}
             >
               {i % 3 === 0 ? (
-                <Heart className="w-4 h-4 text-sky-300/25" />
+                <Heart className="w-4 h-4 text-accent-300/25" />
               ) : i % 3 === 1 ? (
-                <Sparkles className="w-3 h-3 text-blue-200/25" />
+                <Sparkles className="w-3 h-3 text-primary-200/25" />
               ) : (
-                <Star className="w-3 h-3 text-indigo-200/25" />
+                <Star className="w-3 h-3 text-secondary-200/25" />
               )}
             </motion.div>
           ))}
@@ -268,14 +269,14 @@ export default function Home() {
           scale: showScrollToTop ? 1 : 0
         }}
         transition={{ duration: 0.3 }}
-        className="fixed bottom-8 right-8 z-50 p-4 bg-gradient-to-br from-sky-500 to-blue-600 text-white rounded-full shadow-2xl hover:shadow-3xl transform hover:scale-110 transition-all duration-300 backdrop-blur-md border border-white/20"
+        className="fixed bottom-8 right-8 z-50 p-4 bg-gradient-to-br from-primary-500 to-primary-600 text-white rounded-full shadow-2xl hover:shadow-3xl transform hover:scale-110 transition-all duration-300 backdrop-blur-md border border-white/20"
         style={{ opacity: showScrollToTop ? 1 : 0, pointerEvents: showScrollToTop ? 'auto' : 'none' }}
       >
         <ArrowUp className="w-6 h-6" />
       </motion.button>
       
       {/* Footer */}
-      <footer className="relative bg-gradient-to-br from-slate-800 via-blue-900 to-sky-900 text-white overflow-hidden">
+      <footer className="relative bg-gradient-to-br from-neutral-800 via-primary-900 to-secondary-800 text-white overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
           {/* Floating gradient orbs */}
@@ -289,7 +290,7 @@ export default function Home() {
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="absolute top-10 left-10 w-96 h-96 bg-gradient-to-br from-sky-400/25 to-blue-500/25 rounded-full blur-3xl"
+            className="absolute top-10 left-10 w-96 h-96 bg-gradient-to-br from-primary-400/25 to-secondary-500/25 rounded-full blur-3xl"
           />
           <motion.div
             animate={{
@@ -302,7 +303,7 @@ export default function Home() {
               ease: "easeInOut",
               delay: 2
             }}
-            className="absolute bottom-10 right-10 w-80 h-80 bg-gradient-to-br from-blue-400/25 to-sky-600/25 rounded-full blur-3xl"
+            className="absolute bottom-10 right-10 w-80 h-80 bg-gradient-to-br from-secondary-400/25 to-accent-500/25 rounded-full blur-3xl"
           />
           <motion.div
             animate={{
@@ -315,7 +316,7 @@ export default function Home() {
               ease: "easeInOut",
               delay: 4
             }}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-sky-500/20 to-blue-400/20 rounded-full blur-3xl"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-primary-500/20 to-accent-400/20 rounded-full blur-3xl"
           />
         </div>
 

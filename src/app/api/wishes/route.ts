@@ -27,8 +27,23 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const { name, message } = body
     
+    // Validate required fields
+    if (!name || !message) {
+      return NextResponse.json(
+        { error: 'Name and message are required' },
+        { status: 400 }
+      )
+    }
+    
+    // Create wishData object with correct structure
+    const wishData = {
+      name: name.trim(),
+      message: message.trim(),
+      timestamp: new Date().toISOString()
+    }
+    
     // Rate limiting could be added here
-    const wish = await FirebaseService.addWish(name, message)
+    const wish = await FirebaseService.addWish(wishData)
     
     return NextResponse.json(wish, { status: 201 })
   } catch (error) {

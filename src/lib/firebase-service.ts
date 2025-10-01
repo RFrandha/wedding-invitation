@@ -37,22 +37,22 @@ import {
       }
     }
     
-    static async addWish(name: string, message: string): Promise<WishData> {
+    static async addWish(wishData: { name: string; message: string; timestamp: string }): Promise<WishData> {
       try {
-        const wishData = {
-          name: name.trim(),
-          message: message.trim(),
-          createdAt: new Date()
+        const processedWishData = {
+          name: wishData.name.trim(),
+          message: wishData.message.trim(),
+          createdAt: new Date(wishData.timestamp)
         }
         
         const docRef = await addDoc(collection(db, 'wishes'), {
-          ...wishData,
-          createdAt: Timestamp.fromDate(wishData.createdAt)
+          ...processedWishData,
+          createdAt: Timestamp.fromDate(processedWishData.createdAt)
         })
         
         return {
           id: docRef.id,
-          ...wishData
+          ...processedWishData
         }
       } catch (error) {
         console.error('Error adding wish:', error)

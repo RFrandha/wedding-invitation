@@ -77,154 +77,9 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
 
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-800 via-blue-900 to-sky-900">
-      {/* Bouncing Pre-wedding Photos */}
-      {isClient && (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {bouncingPhotos.map((item) => (
-            <div
-              key={item.id}
-              className="absolute transition-opacity duration-700 hover:opacity-60"
-              style={{
-                left: `${item.startX}%`,
-                top: `${item.startY}%`,
-                opacity: item.opacity,
-                transform: `scale(${item.scale}) rotate(${item.rotation}deg)`,
-                animation: `bounce-abstract-${item.id} ${item.duration}s infinite linear`,
-                animationDelay: `${item.delay}s`
-              }}
-            >
-              <div className="relative group">
-                <img
-                  src={item.photo}
-                  alt={`Pre-wedding ${item.id + 1}`}
-                  className="w-40 h-32 md:w-48 md:h-36 object-cover rounded-2xl shadow-2xl border-2 border-white/20 group-hover:border-sky-300/50 transition-all duration-500"
-                  style={{
-                    filter: 'grayscale(20%) sepia(15%) saturate(120%) brightness(0.8) contrast(1.1) hue-rotate(200deg)',
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-br from-sky-600/15 via-blue-600/15 to-blue-700/25 rounded-2xl" />
-                
-                {/* Romantic overlay effects */}
-                <div className="absolute inset-0 rounded-2xl bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                {/* Floating heart */}
-                <div className="absolute -top-2 -right-2 opacity-80">
-                  <Heart className="w-4 h-4 text-sky-600 fill-current animate-pulse" />
-                </div>
-                
-                {/* Corner sparkles */}
-                <div className="absolute -bottom-1 -left-1 opacity-60">
-                  <Sparkles className="w-3 h-3 text-blue-600 animate-ping" />
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-neutral-800 via-primary-900 to-primary-800">
 
-      {/* Floating decorative elements */}
-      {isClient && (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
-          {floatingElements.map((item) => (
-            <div
-              key={item.id}
-              className="absolute animate-pulse"
-              style={{
-                left: item.left,
-                top: item.top,
-                animationDelay: `${item.delay}s`,
-                animationDuration: `${item.duration}s`
-              }}
-            >
-              {item.id % 3 === 0 ? (
-                <Heart className="w-4 h-4 text-sky-600/60" />
-              ) : item.id % 3 === 1 ? (
-                <Sparkles className="w-3 h-3 text-blue-600/60" />
-              ) : (
-                <Star className="w-3 h-3 text-blue-700/60" />
-              )}
-            </div>
-          ))}
-        </div>
-      )}
 
-      {/* CSS Animation Styles */}
-      <style jsx>{`
-        ${bouncingPhotos.map((item, index) => `
-          @keyframes bounce-abstract-${index} {
-            0% {
-              transform: translate(0px, 0px) scale(${item.scale}) rotate(${item.rotation}deg);
-            }
-            12.5% {
-              transform: translate(${item.velocityX * 15}vw, ${item.velocityY * 10}vh) scale(${item.scale * 1.1}) rotate(${item.rotation + item.rotationSpeed * 45}deg);
-            }
-            25% {
-              transform: translate(${item.velocityX * 25}vw, ${item.velocityY * 20}vh) scale(${item.scale}) rotate(${item.rotation + item.rotationSpeed * 90}deg);
-            }
-            37.5% {
-              transform: translate(${item.velocityX * 15}vw, ${item.velocityY * 30}vh) scale(${item.scale * 0.9}) rotate(${item.rotation + item.rotationSpeed * 135}deg);
-            }
-            50% {
-              transform: translate(${item.velocityX * -10}vw, ${item.velocityY * 25}vh) scale(${item.scale * 1.05}) rotate(${item.rotation + item.rotationSpeed * 180}deg);
-            }
-            62.5% {
-              transform: translate(${item.velocityX * -20}vw, ${item.velocityX * 15}vh) scale(${item.scale}) rotate(${item.rotation + item.rotationSpeed * 225}deg);
-            }
-            75% {
-              transform: translate(${item.velocityY * -15}vw, ${item.velocityX * -10}vh) scale(${item.scale * 1.1}) rotate(${item.rotation + item.rotationSpeed * 270}deg);
-            }
-            87.5% {
-              transform: translate(${item.velocityY * -5}vw, ${item.velocityX * -20}vh) scale(${item.scale * 0.95}) rotate(${item.rotation + item.rotationSpeed * 315}deg);
-            }
-            100% {
-              transform: translate(0px, 0px) scale(${item.scale}) rotate(${item.rotation + item.rotationSpeed * 360}deg);
-            }
-          }
-          
-          /* Mobile-specific vertical animations */
-          @media (max-width: 768px) {
-            @keyframes bounce-abstract-${index} {
-              0% {
-                transform: translate(0px, 0px) scale(${item.scale * 0.8}) rotate(${item.rotation}deg);
-              }
-              12.5% {
-                transform: translate(0px, ${item.velocityY * 8}vh) scale(${item.scale * 0.9}) rotate(${item.rotation + item.rotationSpeed * 45}deg);
-              }
-              25% {
-                transform: translate(0px, ${item.velocityY * 15}vh) scale(${item.scale * 0.8}) rotate(${item.rotation + item.rotationSpeed * 90}deg);
-              }
-              37.5% {
-                transform: translate(0px, ${item.velocityY * 22}vh) scale(${item.scale * 0.75}) rotate(${item.rotation + item.rotationSpeed * 135}deg);
-              }
-              50% {
-                transform: translate(0px, ${item.velocityY * 18}vh) scale(${item.scale * 0.85}) rotate(${item.rotation + item.rotationSpeed * 180}deg);
-              }
-              62.5% {
-                transform: translate(0px, ${item.velocityY * 12}vh) scale(${item.scale * 0.8}) rotate(${item.rotation + item.rotationSpeed * 225}deg);
-              }
-              75% {
-                transform: translate(0px, ${item.velocityY * 5}vh) scale(${item.scale * 0.9}) rotate(${item.rotation + item.rotationSpeed * 270}deg);
-              }
-              87.5% {
-                transform: translate(0px, ${item.velocityY * -2}vh) scale(${item.scale * 0.78}) rotate(${item.rotation + item.rotationSpeed * 315}deg);
-              }
-              100% {
-                transform: translate(0px, 0px) scale(${item.scale * 0.8}) rotate(${item.rotation + item.rotationSpeed * 360}deg);
-              }
-            }
-          }
-        `).join('')}
-        
-        /* Ensure photos bounce off screen edges */
-        .absolute img {
-          transition: filter 0.3s ease;
-        }
-        
-        .absolute:hover img {
-          filter: grayscale(0%) sepia(10%) saturate(140%) brightness(0.9) contrast(1.1) hue-rotate(200deg) !important;
-        }
-      `}</style>
 
       {/* Elegant border frame */}
       <div className="absolute inset-4 border border-white/20 rounded-lg pointer-events-none">
@@ -241,13 +96,13 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
           
           {/* Decorative Top Element */}
           <div className="flex items-center justify-center space-x-4 mb-8">
-            <div className="h-px bg-gradient-to-r from-transparent via-sky-300/40 to-transparent flex-1" />
+            <div className="h-px bg-gradient-to-r from-transparent via-primary-300/40 to-transparent flex-1" />
             <div className="flex space-x-1">
-              <div className="w-1 h-1 rounded-full bg-sky-300/40" />
-              <div className="w-1 h-1 rounded-full bg-blue-300/40" />
-              <div className="w-1 h-1 rounded-full bg-indigo-300/40" />
+              <div className="w-1 h-1 rounded-full bg-primary-300/40" />
+              <div className="w-1 h-1 rounded-full bg-secondary-300/40" />
+              <div className="w-1 h-1 rounded-full bg-accent-300/40" />
             </div>
-            <div className="h-px bg-gradient-to-r from-transparent via-sky-300/40 to-transparent flex-1" />
+            <div className="h-px bg-gradient-to-r from-transparent via-primary-300/40 to-transparent flex-1" />
           </div>
 
           {/* Islamic Opening */}
@@ -268,15 +123,15 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
 
             {/* Couple Names */}
             <div className="space-y-2">
-              <h2 className="text-4xl md:text-5xl font-serif font-light tracking-wider text-transparent bg-gradient-to-r from-sky-200 via-blue-100 to-indigo-200 bg-clip-text">
+              <h2 className="text-4xl md:text-5xl font-serif font-light tracking-wider text-transparent bg-gradient-to-r from-primary-200 via-secondary-100 to-accent-200 bg-clip-text">
                 {brideName}
               </h2>
               <div className="flex items-center justify-center space-x-6 my-4">
-                <div className="h-px bg-sky-300/30 w-16" />
-                <Heart className="w-6 h-6 text-sky-300" />
-                <div className="h-px bg-sky-300/30 w-16" />
+                <div className="h-px bg-primary-300/30 w-16" />
+                <Heart className="w-6 h-6 text-primary-300" />
+                <div className="h-px bg-primary-300/30 w-16" />
               </div>
-              <h2 className="text-4xl md:text-5xl font-serif font-light tracking-wider text-transparent bg-gradient-to-r from-blue-200 via-indigo-100 to-sky-200 bg-clip-text">
+              <h2 className="text-4xl md:text-5xl font-serif font-light tracking-wider text-transparent bg-gradient-to-r from-secondary-200 via-primary-100 to-primary-200 bg-clip-text">
                 {groomName}
               </h2>
             </div>
@@ -305,11 +160,11 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
           {/* Decorative Middle Element */}
           <div className="flex justify-center py-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-px bg-gradient-to-r from-transparent to-sky-300/40" />
-              <div className="w-2 h-2 rounded-full bg-sky-300/40" />
-              <div className="w-12 h-px bg-sky-300/40" />
-              <div className="w-2 h-2 rounded-full bg-blue-300/40" />
-              <div className="w-8 h-px bg-gradient-to-l from-transparent to-blue-300/40" />
+              <div className="w-8 h-px bg-gradient-to-r from-transparent to-primary-300/40" />
+              <div className="w-2 h-2 rounded-full bg-primary-300/40" />
+              <div className="w-12 h-px bg-primary-300/40" />
+              <div className="w-2 h-2 rounded-full bg-secondary-300/40" />
+              <div className="w-8 h-px bg-gradient-to-l from-transparent to-secondary-300/40" />
             </div>
           </div>
 
@@ -319,11 +174,11 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
               Kepada Yth.
             </p>
             <div className="space-y-2">
-              <p className="text-2xl font-serif font-semibold text-transparent bg-gradient-to-r from-sky-200 to-blue-200 bg-clip-text drop-shadow-md">
+              <p className="text-2xl font-serif font-semibold text-transparent bg-gradient-to-r from-primary-200 to-secondary-200 bg-clip-text drop-shadow-md">
                 {invitedName}
               </p>
-              {/* Blue underline effect */}
-              <div className="h-0.5 bg-gradient-to-r from-transparent via-sky-300 to-transparent rounded-full mx-auto w-3/4" />
+              {/* Themed underline effect */}
+              <div className="h-0.5 bg-gradient-to-r from-transparent via-primary-300 to-transparent rounded-full mx-auto w-3/4" />
               
               {/* Only show input in demo mode */}
               {invitedName === 'Bapak/Ibu/Saudara/i' && (

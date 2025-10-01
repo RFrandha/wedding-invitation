@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { Heart, Send, AlertCircle } from 'lucide-react'
 import { FirebaseService } from '@/lib/firebase-service'
+import { theme, getGradientClass } from '@/lib/theme'
 
 interface WishFormProps {
   onWishSubmitted?: () => void
@@ -77,14 +78,8 @@ export default function WishForm({ onWishSubmitted }: WishFormProps) {
   }
 
   return (
-    <section className="py-20 px-4 relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-br from-blue-300 to-indigo-400 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-64 h-64 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full blur-3xl"></div>
-      </div>
-
-      <div className="max-w-4xl mx-auto relative z-10">
+    <section className="py-20 px-4">
+      <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -92,22 +87,10 @@ export default function WishForm({ onWishSubmitted }: WishFormProps) {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          {/* Top Decorative Element */}
-          <div className="flex items-center justify-center space-x-4 mb-6">
-            <div className="h-px bg-gradient-to-r from-transparent via-blue-400/60 to-transparent flex-1 max-w-32" />
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-            >
-              <Heart className="w-6 h-6 text-blue-500/60" />
-            </motion.div>
-            <div className="h-px bg-gradient-to-r from-transparent via-blue-400/60 to-transparent flex-1 max-w-32" />
-          </div>
-
-          <h2 className="text-3xl md:text-4xl font-serif font-light tracking-wider text-slate-800 mb-4">
+          <h2 className="text-3xl md:text-4xl font-serif font-light tracking-wider text-neutral-800 mb-4">
             Kirim Ucapan & Doa
           </h2>
-          <p className="text-slate-600 font-light max-w-2xl mx-auto">
+          <p className="text-neutral-600 font-light max-w-2xl mx-auto">
             Berikan ucapan dan doa terbaik untuk perjalanan baru kami
           </p>
         </motion.div>
@@ -122,7 +105,7 @@ export default function WishForm({ onWishSubmitted }: WishFormProps) {
         >
           <div className="bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl border border-white/40 p-8 md:p-12 relative overflow-hidden">
             {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-indigo-500/5 to-purple-500/5"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 via-primary-600/5 to-secondary-500/5"></div>
             
             <div className="relative z-10">
               {/* Success Message */}
@@ -130,7 +113,7 @@ export default function WishForm({ onWishSubmitted }: WishFormProps) {
                 <motion.div
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mb-6 p-4 bg-green-50/80 border border-green-200 rounded-xl text-green-700 text-center"
+                  className="mb-6 p-4 bg-success-50/80 border border-success-200 rounded-xl text-success-700 text-center"
                 >
                   <div className="flex items-center justify-center gap-2">
                     <Heart className="w-5 h-5" />
@@ -144,7 +127,7 @@ export default function WishForm({ onWishSubmitted }: WishFormProps) {
                 <motion.div
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mb-6 p-4 bg-red-50/80 border border-red-200 rounded-xl text-red-700 text-center"
+                  className="mb-6 p-4 bg-error-50/80 border border-error-200 rounded-xl text-error-700 text-center"
                 >
                   <div className="flex items-center justify-center gap-2">
                     <AlertCircle className="w-5 h-5" />
@@ -160,7 +143,7 @@ export default function WishForm({ onWishSubmitted }: WishFormProps) {
                   transition={{ duration: 0.6, delay: 0.3 }}
                   viewport={{ once: true }}
                 >
-                  <Label htmlFor="name" className="text-slate-700 font-light">
+                  <Label htmlFor="name" className="text-neutral-700 font-light">
                     Nama Anda
                   </Label>
                   <Input
@@ -169,7 +152,7 @@ export default function WishForm({ onWishSubmitted }: WishFormProps) {
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="Masukkan nama Anda"
-                    className="mt-2 border-slate-200 focus:border-blue-400 focus:ring-blue-400/20 rounded-xl"
+                    className="mt-2 border-neutral-200 focus:border-primary-400 focus:ring-primary-400/20 rounded-xl"
                     disabled={isSubmitting}
                   />
                 </motion.div>
@@ -180,7 +163,7 @@ export default function WishForm({ onWishSubmitted }: WishFormProps) {
                   transition={{ duration: 0.6, delay: 0.4 }}
                   viewport={{ once: true }}
                 >
-                  <Label htmlFor="message" className="text-slate-700 font-light">
+                  <Label htmlFor="message" className="text-neutral-700 font-light">
                     Ucapan & Doa
                   </Label>
                   <Textarea
@@ -190,7 +173,7 @@ export default function WishForm({ onWishSubmitted }: WishFormProps) {
                     onChange={handleInputChange}
                     placeholder="Tuliskan ucapan dan doa terbaik untuk kami..."
                     rows={4}
-                    className="mt-2 border-slate-200 focus:border-blue-400 focus:ring-blue-400/20 rounded-xl resize-none"
+                    className="mt-2 border-neutral-200 focus:border-primary-400 focus:ring-primary-400/20 rounded-xl resize-none"
                     disabled={isSubmitting}
                   />
                 </motion.div>
@@ -205,7 +188,7 @@ export default function WishForm({ onWishSubmitted }: WishFormProps) {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-8 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                    className="bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 text-white px-8 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                   >
                     {isSubmitting ? (
                       <div className="flex items-center gap-2">
