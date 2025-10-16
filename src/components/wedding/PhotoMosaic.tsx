@@ -195,26 +195,6 @@ export default function PhotoMosaic({ side }: PhotoMosaicProps) {
             
             {/* Enhanced overlay gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            
-            {/* Heart icon overlay with enhanced animation */}
-            {hoveredIndex === index && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.3, rotate: -10 }}
-                animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                exit={{ opacity: 0, scale: 0.3, rotate: 10 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="absolute inset-0 flex items-center justify-center"
-              >
-                <motion.div 
-                  className="bg-white/95 rounded-full p-3 backdrop-blur-sm shadow-lg"
-                  whileHover={{ scale: 1.1 }}
-                >
-                  <svg className="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
-                  </svg>
-                </motion.div>
-              </motion.div>
-            )}
           </motion.div>
         ))}
       </div>

@@ -10,6 +10,8 @@ import LocationMap from '@/components/wedding/LocationMap'
 import WishesSection from '@/components/wedding/WishesSection'
 import PhotoMosaic from '@/components/wedding/PhotoMosaic'
 import { theme } from '@/lib/theme'
+import MusicPlayer from '@/components/wedding/MusicPlayer'
+
 
 export default function Home() {
   const [isOpened, setIsOpened] = useState(false)
@@ -66,51 +68,6 @@ export default function Home() {
   
   return (
     <main className="min-h-screen relative overflow-hidden scroll-smooth">
-      {/* Floating Background Elements with Parallax */}
-      <motion.div 
-        style={{ y: yBg }}
-        className="fixed inset-0 pointer-events-none z-0"
-      >
-
-        {/* Dynamic gradient orbs */}
-        <div className="absolute top-10 left-10 w-96 h-96 bg-gradient-to-br from-primary-200/15 via-primary-300/15 to-secondary-300/15 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute top-1/3 right-20 w-80 h-80 bg-gradient-to-br from-secondary-200/10 via-accent-300/10 to-primary-400/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute bottom-20 left-1/4 w-72 h-72 bg-gradient-to-br from-accent-200/15 via-primary-300/15 to-secondary-300/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }} />
-        
-        {/* Floating decorative elements */}
-        <div className="absolute inset-0">
-          {[...Array(12)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute"
-              style={{
-                left: `${10 + Math.random() * 80}%`,
-                top: `${10 + Math.random() * 80}%`,
-                y: yFloat
-              }}
-              animate={{
-                y: [0, -20, 0],
-                rotate: [0, 360],
-                scale: [0.8, 1.2, 0.8]
-              }}
-              transition={{
-                duration: 8 + Math.random() * 4,
-                repeat: Infinity,
-                delay: i * 0.5
-              }}
-            >
-              {i % 3 === 0 ? (
-                <Heart className="w-4 h-4 text-accent-300/25" />
-              ) : i % 3 === 1 ? (
-                <Sparkles className="w-3 h-3 text-primary-200/25" />
-              ) : (
-                <Star className="w-3 h-3 text-secondary-200/25" />
-              )}
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-
       {/* Photo Mosaic Sidebars - Hidden on mobile */}
       <div className="hidden lg:block">
         <PhotoMosaic side="left" />
@@ -274,6 +231,13 @@ export default function Home() {
       >
         <ArrowUp className="w-6 h-6" />
       </motion.button>
+
+        <MusicPlayer
+            audioUrl="/mltr_tmtyh.mp3"
+            songTitle="Take Me to Your Heart"
+            artist="Michael Learn to Rock"
+            autoPlay={true}
+        />
       
       {/* Footer */}
       <footer className="relative bg-gradient-to-br from-neutral-800 via-primary-900 to-secondary-800 text-white overflow-hidden">
