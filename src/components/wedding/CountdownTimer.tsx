@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Card } from '@/components/ui/card'
+import { DecorativeLine } from '@/components/ui/decorative-line'
+import { theme, hexToRgba, getBgColor } from '@/lib/theme'
 
 interface CountdownTimerProps {
   targetDate: Date
@@ -63,28 +65,28 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
   // Don't render until mounted to prevent hydration mismatch
   if (!mounted) {
     return (
-      <section className="py-20 px-4 bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+      <section className="py-20 px-4 relative overflow-hidden" style={getBgColor(theme.colors.primary[800])}>
         {/* Background decorative elements */}
-        <div className="absolute inset-0 opacity-15">
-          <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-br from-sky-300 to-blue-400 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-20 w-72 h-72 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full blur-3xl"></div>
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 left-20 w-72 h-72 rounded-full blur-3xl" style={getBgColor(theme.colors.secondary[500])}></div>
+          <div className="absolute bottom-20 right-20 w-72 h-72 rounded-full blur-3xl" style={getBgColor(theme.colors.secondary[400])}></div>
         </div>
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl font-serif font-light text-slate-800 mb-4">
+          <h2 className="text-3xl md:text-4xl font-serif font-light text-white mb-4">
             Menuju Hari Bahagia
           </h2>
-          <p className="text-slate-600 font-light mb-12 max-w-2xl mx-auto">
+          <p className="text-white/80 font-light mb-12 max-w-2xl mx-auto">
             Waktu terus berjalan menuju momen yang paling dinanti. Mari bersama-sama menghitung detik menuju hari bahagia kami.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
             {[1, 2, 3, 4].map((i) => (
-              <Card key={i} className="p-6 bg-white/80 backdrop-blur-sm border-0 shadow-xl">
+              <Card key={i} className="p-6 backdrop-blur-sm border-0 shadow-xl" style={{ ...getBgColor(theme.colors.primary[700], 0.3), borderColor: hexToRgba(theme.colors.secondary[500], 0.2) }}>
                 <div className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-sky-600 font-light mb-2">
+                  <div className="text-3xl md:text-4xl font-bold font-light mb-2" style={{ color: theme.colors.secondary[400] }}>
                     --
                   </div>
-                  <div className="text-slate-600 font-light text-sm md:text-base uppercase tracking-wide">
+                  <div className="text-white/70 font-light text-sm md:text-base uppercase tracking-wide">
                     Loading...
                   </div>
                 </div>
@@ -97,23 +99,18 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
   }
 
   const timeUnits = [
-    { label: 'Hari', value: timeLeft.days, gradient: 'from-sky-400 to-blue-500' },
-    { label: 'Jam', value: timeLeft.hours, gradient: 'from-blue-500 to-indigo-500' },
-    { label: 'Menit', value: timeLeft.minutes, gradient: 'from-indigo-500 to-blue-600' },
-    { label: 'Detik', value: timeLeft.seconds, gradient: 'from-blue-600 to-sky-600' }
+    { label: 'Hari', value: timeLeft.days },
+    { label: 'Jam', value: timeLeft.hours },
+    { label: 'Menit', value: timeLeft.minutes },
+    { label: 'Detik', value: timeLeft.seconds }
   ]
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+    <section className="py-20 px-4 relative overflow-hidden" style={getBgColor(theme.colors.primary[800])}>
       {/* Background decorative elements */}
-      <div className="absolute inset-0 opacity-15">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-br from-sky-300 to-blue-400 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-72 h-72 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full blur-3xl"></div>
-      </div>
-
-      {/* Elegant border frame */}
-      <div className="absolute inset-6 border border-white/20 rounded-lg pointer-events-none">
-        <div className="absolute inset-2 border border-white/15 rounded-md" />
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-20 left-20 w-72 h-72 rounded-full blur-3xl" style={getBgColor(theme.colors.secondary[500])}></div>
+        <div className="absolute bottom-20 right-20 w-72 h-72 rounded-full blur-3xl" style={getBgColor(theme.colors.secondary[400])}></div>
       </div>
       
       <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -124,20 +121,12 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
           viewport={{ once: true }}
         >
           {/* Top Decorative Element */}
-          <div className="flex items-center justify-center space-x-4 mb-6">
-            <div className="h-px bg-gradient-to-r from-transparent via-sky-400/60 to-transparent flex-1 max-w-32" />
-            <div className="flex space-x-1">
-              <div className="w-1 h-1 rounded-full bg-sky-400/60" />
-              <div className="w-1 h-1 rounded-full bg-blue-500/60" />
-              <div className="w-1 h-1 rounded-full bg-indigo-500/60" />
-            </div>
-            <div className="h-px bg-gradient-to-r from-transparent via-sky-400/60 to-transparent flex-1 max-w-32" />
-          </div>
+          <DecorativeLine variant="with-dots" className="mb-6" />
 
-          <h2 className="text-3xl md:text-4xl font-serif font-light text-slate-800 mb-4">
+          <h2 className="text-3xl md:text-4xl font-serif font-light text-white mb-4">
             Menuju Hari Bahagia
           </h2>
-          <p className="text-slate-600 font-light mb-12 max-w-2xl mx-auto">
+          <p className="text-white/80 font-light mb-12 max-w-2xl mx-auto">
             Waktu terus berjalan menuju momen yang paling dinanti. Mari bersama-sama menghitung detik menuju hari bahagia kami.
           </p>
         </motion.div>
@@ -149,7 +138,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Card className="p-8 bg-gradient-to-br from-sky-500 to-blue-600 text-white border-0 shadow-2xl">
+            <Card className="p-8 text-white border-0 shadow-2xl" style={getBgColor(theme.colors.secondary[500])}>
               <h3 className="text-2xl font-serif font-light mb-2">🎉 Hari Bahagia Telah Tiba! 🎉</h3>
               <p className="font-light">Terima kasih atas doa dan dukungan Anda</p>
             </Card>
@@ -175,18 +164,18 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
                 }}
                 className="relative group"
               >
-                <Card className="p-6 bg-white/90 backdrop-blur-sm border border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group">
-                  {/* Gradient overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${unit.gradient} opacity-5 group-hover:opacity-10 transition-opacity duration-300`}></div>
+                <Card className="p-6 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group" style={{ ...getBgColor(theme.colors.primary[700], 0.3), backdropFilter: 'blur(12px)', borderColor: hexToRgba(theme.colors.secondary[500], 0.3) }}>
+                  {/* Subtle overlay */}
+                  <div className="absolute inset-0" style={getBgColor(theme.colors.secondary[500], 0.05)}></div>
                   
-                  {/* Border glow effect */}
-                  <div className="absolute inset-0 rounded-lg border border-white/20 group-hover:border-sky-200/50 transition-colors duration-300"></div>
+                  {/* Border accent effect */}
+                  <div className="absolute inset-0 rounded-lg border-t-2 transition-colors duration-300" style={{ borderTopColor: 'transparent' }}></div>
                   
                   <div className="text-center relative z-10">
-                    <div className={`text-3xl md:text-4xl font-bold bg-gradient-to-br ${unit.gradient} bg-clip-text text-transparent mb-2`}>
+                    <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: theme.colors.secondary[400] }}>
                       {unit.value.toString().padStart(2, '0')}
                     </div>
-                    <div className="text-slate-600 font-light text-sm md:text-base uppercase tracking-wide">
+                    <div className="text-white/70 font-light text-sm md:text-base uppercase tracking-wide">
                       {unit.label}
                     </div>
                   </div>
@@ -203,7 +192,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
           viewport={{ once: true }}
           className="mt-12"
         >
-          <p className="text-slate-500 font-light">
+          <p className="text-white/60 font-light">
             {new Date(targetDate).toLocaleDateString('id-ID', {
               weekday: 'long',
               year: 'numeric',
@@ -213,17 +202,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
           </p>
 
           {/* Bottom Decorative Element */}
-          <div className="flex items-center justify-center space-x-4 mt-8">
-            <div className="h-px bg-gradient-to-r from-transparent via-blue-400/60 to-transparent flex-1 max-w-32" />
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-px bg-gradient-to-r from-transparent to-sky-400/60" />
-              <div className="w-2 h-2 rounded-full bg-sky-400/60" />
-              <div className="w-12 h-px bg-sky-400/60" />
-              <div className="w-2 h-2 rounded-full bg-blue-500/60" />
-              <div className="w-8 h-px bg-gradient-to-l from-transparent to-blue-500/60" />
-            </div>
-            <div className="h-px bg-gradient-to-r from-transparent via-blue-500/60 to-transparent flex-1 max-w-32" />
-          </div>
+          <DecorativeLine variant="with-ornament" className="mt-8" />
         </motion.div>
       </div>
     </section>

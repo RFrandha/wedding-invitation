@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { ArrowUp, Sparkles, Heart, Star } from 'lucide-react'
 import CoverPage from '@/components/wedding/CoverPage'
 import HeroSection from '@/components/wedding/HeroSection'
@@ -9,7 +9,7 @@ import CountdownTimer from '@/components/wedding/CountdownTimer'
 import LocationMap from '@/components/wedding/LocationMap'
 import WishesSection from '@/components/wedding/WishesSection'
 import PhotoMosaic from '@/components/wedding/PhotoMosaic'
-import { theme } from '@/lib/theme'
+import { theme, hexToRgba, getBgColor } from '@/lib/theme'
 import MusicPlayer from '@/components/wedding/MusicPlayer'
 
 
@@ -21,12 +21,6 @@ export default function Home() {
     groomName: 'Restow Frandha',
     brideName: 'Verina Mardhatillah'
   })
-  
-  // Parallax scroll effects
-  const { scrollY } = useScroll()
-  const yBg = useTransform(scrollY, [0, 1000], [0, -200])
-  const yFloat = useTransform(scrollY, [0, 1000], [0, 50])
-  const opacity = useTransform(scrollY, [0, 300], [1, 0.3])
   
   // Load configuration from environment variables on client side
   useEffect(() => {
@@ -67,30 +61,20 @@ export default function Home() {
   }
   
   return (
-    <main className="min-h-screen relative overflow-hidden scroll-smooth">
+    <main className="min-h-screen relative overflow-hidden scroll-smooth" style={getBgColor(theme.colors.primary[800])}>
       {/* Photo Mosaic Sidebars - Hidden on mobile */}
-      <div className="hidden lg:block">
+      <div className="hidden xl:block">
         <PhotoMosaic side="left" />
         <PhotoMosaic side="right" />
       </div>
 
-      {/* Enhanced Section Layouts */}
-      <div className="relative z-10 mx-4 lg:mx-80">
-        {/* Hero Section with Enhanced Visual Depth */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2 }}
-          className="relative"
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-sky-50/80 via-blue-50/60 to-indigo-100/80 backdrop-blur-sm" />
-          <HeroSection />
-        </motion.div>
+      {/* Continuous Flow Layout Container */}
+      <div className="relative space-y-0 xl:mx-80">
+        {/* Hero Section */}
+        <HeroSection />
 
-        {/* Continuous Flow Layout Container */}
-        <div className="relative space-y-0">
-          {/* Event Details - Continuous Flow */}
-          <motion.div
+        {/* Event Details - Continuous Flow */}
+        <motion.div
             initial={{ opacity: 0, y: 100, scale: 0.8 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ 
@@ -169,14 +153,14 @@ export default function Home() {
               damping: 6
             }}
             viewport={{ once: true, amount: 0.1 }}
-            className="lg:hidden relative z-60"
-          >
-            <div className="text-center mb-6">
-              <h3 className="text-xl font-serif font-light text-slate-700 mb-2">
-                Our Memories
-              </h3>
-              <div className="h-px bg-gradient-to-r from-transparent via-sky-400/60 to-transparent" />
-            </div>
+              className="lg:hidden relative z-60 px-4 py-20"
+            >
+              <div className="text-center mb-6">
+                <h3 className="text-xl font-serif font-light text-white mb-2">
+                  Our Memories
+                </h3>
+                <div className="h-px" style={{ background: `linear-gradient(to right, transparent, ${hexToRgba(theme.colors.secondary[400], 0.5)}, transparent)` }} />
+              </div>
             
             {/* Mobile Photo Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -215,7 +199,6 @@ export default function Home() {
             </div>
           </motion.div>
         </div>
-      </div>
 
       {/* Floating Scroll to Top Button */}
       <motion.button
@@ -226,8 +209,8 @@ export default function Home() {
           scale: showScrollToTop ? 1 : 0
         }}
         transition={{ duration: 0.3 }}
-        className="fixed bottom-8 right-8 z-50 p-4 bg-gradient-to-br from-primary-500 to-primary-600 text-white rounded-full shadow-2xl hover:shadow-3xl transform hover:scale-110 transition-all duration-300 backdrop-blur-md border border-white/20"
-        style={{ opacity: showScrollToTop ? 1 : 0, pointerEvents: showScrollToTop ? 'auto' : 'none' }}
+        className="fixed bottom-8 right-8 z-50 p-4 text-white rounded-full shadow-2xl hover:shadow-3xl transform hover:scale-110 transition-all duration-300 border border-white/20"
+        style={{ ...getBgColor(theme.colors.secondary[500]), opacity: showScrollToTop ? 1 : 0, pointerEvents: showScrollToTop ? 'auto' : 'none' }}
       >
         <ArrowUp className="w-6 h-6" />
       </motion.button>
@@ -240,26 +223,27 @@ export default function Home() {
         />
       
       {/* Footer */}
-      <footer className="relative bg-gradient-to-br from-neutral-800 via-primary-900 to-secondary-800 text-white overflow-hidden">
+      <footer className="relative text-white overflow-hidden" style={getBgColor(theme.colors.primary[900])}>
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
-          {/* Floating gradient orbs */}
+          {/* Subtle glow effects */}
           <motion.div
             animate={{
               scale: [1, 1.2, 1],
-              opacity: [0.3, 0.6, 0.3],
+              opacity: [0.1, 0.2, 0.1],
             }}
             transition={{
               duration: 8,
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="absolute top-10 left-10 w-96 h-96 bg-gradient-to-br from-primary-400/25 to-secondary-500/25 rounded-full blur-3xl"
+            className="absolute top-10 left-10 w-96 h-96 rounded-full blur-3xl"
+            style={getBgColor(theme.colors.secondary[500], 0.2)}
           />
           <motion.div
             animate={{
               scale: [1.2, 1, 1.2],
-              opacity: [0.4, 0.7, 0.4],
+              opacity: [0.15, 0.25, 0.15],
             }}
             transition={{
               duration: 10,
@@ -267,35 +251,24 @@ export default function Home() {
               ease: "easeInOut",
               delay: 2
             }}
-            className="absolute bottom-10 right-10 w-80 h-80 bg-gradient-to-br from-secondary-400/25 to-accent-500/25 rounded-full blur-3xl"
-          />
-          <motion.div
-            animate={{
-              scale: [1, 1.3, 1],
-              opacity: [0.2, 0.5, 0.2],
-            }}
-            transition={{
-              duration: 12,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 4
-            }}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-primary-500/20 to-accent-400/20 rounded-full blur-3xl"
+            className="absolute bottom-10 right-10 w-80 h-80 rounded-full blur-3xl"
+            style={getBgColor(theme.colors.secondary[400], 0.15)}
           />
         </div>
 
         {/* Sparkle Effects */}
         <div className="absolute inset-0 pointer-events-none">
-          {[...Array(15)].map((_, i) => (
+          {[...Array(8)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-1 h-1 bg-white rounded-full"
+              className="absolute w-1 h-1 rounded-full"
               style={{
+                ...getBgColor(theme.colors.secondary[300]),
                 left: `${10 + Math.random() * 80}%`,
                 top: `${20 + Math.random() * 60}%`
               }}
               animate={{
-                opacity: [0, 1, 0],
+                opacity: [0, 0.6, 0],
                 scale: [0.5, 1.5, 0.5],
                 y: [0, -30, 0]
               }}
@@ -329,19 +302,20 @@ export default function Home() {
                     repeat: Infinity,
                     ease: "linear"
                   }}
-                  className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-sky-400/25 to-blue-500/25 backdrop-blur-md border border-white/10 mb-8"
+                  className="inline-flex items-center justify-center w-20 h-20 rounded-full backdrop-blur-md mb-8"
+                  style={{ ...getBgColor(theme.colors.secondary[600], 0.2), borderWidth: '1px', borderColor: hexToRgba(theme.colors.secondary[400], 0.3) }}
                 >
-                  <Heart className="w-8 h-8 text-sky-300" />
+                  <Heart className="w-8 h-8" style={{ color: theme.colors.secondary[400] }} />
                 </motion.div>
                 
-                <h2 className="text-4xl md:text-5xl font-serif font-light mb-4 bg-gradient-to-r from-sky-200 via-blue-200 to-sky-100 bg-clip-text text-transparent">
+                <h2 className="text-4xl md:text-5xl font-serif font-light mb-4" style={{ color: theme.colors.secondary[300] }}>
                   Terima Kasih
                 </h2>
                 
                 <div className="flex items-center justify-center gap-4 mb-8">
-                  <div className="h-px bg-gradient-to-r from-transparent via-sky-300/50 to-transparent w-20" />
-                  <Sparkles className="w-5 h-5 text-sky-300" />
-                  <div className="h-px bg-gradient-to-r from-transparent via-blue-300/50 to-transparent w-20" />
+                  <div className="h-px w-20" style={getBgColor(theme.colors.secondary[500], 0.4)} />
+                  <Sparkles className="w-5 h-5" style={{ color: theme.colors.secondary[400] }} />
+                  <div className="h-px w-20" style={getBgColor(theme.colors.secondary[500], 0.4)} />
                 </div>
               </div>
 
@@ -351,7 +325,7 @@ export default function Home() {
                 transition={{ type: "spring", stiffness: 300 }}
                 className="inline-block"
               >
-                <p className="text-xl md:text-2xl font-serif font-light tracking-wide mb-8 bg-gradient-to-r from-white to-sky-100 bg-clip-text text-transparent">
+                <p className="text-xl md:text-2xl font-serif font-light tracking-wide mb-8 text-neutral-200">
                   Wassalamualaikum Wr. Wb.
                 </p>
               </motion.div>
@@ -359,18 +333,20 @@ export default function Home() {
               {/* Family Names */}
               <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto mb-12">
                 <motion.div
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10"
+                    whileHover={{ y: -5, scale: 1.02 }}
+                    className="backdrop-blur-md rounded-2xl p-6"
+                    style={{ ...getBgColor('white', 0.05), borderWidth: '1px', borderColor: hexToRgba(theme.colors.secondary[500], 0.2) }}
                 >
-                  <div className="text-sky-300 text-sm font-light mb-2">Keluarga Besar</div>
-                  <div className="text-xl font-serif font-medium text-white">{config.groomName.split(' ')[0]}</div>
+                  <div className="text-sm font-light mb-2" style={{ color: theme.colors.secondary[400] }}>Keluarga Besar</div>
+                  <div className="text-xl font-serif font-medium text-white">{config.brideName.split(' ')[0]}</div>
                 </motion.div>
                 <motion.div
                   whileHover={{ y: -5, scale: 1.02 }}
-                  className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10"
+                  className="backdrop-blur-md rounded-2xl p-6"
+                  style={{ ...getBgColor('white', 0.05), borderWidth: '1px', borderColor: hexToRgba(theme.colors.secondary[500], 0.2) }}
                 >
-                  <div className="text-blue-300 text-sm font-light mb-2">Keluarga Besar</div>
-                  <div className="text-xl font-serif font-medium text-white">{config.brideName.split(' ')[0]}</div>
+                  <div className="text-sm font-light mb-2" style={{ color: theme.colors.secondary[400] }}>Keluarga Besar</div>
+                  <div className="text-xl font-serif font-medium text-white">{config.groomName.split(' ')[0]}</div>
                 </motion.div>
               </div>
 
@@ -382,17 +358,17 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="max-w-4xl mx-auto"
               >
-                <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-3xl p-8 md:p-12 border border-white/10 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-sky-500/5 to-purple-500/5"></div>
+                <div className="backdrop-blur-lg rounded-3xl p-8 md:p-12 relative overflow-hidden" style={{ ...getBgColor('white', 0.05), borderWidth: '1px', borderColor: hexToRgba(theme.colors.secondary[500], 0.2) }}>
+                  <div className="absolute inset-0" style={getBgColor(theme.colors.secondary[600], 0.05)}></div>
                   <div className="relative z-10">
-                    <div className="text-6xl text-sky-200/30 font-serif mb-4">&ldquo;</div>
+                    <div className="text-6xl font-serif mb-4" style={{ color: hexToRgba(theme.colors.secondary[400], 0.4) }}>&ldquo;</div>
                     <p className="text-sm md:text-base text-white/80 font-light leading-relaxed mb-4 italic">
                       Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang.
                     </p>
-                    <div className="flex items-center justify-center gap-2 text-sky-300/60 text-sm font-light">
-                      <Star className="w-4 h-4" />
+                    <div className="flex items-center justify-center gap-2 text-sm font-light" style={{ color: hexToRgba(theme.colors.secondary[400], 0.8) }}>
+                      <Star className="w-4 h-4" style={{ fill: hexToRgba(theme.colors.secondary[400], 0.5) }} />
                       <span>QS. Ar-Rum: 21</span>
-                      <Star className="w-4 h-4" />
+                      <Star className="w-4 h-4" style={{ fill: hexToRgba(theme.colors.secondary[400], 0.5) }} />
                     </div>
                   </div>
                 </div>
@@ -406,14 +382,14 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="flex items-center justify-center gap-6 mt-16"
               >
-                <div className="h-px bg-gradient-to-r from-transparent via-sky-300/30 to-transparent w-20" />
+                <div className="h-px w-20" style={getBgColor(theme.colors.secondary[500], 0.3)} />
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
                 >
-                  <Sparkles className="w-6 h-6 text-sky-300/60" />
+                  <Sparkles className="w-6 h-6" style={{ color: hexToRgba(theme.colors.secondary[400], 0.8) }} />
                 </motion.div>
-                <div className="h-px bg-gradient-to-r from-transparent via-blue-300/30 to-transparent w-20" />
+                <div className="h-px w-20" style={getBgColor(theme.colors.secondary[500], 0.3)} />
               </motion.div>
             </motion.div>
           </div>

@@ -1,6 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import { useState, useEffect, useCallback, useRef } from 'react'
+import { theme, hexToRgba, getBgColor } from '@/lib/theme'
 
 interface PhotoMosaicProps {
   side: 'left' | 'right'
@@ -16,8 +17,8 @@ interface PhotoItem {
 export default function PhotoMosaic({ side }: PhotoMosaicProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const [displayedPhotos, setDisplayedPhotos] = useState<PhotoItem[]>([])
-  const [photoPool, setPhotoPool] = useState<string[]>([])
   const [isLoading, setIsLoading] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
   const lastLoadTimeRef = useRef<number>(0)
   const displayedPhotosRef = useRef<PhotoItem[]>([])
 
@@ -83,11 +84,10 @@ export default function PhotoMosaic({ side }: PhotoMosaicProps) {
 
   // Initialize with random photos
   useEffect(() => {
-    const initialPhotos = getRandomPhotos(6) // Start with 6 random photos
+    const initialPhotos = getRandomPhotos(12) // Start with 12 random photos
     const photoItems = initialPhotos.map(url => createPhotoItem(url))
     setDisplayedPhotos(photoItems)
     displayedPhotosRef.current = photoItems
-    setPhotoPool([]) // No longer needed for shuffling
   }, []) // Remove dependencies to prevent infinite re-renders
 
   // Keep ref in sync with state
@@ -99,16 +99,16 @@ export default function PhotoMosaic({ side }: PhotoMosaicProps) {
   const loadMorePhotos = useCallback(() => {
     const now = Date.now()
     
-    // Reduced throttling for smoother experience (minimum 800ms between loads)
-    if (isLoading || now - lastLoadTimeRef.current < 800) {
+    // Reduced throttling for smoother experience (minimum 600ms between loads)
+    if (isLoading || now - lastLoadTimeRef.current < 600) {
       return
     }
     
     setIsLoading(true)
     lastLoadTimeRef.current = now
     
-    // Immediate loading with smooth fade-in animation
-    const loadCount = 2 + Math.floor(Math.random() * 2) // 2 or 3 photos
+    // Load more photos for continuous scroll
+    const loadCount = 3 + Math.floor(Math.random() * 2) // 3 or 4 photos per load
     const currentUrls = displayedPhotosRef.current.map(item => item.url)
     
     // Get random photos that aren't currently displayed
@@ -119,56 +119,63 @@ export default function PhotoMosaic({ side }: PhotoMosaicProps) {
     setIsLoading(false)
   }, [isLoading]) // Remove callback dependencies to prevent infinite re-renders
 
-  // Scroll event handler with higher threshold
+  // Scroll event handler - track scroll progress and load more photos continuously
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY
       const viewportHeight = window.innerHeight
       const documentHeight = document.documentElement.scrollHeight
+      const maxScroll = documentHeight - viewportHeight
       
-      // Load more photos when user scrolls past 75% of the page (increased from 60%)
-      if (scrolled > (documentHeight - viewportHeight) * 0.75) {
+      // Calculate scroll progress (0 to 1)
+      const progress = maxScroll > 0 ? scrolled / maxScroll : 0
+      setScrollProgress(progress)
+      
+      // Load more photos when user scrolls past 50% and keep loading at intervals
+      if (progress > 0.5) {
+        loadMorePhotos()
+      }
+      // Also load if user is near the bottom
+      if (progress > 0.8) {
         loadMorePhotos()
       }
     }
 
     window.addEventListener('scroll', handleScroll)
+    // Trigger initial check
+    handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [loadMorePhotos])
 
   return (
-    <div className={`absolute top-0 ${side}-0 w-80 min-h-screen bg-gradient-to-b from-sky-50/50 to-blue-50/50 backdrop-blur-sm border-r border-white/20 overflow-hidden z-10`}>
-      {/* Header */}
-      <div className="p-6 text-center border-b border-white/10">
-        <h3 className="text-lg font-serif font-light text-slate-700 mb-2">
-          {side === 'left' ? 'Memories' : 'Moments'}
-        </h3>
-        <div className="h-px bg-gradient-to-r from-transparent via-sky-400/60 to-transparent" />
-      </div>
-
-      {/* Photo Mosaic */}
-      <div className="p-4 space-y-4 pb-20">
-        {displayedPhotos.map((photoItem, index) => (
+    <div 
+      className={`absolute top-0 ${side}-0 w-80 min-h-full backdrop-blur-md z-0`}
+      style={{ 
+        ...getBgColor(theme.colors.primary[800], 0.4),
+        borderRight: side === 'left' ? `1px solid ${hexToRgba(theme.colors.secondary[500], 0.2)}` : 'none',
+        borderLeft: side === 'right' ? `1px solid ${hexToRgba(theme.colors.secondary[500], 0.2)}` : 'none'
+      }}
+    >
+      {/* Photo Mosaic - Scrolls naturally with page */}
+      <div className="p-4 pt-8 space-y-4 pb-20">
+        {displayedPhotos.map((photoItem, index) => {
+          return (
           <motion.div
             key={`${photoItem.url}-${index}`}
             initial={{ 
               opacity: 0, 
               x: side === 'left' ? -30 : 30,
-              scale: 0.8,
-              y: 20
+              scale: 0.9
             }}
-            animate={{ 
+            whileInView={{ 
               opacity: 1, 
               x: 0,
-              scale: photoItem.scale,
-              y: 0
+              scale: photoItem.scale
             }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ 
-              duration: 0.6, 
-              delay: index < 6 ? index * 0.1 : 0.1,
-              type: "spring",
-              stiffness: 120,
-              damping: 18,
+              duration: 0.7, 
+              delay: 0.1,
               ease: "easeOut"
             }}
             whileHover={{ 
@@ -184,7 +191,7 @@ export default function PhotoMosaic({ side }: PhotoMosaicProps) {
             }}
           >
             {/* Enhanced glow effect */}
-            <div className={`absolute inset-0 rounded-lg bg-gradient-to-br from-sky-400/30 to-blue-500/30 opacity-0 group-hover:opacity-100 transition-all duration-500 blur-sm scale-110 -z-10`} />
+            <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-500 blur-sm scale-110 -z-10" style={getBgColor(theme.colors.secondary[400], 0.2)} />
             
             <img
               src={photoItem.url}
@@ -192,15 +199,12 @@ export default function PhotoMosaic({ side }: PhotoMosaicProps) {
               className="w-full h-full object-cover rounded-lg transition-all duration-500 group-hover:brightness-110 group-hover:contrast-105"
               loading="lazy"
             />
-            
             {/* Enhanced overlay gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </motion.div>
-        ))}
+          )
+        })}
       </div>
-
-      {/* Decorative bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-sky-50/80 to-transparent pointer-events-none" />
     </div>
   )
 }

@@ -228,7 +228,7 @@ export default function MusicPlayer({
                                 </button>
 
                                 {/* Album art with rotating disc */}
-                                <div className="relative w-full aspect-square rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-primary-100 via-secondary-100 to-accent-100">
+                                <div className={`relative w-full aspect-square rounded-xl overflow-hidden mb-4 ${getGradientClass('subtle')}`}>
                                     <motion.div
                                         animate={isPlaying ? { rotate: 360 } : {}}
                                         transition={{
@@ -307,7 +307,7 @@ export default function MusicPlayer({
                                                 onChange={handleVolumeChange}
                                                 className="w-full h-1 bg-neutral-200 rounded-full appearance-none cursor-pointer"
                                                 style={{
-                                                    background: `linear-gradient(to right, #d946ef ${volume * 100}%, #e5e5e5 ${volume * 100}%)`
+                                                    background: `linear-gradient(to right, ${theme.colors.primary[500]} ${volume * 100}%, #e5e5e5 ${volume * 100}%)`
                                                 }}
                                             />
                                         </div>
@@ -333,7 +333,7 @@ export default function MusicPlayer({
                                         {[...Array(24)].map((_, i) => (
                                             <motion.div
                                                 key={i}
-                                                className="w-1 bg-gradient-to-t from-primary-400 via-secondary-400 to-accent-400 rounded-full"
+                                                className={`w-1 bg-gradient-to-t ${theme.gradients.audioWave} rounded-full`}
                                                 animate={{
                                                     height: ['8px', '32px', '8px']
                                                 }}
