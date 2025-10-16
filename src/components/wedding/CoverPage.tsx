@@ -94,7 +94,7 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
         {/* Left side - Photo (2/3 on desktop, hidden on mobile) */}
         <div className="hidden lg:block lg:w-2/3 relative overflow-hidden">
           <img
-            src="/hand1.jpg"
+            src="/cover2.jpg"
             alt="Wedding couple"
             className="absolute inset-0 w-full h-full object-cover"
           />

@@ -216,7 +216,7 @@ export default function Home() {
       </motion.button>
 
         <MusicPlayer
-            audioUrl="/mltr_tmtyh.mp3"
+            audioUrl="/best_part.mp3"
             songTitle="Take Me to Your Heart"
             artist="Michael Learn to Rock"
             autoPlay={true}
