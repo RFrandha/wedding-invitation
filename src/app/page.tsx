@@ -7,6 +7,7 @@ import HeroSection from '@/components/wedding/HeroSection'
 import EventDetails from '@/components/wedding/EventDetails'
 import CountdownTimer from '@/components/wedding/CountdownTimer'
 import LocationMap from '@/components/wedding/LocationMap'
+import GiftSection from '@/components/wedding/GiftSection'
 import WishesSection from '@/components/wedding/WishesSection'
 import PhotoMosaic from '@/components/wedding/PhotoMosaic'
 import { theme, hexToRgba, getBgColor } from '@/lib/theme'
@@ -128,6 +129,23 @@ export default function Home() {
             className="relative z-40"
           >
             <LocationMap />
+          </motion.div>
+
+          {/* Gift Section - Continuous Flow */}
+          <motion.div
+            initial={{ opacity: 0, y: 175, scale: 0.55 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ 
+              duration: 1.7, 
+              delay: 0.7,
+              type: "spring",
+              stiffness: 42,
+              damping: 9
+            }}
+            viewport={{ once: true, amount: 0.15 }}
+            className="relative z-45"
+          >
+            <GiftSection />
           </motion.div>
 
           {/* Wishes Section - Continuous Flow */}
