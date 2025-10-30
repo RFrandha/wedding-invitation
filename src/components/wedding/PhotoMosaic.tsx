@@ -12,6 +12,10 @@ interface PhotoItem {
   scale: number
   rotation: number
   aspectRatio: string
+  shape: 'square' | 'circle' | 'triangle' | 'hexagon' | 'diamond' | 'rectangle'
+  size: 'small' | 'medium' | 'large'
+  top: number
+  left: number
 }
 
 export default function PhotoMosaic({ side }: PhotoMosaicProps) {
@@ -22,40 +26,76 @@ export default function PhotoMosaic({ side }: PhotoMosaicProps) {
   const lastLoadTimeRef = useRef<number>(0)
   const displayedPhotosRef = useRef<PhotoItem[]>([])
 
-  // Master photo list - reliable Unsplash URLs
+  // Master photo list - local prewed photos
   const photos = [
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOIvMg6ZLVtyUqT1FHbkE8GJrd-EH0c7GBGA&s',
-    'https://images.weddingku.com/images/upload/articles/images682/d28kb54aau0x41120191113.jpg',
-    'https://alexandra.bridestory.com/image/upload/assets/l1000458-min-0I-Z6SATm.jpg',
-    'https://i.pinimg.com/736x/32/85/ab/3285ab841670cc2bb1c680973ff07e14.jpg',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-qX3nrHOmcuFcRkpv8ZyBx0n3H6hivlTMuA&s',
-    'https://www.lesecretdaudrey.com/wp-content/uploads/2021/05/paris-pre-wedding-audrey-paris-photo-8-1200x1614.jpg',
-    'https://thumbs.dreamstime.com/b/romantic-silhouette-couple-love-flowing-veil-stunning-prewedding-photoshoot-captivating-black-white-photo-338046548.jpg',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5mYydYuiFcZeRrolZGQwuOYval2-TZlNDRA&s',
-    'https://images.weddingku.com/images/upload/articles/images/u85ctg1srm7p41120191113.jpg',
-    'https://bensonyin.com/main/wp-content/uploads/25-6940-post/paris_prewedding-1024x683.jpg',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAKlwFJ-qsifFFTJT3zhssmE8fKXauDV4A8g&s',
-    'https://media.weddingz.in/images/6f798ce01007e6623c18d9c2881def1d/black-and-white-pre-wedding-shoot-romantic-creative-ideas-goa2.jpg',
+    `https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08483-Edit.jpg`,
+    'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08467-Edit.jpg',
+    'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08457-Edit.jpg',
+    'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08434-Edit.jpg',
+    'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08433-Edit.jpg',
+    'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08429-Edit.jpg',
+    'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08426-2.jpg',
+    'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08385-Edit.jpg',
+    'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08485.jpg',
+    'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08489-Edit.jpg',
+    'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08499-Edit.jpg',
+    'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08502-Edit.jpg',
+    'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08518-Edit.jpg',
+    'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08529-Edit.jpg',
+    'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08550-2.jpg',
+    'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08550-2.jpg',
+    'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08550.jpg',
+    'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08601-Edit.jpg',
+    'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08609-Edit.jpg',
   ]
 
-  // Available aspect ratios for randomization - enhanced variety
+  // Available shapes for collage
+  const shapes: Array<'square' | 'circle' | 'rectangle'> = [
+    'square', 'circle', 'rectangle'
+  ]
+  
+  // Size variations
+  const sizes: Array<'small' | 'medium' | 'large'> = ['small', 'medium', 'large']
+  
+  // Available aspect ratios for rectangles
   const aspectRatios = [
     'aspect-square', 'aspect-[4/3]', 'aspect-[3/4]', 
-    'aspect-video', 'aspect-[5/4]', 'aspect-[3/2]',
-    'aspect-[2/3]', 'aspect-[16/9]', 'aspect-[9/16]',
-    'aspect-[1/1]', 'aspect-[3/5]', 'aspect-[5/3]',
-    'aspect-[4/5]', 'aspect-[7/5]'
+    'aspect-[3/2]', 'aspect-[2/3]', 'aspect-[16/9]'
   ]
 
-  // Create randomized photo item
-  const createPhotoItem = useCallback((url: string): PhotoItem => {
+  // Create randomized photo item with shape variety and stable position
+  const createPhotoItem = useCallback((url: string, index: number): PhotoItem => {
+    const shape = shapes[Math.floor(Math.random() * shapes.length)]
+    const size = sizes[Math.floor(Math.random() * sizes.length)]
+    
+    // Calculate stable position with 30% overlap - 1 photo per row
+    // Average photo height based on bigger sizes
+    const avgPhotoHeight = 240 // Average height in pixels (bigger photos)
+    const overlapPercent = 0.1
+    const verticalSpacing = avgPhotoHeight * (1 - overlapPercent) // 70% of height for spacing = 168px
+    
+    const row = index // 1 photo per row
+    
+    const baseTop = row * verticalSpacing
+    const randomYOffset = (Math.random() - 0.5) * 40 // Random offset
+    const topPosition = baseTop + randomYOffset
+    
+    // Center with horizontal variance
+    const baseLeft = 70 // Centered in 320px sidebar
+    const randomXOffset = (Math.random() - 0.5) * 60 // More horizontal variance
+    const leftPosition = baseLeft + randomXOffset
+    
     return {
       url,
-      scale: 0.8 + Math.random() * 0.6, // Random scale between 0.8 and 1.4
-      rotation: (Math.random() - 0.5) * 30, // Limited rotation between -15 and 15 degrees
-      aspectRatio: aspectRatios[Math.floor(Math.random() * aspectRatios.length)]
+      scale: 0.9 + Math.random() * 0.4,
+      rotation: (Math.random() - 0.5) * 25, // More rotation for interest
+      aspectRatio: aspectRatios[Math.floor(Math.random() * aspectRatios.length)],
+      shape,
+      size,
+      top: topPosition,
+      left: leftPosition
     }
-  }, [aspectRatios])
+  }, [])
 
   // Get random photos from the master list - with infinite repeat capability
   const getRandomPhotos = useCallback((count: number, excludeUrls: string[] = []): string[] => {
@@ -82,125 +122,196 @@ export default function PhotoMosaic({ side }: PhotoMosaicProps) {
     return randomPhotos
   }, [photos])
 
-  // Initialize with random photos
-  useEffect(() => {
-    const initialPhotos = getRandomPhotos(12) // Start with 12 random photos
-    const photoItems = initialPhotos.map(url => createPhotoItem(url))
-    setDisplayedPhotos(photoItems)
-    displayedPhotosRef.current = photoItems
-  }, []) // Remove dependencies to prevent infinite re-renders
+  // Get shape-specific CSS classes
+  const getShapeClass = (shape: string) => {
+    switch (shape) {
+      case 'circle':
+        return 'rounded-full'
+      case 'triangle':
+        return 'clip-triangle'
+      case 'hexagon':
+        return 'clip-hexagon'
+      case 'diamond':
+        return 'clip-diamond rotate-45'
+      case 'rectangle':
+        return 'rounded-lg'
+      default:
+        return 'rounded-xl'
+    }
+  }
+  
+  // Get size-specific dimensions - bigger sizes for single column
+  const getSizeClass = (size: string, index: number) => {
+    // Bigger varied sizes for single photo per row
+    const patterns = [
+      'w-56 h-64',  // Portrait
+      'w-64 h-52',  // Landscape
+      'w-60 h-60',  // Large square
+      'w-52 h-68',  // Tall portrait
+      'w-68 h-48',  // Wide landscape
+      'w-56 h-56',  // Square
+      'w-60 h-52',  // Medium landscape
+      'w-52 h-60',  // Medium portrait
+    ]
+    return patterns[index % patterns.length]
+  }
+
 
   // Keep ref in sync with state
   useEffect(() => {
     displayedPhotosRef.current = displayedPhotos
   }, [displayedPhotos])
 
-  // Load more photos on scroll with reduced throttling
+  // Initialize with starting photos
+  useEffect(() => {
+    const initialPhotos = getRandomPhotos(12) // Start with 12 photos
+    const photoItems = initialPhotos.map((url, idx) => createPhotoItem(url, idx))
+    setDisplayedPhotos(photoItems)
+    displayedPhotosRef.current = photoItems
+  }, [])
+
+  // Load more photos on scroll
   const loadMorePhotos = useCallback(() => {
     const now = Date.now()
     
-    // Reduced throttling for smoother experience (minimum 600ms between loads)
-    if (isLoading || now - lastLoadTimeRef.current < 600) {
+    // Throttling (minimum 1200ms between loads for better performance)
+    if (isLoading || now - lastLoadTimeRef.current < 1200) {
       return
     }
     
     setIsLoading(true)
     lastLoadTimeRef.current = now
     
-    // Load more photos for continuous scroll
-    const loadCount = 3 + Math.floor(Math.random() * 2) // 3 or 4 photos per load
-    const currentUrls = displayedPhotosRef.current.map(item => item.url)
+    // Load 3 photos per batch (reduced for smoother performance)
+    const loadCount = 3
+    const currentLength = displayedPhotosRef.current.length
     
-    // Get random photos that aren't currently displayed
-    const newPhotoUrls = getRandomPhotos(loadCount, currentUrls)
-    const newPhotoItems = newPhotoUrls.map(url => createPhotoItem(url))
+    // Get random photos (allow repeats for infinite scroll)
+    const newPhotoUrls = getRandomPhotos(loadCount, [])
+    const newPhotoItems = newPhotoUrls.map((url, idx) => createPhotoItem(url, currentLength + idx))
     
     setDisplayedPhotos(prev => [...prev, ...newPhotoItems])
     setIsLoading(false)
-  }, [isLoading]) // Remove callback dependencies to prevent infinite re-renders
+  }, [isLoading, createPhotoItem, getRandomPhotos])
 
-  // Scroll event handler - track scroll progress and load more photos continuously
+  // Scroll event handler - load more photos as user scrolls (debounced)
   useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout | null = null
+    
     const handleScroll = () => {
-      const scrolled = window.scrollY
-      const viewportHeight = window.innerHeight
-      const documentHeight = document.documentElement.scrollHeight
-      const maxScroll = documentHeight - viewportHeight
+      // Debounce scroll events for better performance
+      if (scrollTimeout) clearTimeout(scrollTimeout)
       
-      // Calculate scroll progress (0 to 1)
-      const progress = maxScroll > 0 ? scrolled / maxScroll : 0
-      setScrollProgress(progress)
-      
-      // Load more photos when user scrolls past 50% and keep loading at intervals
-      if (progress > 0.5) {
-        loadMorePhotos()
-      }
-      // Also load if user is near the bottom
-      if (progress > 0.8) {
-        loadMorePhotos()
-      }
+      scrollTimeout = setTimeout(() => {
+        const scrolled = window.scrollY
+        const viewportHeight = window.innerHeight
+        const documentHeight = document.documentElement.scrollHeight
+        const maxScroll = documentHeight - viewportHeight
+        
+        // Calculate scroll progress (0 to 1)
+        const progress = maxScroll > 0 ? scrolled / maxScroll : 0
+        setScrollProgress(progress)
+        
+        // Load more photos when user scrolls down (fewer trigger points)
+        if (progress > 0.5 || progress > 0.8) {
+          loadMorePhotos()
+        }
+      }, 200) // 200ms debounce
     }
 
-    window.addEventListener('scroll', handleScroll)
-    // Trigger initial check
-    handleScroll()
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (scrollTimeout) clearTimeout(scrollTimeout)
+    }
   }, [loadMorePhotos])
 
+  // Keep ref in sync with state
   return (
     <div 
-      className={`absolute top-0 ${side}-0 w-80 min-h-full backdrop-blur-md z-0`}
+      className={`absolute top-0 ${side}-0 w-80 min-h-full z-0 overflow-visible`}
       style={{ 
-        ...getBgColor(theme.colors.primary[800], 0.4),
-        borderRight: side === 'left' ? `1px solid ${hexToRgba(theme.colors.secondary[500], 0.2)}` : 'none',
-        borderLeft: side === 'right' ? `1px solid ${hexToRgba(theme.colors.secondary[500], 0.2)}` : 'none'
+        background: 'transparent'
       }}
     >
-      {/* Photo Mosaic - Scrolls naturally with page */}
-      <div className="p-4 pt-8 space-y-4 pb-20">
+      {/* Photo Collage - Random positioning with scroll loading */}
+      <div 
+        className="relative w-full py-8"
+        style={{
+          minHeight: '100vh',
+          height: `${Math.max(displayedPhotos.length * 40, window.innerHeight)}px` // Dynamic height based on photo count
+        }}
+      >
         {displayedPhotos.map((photoItem, index) => {
+          const isDiamond = photoItem.shape === 'diamond'
+          
           return (
           <motion.div
             key={`${photoItem.url}-${index}`}
             initial={{ 
               opacity: 0, 
-              x: side === 'left' ? -30 : 30,
-              scale: 0.9
+              scale: 0.8,
+              y: 30
             }}
-            whileInView={{ 
+            animate={{ 
               opacity: 1, 
-              x: 0,
-              scale: photoItem.scale
+              scale: 1,
+              y: 0,
+              rotate: photoItem.rotation
             }}
-            viewport={{ once: true, amount: 0.3 }}
             transition={{ 
-              duration: 0.7, 
-              delay: 0.1,
+              duration: 0.4, 
               ease: "easeOut"
             }}
             whileHover={{ 
-              rotateY: side === 'left' ? 8 : -8,
-              z: 15,
-              scale: photoItem.scale * 1.05
+              scale: 1.08,
+              rotate: 0,
+              transition: { duration: 0.2 }
             }}
             onHoverStart={() => setHoveredIndex(index)}
             onHoverEnd={() => setHoveredIndex(null)}
-            className={`${photoItem.aspectRatio} rounded-lg overflow-hidden cursor-pointer relative group`}
+            className={`${getSizeClass(photoItem.size, index)} cursor-pointer absolute group`}
             style={{
-              transform: `rotate(${photoItem.rotation}deg)`
+              top: `${photoItem.top}px`,
+              left: `${photoItem.left}px`,
+              zIndex: hoveredIndex === index ? 200 : 10 + index,
+              transformOrigin: 'center center'
             }}
           >
-            {/* Enhanced glow effect */}
-            <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-500 blur-sm scale-110 -z-10" style={getBgColor(theme.colors.secondary[400], 0.2)} />
             
-            <img
-              src={photoItem.url}
-              alt={`Pre-wedding photo ${index + 1}`}
-              className="w-full h-full object-cover rounded-lg transition-all duration-500 group-hover:brightness-110 group-hover:contrast-105"
-              loading="lazy"
-            />
-            {/* Enhanced overlay gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            {/* Photo container with shape and gold border */}
+            <div 
+              className={`w-full h-full ${getShapeClass(photoItem.shape)} overflow-hidden relative shadow-2xl`}
+              style={{
+                background: theme.colors.secondary[400],
+                padding: '0px',
+                boxShadow: '0 15px 50px rgba(0,0,0,0.4), 0 5px 15px rgba(0,0,0,0.3)'
+              }}
+            >
+              <div className={`w-full h-full ${getShapeClass(photoItem.shape)} overflow-hidden relative`}>
+                <img
+                  src={photoItem.url}
+                  alt={`Pre-wedding photo ${index + 1}`}
+                  className={`w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 ${
+                    isDiamond ? '-rotate-45' : ''
+                  }`}
+                  loading="lazy"
+                  decoding="async"
+                />
+                
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+              
+              {/* Gold accent border on hover */}
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                style={{
+                  border: `2px solid ${hexToRgba(theme.colors.secondary[400], 0.8)}`,
+                  borderRadius: 'inherit'
+                }}
+              />
+            </div>
           </motion.div>
           )
         })}

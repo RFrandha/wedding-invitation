@@ -19,7 +19,9 @@ export default function Home() {
   const [config, setConfig] = useState({
     weddingDate: new Date('2025-12-6T10:00:00'),
     groomName: 'Restow Frandha',
-    brideName: 'Verina Mardhatillah'
+    brideName: 'Verina Mardhatillah',
+    groomShortName: 'Restow',
+    brideShortName: 'Verina',
   })
   
   // Load configuration from environment variables on client side
@@ -27,11 +29,15 @@ export default function Home() {
     const weddingDateStr = process.env.NEXT_PUBLIC_WEDDING_DATE || '2025-12-6T10:00:00'
     const groomName = process.env.NEXT_PUBLIC_GROOM_NAME || 'Restow Frandha'
     const brideName = process.env.NEXT_PUBLIC_BRIDE_NAME || 'Verina Mardhatillah'
+    const groomShortName = process.env.NEXT_PUBLIC_GROOM_SHORT_NAME || 'Restow'
+    const brideShortName = process.env.NEXT_PUBLIC_BRIDE_SHORT_NAME || 'Verina'
     
     setConfig({
       weddingDate: new Date(weddingDateStr),
       groomName,
-      brideName
+      brideName,
+      groomShortName,
+      brideShortName,
     })
   }, [])
 
@@ -53,8 +59,8 @@ export default function Home() {
     return (
       <CoverPage 
         onOpen={() => setIsOpened(true)}
-        groomName={config.groomName}
-        brideName={config.brideName}
+        groomName={config.groomShortName}
+        brideName={config.brideShortName}
         weddingDate={config.weddingDate}
       />
     )
@@ -165,18 +171,25 @@ export default function Home() {
             {/* Mobile Photo Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {[
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOIvMg6ZLVtyUqT1FHbkE8GJrd-EH0c7GBGA&s',
-                'https://images.weddingku.com/images/upload/articles/images682/d28kb54aau0x41120191113.jpg',
-                'https://alexandra.bridestory.com/image/upload/assets/l1000458-min-0I-Z6SATm.jpg',
-                'https://i.pinimg.com/736x/32/85/ab/3285ab841670cc2bb1c680973ff07e14.jpg',
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-qX3nrHOmcuFcRkpv8ZyBx0n3H6hivlTMuA&s',
-                'https://www.lesecretdaudrey.com/wp-content/uploads/2021/05/paris-pre-wedding-audrey-paris-photo-8-1200x1614.jpg',
-                'https://thumbs.dreamstime.com/b/romantic-silhouette-couple-love-flowing-veil-stunning-prewedding-photoshoot-captivating-black-white-photo-338046548.jpg',
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5mYydYuiFcZeRrolZGQwuOYval2-TZlNDRA&s',
-                'https://images.weddingku.com/images/upload/articles/images/u85ctg1srm7p41120191113.jpg',
-                'https://bensonyin.com/main/wp-content/uploads/25-6940-post/paris_prewedding-1024x683.jpg',
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAKlwFJ-qsifFFTJT3zhssmE8fKXauDV4A8g&s',
-                'https://media.weddingz.in/images/6f798ce01007e6623c18d9c2881def1d/black-and-white-pre-wedding-shoot-romantic-creative-ideas-goa2.jpg',
+                `https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08483-Edit.jpg`,
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08467-Edit.jpg',
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08457-Edit.jpg',
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08434-Edit.jpg',
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08433-Edit.jpg',
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08429-Edit.jpg',
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08426-2.jpg',
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08385-Edit.jpg',
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08485.jpg',
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08489-Edit.jpg',
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08499-Edit.jpg',
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08502-Edit.jpg',
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08518-Edit.jpg',
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08529-Edit.jpg',
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08550-2.jpg',
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08550-2.jpg',
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08550.jpg',
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08601-Edit.jpg',
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08609-Edit.jpg',
               ].map((photo, index) => (
                 <motion.div
                   key={index}
@@ -185,7 +198,7 @@ export default function Home() {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.05 }}
-                  className="aspect-square rounded-lg overflow-hidden cursor-pointer relative group"
+                  className="aspect-square rounded-lg overflow-hidden cursor-pointer relative group bg-white p-2 shadow-lg"
                 >
                   <img
                     src={photo}
@@ -217,8 +230,8 @@ export default function Home() {
 
         <MusicPlayer
             audioUrl="/best_part.mp3"
-            songTitle="Take Me to Your Heart"
-            artist="Michael Learn to Rock"
+            songTitle="Best Part"
+            artist="Daniel Caesar"
             autoPlay={true}
         />
       
