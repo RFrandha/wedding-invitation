@@ -9,6 +9,12 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'f005.backblazeb2.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
   // Enable experimental features for Next.js 15

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import {Ampersand, Mail, Sparkles} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { theme, getCardOverlayStyle } from '@/lib/theme';
@@ -42,10 +43,13 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
       <div className="relative z-10 min-h-screen flex flex-col lg:flex-row">
         {/* Left side - Photo (2/3 on desktop, hidden on mobile) */}
         <div className="hidden lg:block lg:w-2/3 relative overflow-hidden">
-          <img
-            src="/cover2.jpg"
+          <Image
+            src="https://f005.backblazeb2.com/file/rv-prewed/pub-img/cover2.jpg"
             alt="Wedding couple"
-            className="absolute inset-0 w-full h-full object-cover"
+            fill
+            priority
+            className="object-cover"
+            sizes="66vw"
           />
           {/* Gradient overlay on photo */}
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-primary-800/60" style={{ background: `linear-gradient(to right, transparent 0%, transparent 70%, ${theme.colors.primary[800]} 100%)` }} />

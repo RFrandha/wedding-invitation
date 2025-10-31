@@ -1,7 +1,8 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Copy, Check, Gift } from 'lucide-react';
+import { Copy, Check } from 'lucide-react';
 import { useState } from 'react';
 import { theme, hexToRgba, getBgColor } from '@/lib/theme';
 import { Card } from '@/components/ui/card';
@@ -15,13 +16,13 @@ export default function GiftSection() {
       bank: 'BCA',
       accountNumber: '1234567890',
       accountName: 'Restow Frandha',
-      logo: '/bca.jpeg',
+      logo: 'https://f005.backblazeb2.com/file/rv-prewed/pub-img/bca.jpeg',
     },
     {
       bank: 'BNI',
       accountNumber: '0987654321',
       accountName: 'Verina Mardhatillah',
-      logo: '/bni.jpeg',
+      logo: 'https://f005.backblazeb2.com/file/rv-prewed/pub-img/bni.jpeg',
     },
   ];
 
@@ -88,7 +89,7 @@ export default function GiftSection() {
                 <div className="relative z-10">
                   {/* Bank Logo Placeholder */}
                   <motion.div 
-                    className="w-24 h-24 mx-auto mb-8 rounded-lg flex items-center justify-center"
+                    className="w-24 h-24 mx-auto mb-8 rounded-lg flex items-center justify-center relative overflow-hidden"
                     style={{ ...getBgColor(theme.colors.primary[600], 0.5) }}
                     whileHover={{
                       scale: 1.05,
@@ -100,18 +101,12 @@ export default function GiftSection() {
                       }
                     }}
                   >
-                    <img 
+                    <Image 
                       src={account.logo} 
                       alt={`${account.bank} logo`}
-                      className="w-full h-full object-contain"
-                      onError={(e) => {
-                        // Fallback to text if image fails to load
-                        e.currentTarget.style.display = 'none';
-                        const parent = e.currentTarget.parentElement;
-                        if (parent) {
-                          parent.innerHTML = `<span class="text-2xl font-bold text-white">${account.bank}</span>`;
-                        }
-                      }}
+                      fill
+                      className="object-contain p-2"
+                      sizes="96px"
                     />
                   </motion.div>
 

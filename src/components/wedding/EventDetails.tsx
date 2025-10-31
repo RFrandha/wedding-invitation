@@ -9,7 +9,7 @@ export default function EventDetails() {
   const events = [
     {
       title: 'Akad Nikah',
-      date: 'Minggu, 06 Desember 2025',
+      date: 'Sabtu, 06 Desember 2025',
       time: '09.00 - 10.00 WIB',
       venue: 'Balai prajurit Pulanggeni Pekanbaru',
       address: 'Jl. Perhentian Marpoyan, Marpoyan Damai, Pekanbaru',
@@ -18,7 +18,7 @@ export default function EventDetails() {
     },
     {
       title: 'Resepsi',
-      date: 'Minggu, 06 Desember 2025',
+      date: 'Sabtu, 06 Desember 2025',
       time: '11.00 - 17.00 WIB',
       venue: 'Balai prajurit Pulanggeni Pekanbaru',
       address: 'Jl. Perhentian Marpoyan, Marpoyan Damai, Pekanbaru',

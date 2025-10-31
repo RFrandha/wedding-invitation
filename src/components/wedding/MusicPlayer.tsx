@@ -1,7 +1,8 @@
 'use client'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
+import Image from 'next/image'
+import { Play, Pause, Music2 as Music, X, Volume2, VolumeX } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Music, Play, Pause, Volume2, VolumeX, X } from 'lucide-react'
 import { theme, getBgColor, hexToRgba } from '@/lib/theme'
 interface MusicPlayerProps {
     audioUrl?: string
@@ -12,10 +13,10 @@ interface MusicPlayerProps {
 }
 
 export default function MusicPlayer({
-                                        audioUrl = '/audio/wedding-song.mp3',
-                                        songTitle = 'Perfect',
-                                        artist = 'Ed Sheeran',
-                                        albumCover = '/album-covers/best-part.jpeg',
+                                        audioUrl = '/audio/best_part.mp3',
+                                        songTitle = 'Best Part',
+                                        artist = 'Daniel Caesar',
+                                        albumCover = 'https://f005.backblazeb2.com/file/rv-prewed/pub-img/best-part.jpeg',
                                         autoPlay = false
                                     }: MusicPlayerProps) {
     const [isPlaying, setIsPlaying] = useState(false)
@@ -246,10 +247,12 @@ export default function MusicPlayer({
                                 {/* Album Cover */}
                                 <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 shadow-lg">
                                     {/* Album cover image */}
-                                    <img 
+                                    <Image 
                                         src={albumCover} 
                                         alt={`${songTitle} by ${artist}`}
-                                        className="w-full h-full object-cover"
+                                        fill
+                                        className="object-cover"
+                                        sizes="64px"
                                     />
                                 </div>
 

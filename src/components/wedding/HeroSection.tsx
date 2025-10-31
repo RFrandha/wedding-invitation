@@ -59,7 +59,7 @@ export default function HeroSection() {
                 <div className="absolute inset-0 rounded-full blur-md transform scale-110" style={getBgColor(theme.colors.secondary[400], 0.3)}></div>
                 <Avatar className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-4 border-4 border-white/80 shadow-2xl relative z-10">
                   <AvatarImage
-                      src="/verina.jpg"
+                      src="https://f005.backblazeb2.com/file/rv-prewed/pub-img/verina.jpg"
                       alt="Verina Mardhatillah"
                       className="object-cover object-[50%_10%]"
                   />
@@ -105,7 +105,7 @@ export default function HeroSection() {
                 <div className="absolute inset-0 rounded-full blur-md transform scale-110" style={getBgColor(theme.colors.secondary[500], 0.2)}></div>
                 <Avatar className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-4 border-4 border-white/80 shadow-2xl relative z-10">
                   <AvatarImage
-                      src="/restow.jpg"
+                      src="https://f005.backblazeb2.com/file/rv-prewed/pub-img/restow.jpg"
                       alt="Restow Frandha"
                       className="object-cover object-[70%_15%]"
                   />

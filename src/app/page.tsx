@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ArrowUp, Sparkles, Heart, Star } from 'lucide-react'
 import CoverPage from '@/components/wedding/CoverPage'
@@ -189,25 +190,21 @@ export default function Home() {
             {/* Mobile Photo Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {[
-                `https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08483-Edit.jpg`,
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08467-Edit.jpg',
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08601-Edit.jpg',
                 'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08457-Edit.jpg',
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08434-Edit.jpg',
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08609-Edit.jpg',
                 'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08433-Edit.jpg',
+                `https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08483-Edit.jpg`,
                 'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08429-Edit.jpg',
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08426-2.jpg',
                 'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08385-Edit.jpg',
                 'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08485.jpg',
                 'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08489-Edit.jpg',
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08499-Edit.jpg',
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08434-Edit.jpg',
                 'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08502-Edit.jpg',
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08426-2.jpg',
                 'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08518-Edit.jpg',
+                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08550-2.jpg',
                 'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08529-Edit.jpg',
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08550-2.jpg',
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08550-2.jpg',
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08550.jpg',
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08601-Edit.jpg',
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08609-Edit.jpg',
               ].map((photo, index) => (
                 <motion.div
                   key={index}
@@ -216,14 +213,17 @@ export default function Home() {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.05 }}
-                  className="aspect-square rounded-lg overflow-hidden cursor-pointer relative group bg-white p-2 shadow-lg"
+                  className="aspect-square rounded-lg overflow-hidden cursor-pointer relative group shadow-lg"
                 >
-                  <img
-                    src={photo}
-                    alt={`Pre-wedding photo ${index + 1}`}
-                    className="w-full h-full object-cover rounded-lg transition-all duration-300 group-hover:brightness-110"
-                    loading="lazy"
-                  />
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={photo}
+                      alt={`Pre-wedding photo ${index + 1}`}
+                      fill
+                      className="object-cover transition-all duration-300 group-hover:brightness-110"
+                      sizes="(max-width: 640px) 50vw, 33vw"
+                    />
+                  </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </motion.div>
               ))}

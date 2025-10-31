@@ -1,7 +1,8 @@
 'use client'
 import { motion } from 'framer-motion'
-import { useState, useEffect, useCallback, useRef } from 'react'
-import { theme, hexToRgba, getBgColor } from '@/lib/theme'
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
+import Image from 'next/image'
+import { theme, hexToRgba } from '@/lib/theme'
 
 interface PhotoMosaicProps {
   side: 'left' | 'right'
@@ -22,12 +23,11 @@ export default function PhotoMosaic({ side }: PhotoMosaicProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const [displayedPhotos, setDisplayedPhotos] = useState<PhotoItem[]>([])
   const [isLoading, setIsLoading] = useState(false)
-  const [scrollProgress, setScrollProgress] = useState(0)
   const lastLoadTimeRef = useRef<number>(0)
   const displayedPhotosRef = useRef<PhotoItem[]>([])
 
   // Master photo list - local prewed photos
-  const photos = [
+  const photos = useMemo(() => [
     `https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08483-Edit.jpg`,
     'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08467-Edit.jpg',
     'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08457-Edit.jpg',
@@ -47,21 +47,21 @@ export default function PhotoMosaic({ side }: PhotoMosaicProps) {
     'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08550.jpg',
     'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08601-Edit.jpg',
     'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08609-Edit.jpg',
-  ]
+  ], [])
 
   // Available shapes for collage
-  const shapes: Array<'square' | 'circle' | 'rectangle'> = [
+  const shapes = useMemo<Array<'square' | 'circle' | 'rectangle'>>(() => [
     'square', 'circle', 'rectangle'
-  ]
+  ], [])
   
   // Size variations
-  const sizes: Array<'small' | 'medium' | 'large'> = ['small', 'medium', 'large']
+  const sizes = useMemo<Array<'small' | 'medium' | 'large'>>(() => ['small', 'medium', 'large'], [])
   
   // Available aspect ratios for rectangles
-  const aspectRatios = [
+  const aspectRatios = useMemo(() => [
     'aspect-square', 'aspect-[4/3]', 'aspect-[3/4]', 
     'aspect-[3/2]', 'aspect-[2/3]', 'aspect-[16/9]'
-  ]
+  ], [])
 
   // Create randomized photo item with shape variety and stable position
   const createPhotoItem = useCallback((url: string, index: number): PhotoItem => {
@@ -95,7 +95,7 @@ export default function PhotoMosaic({ side }: PhotoMosaicProps) {
       top: topPosition,
       left: leftPosition
     }
-  }, [])
+  }, [aspectRatios, shapes, sizes])
 
   // Get random photos from the master list - with infinite repeat capability
   const getRandomPhotos = useCallback((count: number, excludeUrls: string[] = []): string[] => {
@@ -168,6 +168,7 @@ export default function PhotoMosaic({ side }: PhotoMosaicProps) {
     const photoItems = initialPhotos.map((url, idx) => createPhotoItem(url, idx))
     setDisplayedPhotos(photoItems)
     displayedPhotosRef.current = photoItems
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // Load more photos on scroll
@@ -210,7 +211,6 @@ export default function PhotoMosaic({ side }: PhotoMosaicProps) {
         
         // Calculate scroll progress (0 to 1)
         const progress = maxScroll > 0 ? scrolled / maxScroll : 0
-        setScrollProgress(progress)
         
         // Load more photos when user scrolls down (fewer trigger points)
         if (progress > 0.5 || progress > 0.8) {
@@ -224,7 +224,8 @@ export default function PhotoMosaic({ side }: PhotoMosaicProps) {
       window.removeEventListener('scroll', handleScroll)
       if (scrollTimeout) clearTimeout(scrollTimeout)
     }
-  }, [loadMorePhotos])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   // Keep ref in sync with state
   return (
@@ -289,14 +290,14 @@ export default function PhotoMosaic({ side }: PhotoMosaicProps) {
               }}
             >
               <div className={`w-full h-full ${getShapeClass(photoItem.shape)} overflow-hidden relative`}>
-                <img
+                <Image
                   src={photoItem.url}
                   alt={`Pre-wedding photo ${index + 1}`}
-                  className={`w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 ${
+                  fill
+                  className={`object-cover transition-transform duration-300 group-hover:scale-105 ${
                     isDiamond ? '-rotate-45' : ''
                   }`}
-                  loading="lazy"
-                  decoding="async"
+                  sizes="320px"
                 />
                 
                 {/* Overlay gradient */}
