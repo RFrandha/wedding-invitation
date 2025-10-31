@@ -60,13 +60,13 @@ export default function WishesDisplay({ refreshTrigger = 0 }: WishesDisplayProps
   }
 
   return (
-    <section className="py-20 px-4" style={getBgColor(theme.colors.primary[800])}>
+    <section className="pt-10 pb-20 px-4" style={getBgColor(theme.colors.primary[800])}>
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.05 }}
           className="text-center mb-16"
         >
           <DecorativeLine variant="with-dots" className="mb-6" />
@@ -103,7 +103,7 @@ export default function WishesDisplay({ refreshTrigger = 0 }: WishesDisplayProps
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.05 }}
             className="rounded-3xl shadow-2xl overflow-hidden backdrop-blur-md"
             style={{ ...getBgColor(theme.colors.primary[700], 0.3), borderColor: hexToRgba(theme.colors.secondary[500], 0.3), borderWidth: '1px' }}
           >

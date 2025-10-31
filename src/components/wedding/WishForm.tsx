@@ -79,13 +79,13 @@ export default function WishForm({ onWishSubmitted }: WishFormProps) {
   }
 
   return (
-    <section className="py-20 px-4" style={getBgColor(theme.colors.primary[800])}>
+    <section className="pt-20 pb-10 px-4" style={getBgColor(theme.colors.primary[800])}>
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.05 }}
           className="text-center mb-16"
         >
           <DecorativeLine variant="with-dots" className="mb-6" />
@@ -105,7 +105,7 @@ export default function WishForm({ onWishSubmitted }: WishFormProps) {
           initial={{ opacity: 0, y: 100, scale: 0.95 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.05 }}
           className="max-w-2xl mx-auto"
         >
           <div className="backdrop-blur-md rounded-3xl shadow-2xl p-8 md:p-12 relative overflow-hidden" style={{ ...getBgColor(theme.colors.primary[700], 0.3), borderColor: hexToRgba(theme.colors.secondary[500], 0.3), borderWidth: '1px' }}>
@@ -146,7 +146,7 @@ export default function WishForm({ onWishSubmitted }: WishFormProps) {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.3 }}
                 >
                   <Label htmlFor="name" className="text-white font-light">
                     Nama Anda
@@ -167,7 +167,7 @@ export default function WishForm({ onWishSubmitted }: WishFormProps) {
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.3 }}
                 >
                   <Label htmlFor="message" className="text-white font-light">
                     Ucapan & Doa
@@ -189,7 +189,7 @@ export default function WishForm({ onWishSubmitted }: WishFormProps) {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.3 }}
                   className="flex justify-center"
                 >
                   <Button

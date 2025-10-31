@@ -11,6 +11,7 @@ import LocationMap from '@/components/wedding/LocationMap'
 import GiftSection from '@/components/wedding/GiftSection'
 import WishesSection from '@/components/wedding/WishesSection'
 import PhotoMosaic from '@/components/wedding/PhotoMosaic'
+import MobilePhotoGallery from '@/components/wedding/MobilePhotoGallery'
 import { theme, hexToRgba, getBgColor } from '@/lib/theme'
 import MusicPlayer from '@/components/wedding/MusicPlayer'
 
@@ -69,15 +70,15 @@ export default function Home() {
   }
   
   return (
-    <main className="min-h-screen relative overflow-hidden scroll-smooth" style={getBgColor(theme.colors.primary[800])}>
-      {/* Photo Mosaic Sidebars - Hidden on mobile */}
+    <main className="min-h-screen relative overflow-hidden scroll-smooth" style={getBgColor(theme.colors.primary[900])}>
+      {/* Photo Mosaic Sidebars - Hidden on mobile, darker background */}
       <div className="hidden xl:block">
         <PhotoMosaic side="left" />
         <PhotoMosaic side="right" />
       </div>
 
-      {/* Continuous Flow Layout Container */}
-      <div className="relative space-y-0 xl:mx-80">
+      {/* Continuous Flow Layout Container - Elevated effect */}
+      <div className="relative space-y-0 xl:mx-80 xl:shadow-2xl xl:border-x" style={{ borderColor: hexToRgba(theme.colors.secondary[500], 0.2) }}>
         {/* Hero Section */}
         <HeroSection />
 
@@ -86,13 +87,12 @@ export default function Home() {
             initial={{ opacity: 0, y: 100, scale: 0.8 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ 
-              duration: 1.2, 
-              delay: 0.2,
+              duration: 0.8, 
               type: "spring",
               stiffness: 60,
               damping: 15
             }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
             className="relative z-20"
           >
             <EventDetails />
@@ -103,13 +103,12 @@ export default function Home() {
             initial={{ opacity: 0, y: 120, scale: 0.7 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ 
-              duration: 1.4, 
-              delay: 0.4,
+              duration: 0.9, 
               type: "spring",
               stiffness: 50,
               damping: 12
             }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
             className="relative z-30"
           >
             <CountdownTimer targetDate={config.weddingDate} />
@@ -120,13 +119,12 @@ export default function Home() {
             initial={{ opacity: 0, y: 150, scale: 0.6, rotateX: -15 }}
             whileInView={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
             transition={{ 
-              duration: 1.6, 
-              delay: 0.6,
+              duration: 1.0, 
               type: "spring",
               stiffness: 45,
               damping: 10
             }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.1 }}
             className="relative z-40"
           >
             <LocationMap />
@@ -137,13 +135,12 @@ export default function Home() {
             initial={{ opacity: 0, y: 175, scale: 0.55 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ 
-              duration: 1.7, 
-              delay: 0.7,
+              duration: 1.0, 
               type: "spring",
               stiffness: 42,
               damping: 9
             }}
-            viewport={{ once: true, amount: 0.15 }}
+            viewport={{ once: true, amount: 0.1 }}
             className="relative z-45"
           >
             <GiftSection />
@@ -154,8 +151,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 200, scale: 0.5 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ 
-              duration: 1.8, 
-              delay: 0.8,
+              duration: 1.0, 
               type: "spring",
               stiffness: 40,
               damping: 8
@@ -166,69 +162,8 @@ export default function Home() {
             <WishesSection />
           </motion.div>
 
-          {/* Mobile Photo Mosaic - Only visible on mobile */}
-          <motion.div
-            initial={{ opacity: 0, y: 250, scale: 0.3 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ 
-              duration: 2.0, 
-              delay: 1.0,
-              type: "spring",
-              stiffness: 35,
-              damping: 6
-            }}
-            viewport={{ once: true, amount: 0.1 }}
-              className="lg:hidden relative z-60 px-4 py-20"
-            >
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-serif font-light text-white mb-2">
-                  Our Memories
-                </h3>
-                <div className="h-px" style={{ background: `linear-gradient(to right, transparent, ${hexToRgba(theme.colors.secondary[400], 0.5)}, transparent)` }} />
-              </div>
-            
-            {/* Mobile Photo Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {[
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08601-Edit.jpg',
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08457-Edit.jpg',
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08609-Edit.jpg',
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08433-Edit.jpg',
-                `https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08483-Edit.jpg`,
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08429-Edit.jpg',
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08385-Edit.jpg',
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08485.jpg',
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08489-Edit.jpg',
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08434-Edit.jpg',
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08502-Edit.jpg',
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08426-2.jpg',
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08518-Edit.jpg',
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08550-2.jpg',
-                'https://f005.backblazeb2.com/file/rv-prewed/prewed-album/ZEN08529-Edit.jpg',
-              ].map((photo, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.05 }}
-                  className="aspect-square rounded-lg overflow-hidden cursor-pointer relative group shadow-lg"
-                >
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={photo}
-                      alt={`Pre-wedding photo ${index + 1}`}
-                      fill
-                      className="object-cover transition-all duration-300 group-hover:brightness-110"
-                      sizes="(max-width: 640px) 50vw, 33vw"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+          {/* Mobile Photo Gallery - Only visible on mobile */}
+          <MobilePhotoGallery />
         </div>
 
       {/* Floating Scroll to Top Button */}

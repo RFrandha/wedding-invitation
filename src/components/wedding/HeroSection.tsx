@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import Image from 'next/image'
 import { DecorativeLine } from '@/components/ui/decorative-line'
 import { theme, getBgColor } from '@/lib/theme'
 
@@ -57,14 +57,17 @@ export default function HeroSection() {
                   className="relative"
               >
                 <div className="absolute inset-0 rounded-full blur-md transform scale-110" style={getBgColor(theme.colors.secondary[400], 0.3)}></div>
-                <Avatar className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-4 border-4 border-white/80 shadow-2xl relative z-10">
-                  <AvatarImage
+                <div className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-4 border-4 border-white/80 shadow-2xl relative z-10 rounded-full overflow-hidden">
+                  <Image
                       src="https://f005.backblazeb2.com/file/rv-prewed/pub-img/verina.jpg"
                       alt="Verina Mardhatillah"
-                      className="object-cover object-[50%_10%]"
+                      width={160}
+                      height={160}
+                      priority
+                      className="object-cover object-[50%_10%] w-full h-full"
+                      sizes="(max-width: 768px) 128px, 160px"
                   />
-                  <AvatarFallback className="text-2xl font-serif" style={{ ...getBgColor(theme.colors.secondary[100]), color: theme.colors.secondary[700] }}>V</AvatarFallback>
-                </Avatar>
+                </div>
               </motion.div>
 
               <motion.div
@@ -103,14 +106,17 @@ export default function HeroSection() {
                   className="relative"
               >
                 <div className="absolute inset-0 rounded-full blur-md transform scale-110" style={getBgColor(theme.colors.secondary[500], 0.2)}></div>
-                <Avatar className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-4 border-4 border-white/80 shadow-2xl relative z-10">
-                  <AvatarImage
+                <div className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-4 border-4 border-white/80 shadow-2xl relative z-10 rounded-full overflow-hidden">
+                  <Image
                       src="https://f005.backblazeb2.com/file/rv-prewed/pub-img/restow.jpg"
                       alt="Restow Frandha"
-                      className="object-cover object-[70%_15%]"
+                      width={160}
+                      height={160}
+                      priority
+                      className="object-cover object-[70%_15%] w-full h-full"
+                      sizes="(max-width: 768px) 128px, 160px"
                   />
-                  <AvatarFallback className="text-2xl font-serif" style={{ ...getBgColor(theme.colors.secondary[100]), color: theme.colors.secondary[700] }}>R</AvatarFallback>
-                </Avatar>
+                </div>
               </motion.div>
 
               <motion.div

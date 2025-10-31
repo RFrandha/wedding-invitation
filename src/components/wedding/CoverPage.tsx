@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import {Ampersand, Mail, Sparkles} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { theme, getCardOverlayStyle } from '@/lib/theme';
@@ -28,16 +29,27 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
 
   return (
     <div className="min-h-screen relative overflow-hidden" style={{ backgroundColor: theme.colors.primary[800] }}>
-      {/* Background image for mobile - more visible */}
-      <div 
-        className="lg:hidden absolute inset-0 bg-cover bg-center"
-        style={{ 
-          backgroundImage: 'url(/hand1.jpg)',
-          opacity: 0.35
+      {/* Background image for mobile - blur animation during fade-in */}
+      <motion.div 
+        initial={{ opacity: 0, filter: 'blur(0px)' }}
+        animate={{ opacity: 1, filter: 'blur(8px)' }}
+        transition={{ 
+          opacity: { duration: 0.5 },
+          filter: { duration: 0.8, delay: 0.3 }
         }}
-      />
+        className="lg:hidden absolute inset-0"
+      >
+        <Image
+          src="https://f005.backblazeb2.com/file/rv-prewed/pub-img/cover2.jpg"
+          alt="Wedding background"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+      </motion.div>
       {/* Dark overlay to maintain readability */}
-      <div className="lg:hidden absolute inset-0 bg-black/40" />
+      <div className="lg:hidden absolute inset-0 bg-black/50" />
       
       {/* Desktop Layout: Photo left (2/3), Card right (1/3) */}
       <div className="relative z-10 min-h-screen flex flex-col lg:flex-row">
@@ -57,7 +69,11 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
 
         {/* Right side - Card (1/3 on desktop, full width on mobile) */}
         <div className="relative z-20 lg:w-1/3 min-h-screen flex items-center justify-center p-6 lg:p-8">
-          <div className="max-w-lg w-full text-center text-white space-y-8 bg-black/20 backdrop-blur-md rounded-2xl p-8 border border-white/10 shadow-2xl"
+          <motion.div 
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="max-w-lg w-full text-center text-white space-y-8 bg-black/20 backdrop-blur-md rounded-2xl p-8 border border-white/10 shadow-2xl"
             style={getCardOverlayStyle()}
           >
           
@@ -127,7 +143,7 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
               Kepada Yth.
             </p>
             <div className="space-y-2">
-              <p className={`text-2xl font-serif font-semibold ${theme.gradients.textPrimary} bg-clip-text drop-shadow-md`}>
+              <p className={`text-lg sm:text-xl md:text-2xl font-serif font-semibold ${theme.gradients.textPrimary} bg-clip-text drop-shadow-md break-words px-2`}>
                 {invitedName}
               </p>
               {/* Themed underline effect */}
@@ -172,7 +188,7 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
             <div className="h-px flex-1" style={{ background: `linear-gradient(to right, transparent, ${theme.colors.secondary[400]}80, transparent)` }} />
           </div>
 
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

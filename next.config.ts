@@ -20,13 +20,13 @@ const nextConfig = {
   // Enable experimental features for Next.js 15
   experimental: {
     ppr: false, // Partial Pre-rendering (optional)
-    reactCompiler: false, // React Compiler (optional)
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
+  },
+  // Turbopack configuration (stable in Next.js 15)
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
       },
     },
   },

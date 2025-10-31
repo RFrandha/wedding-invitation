@@ -118,7 +118,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           {/* Top Decorative Element */}
           <DecorativeLine variant="with-dots" className="mb-6" />
@@ -136,7 +136,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
           >
             <Card className="p-8 text-white border-0 shadow-2xl" style={getBgColor(theme.colors.secondary[500])}>
               <h3 className="text-2xl font-serif font-light mb-2">🎉 Hari Bahagia Telah Tiba! 🎉</h3>
@@ -151,7 +151,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.1 }}
                 whileHover={{
                   scale: 1.08,
                   y: -8,
@@ -189,7 +189,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.5 }}
           className="mt-12"
         >
           <p className="text-white/60 font-light">
