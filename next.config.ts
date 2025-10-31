@@ -11,7 +11,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'f005.backblazeb2.com',
+        hostname: 'photos.rever.cyou',
         port: '',
         pathname: '/**',
       },

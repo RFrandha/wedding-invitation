@@ -16,13 +16,13 @@ export default function GiftSection() {
       bank: 'BCA',
       accountNumber: '1234567890',
       accountName: 'Restow Frandha',
-      logo: 'https://f005.backblazeb2.com/file/rv-prewed/pub-img/bca.jpeg',
+      logo: 'https://photos.rever.cyou/pub-img/bca.jpeg',
     },
     {
       bank: 'BNI',
       accountNumber: '0987654321',
       accountName: 'Verina Mardhatillah',
-      logo: 'https://f005.backblazeb2.com/file/rv-prewed/pub-img/bni.jpeg',
+      logo: 'https://photos.rever.cyou/pub-img/bni.jpeg',
     },
   ];
 

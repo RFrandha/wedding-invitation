@@ -16,7 +16,7 @@ export default function MusicPlayer({
                                         audioUrl = '/audio/best_part.mp3',
                                         songTitle = 'Best Part',
                                         artist = 'Daniel Caesar',
-                                        albumCover = 'https://f005.backblazeb2.com/file/rv-prewed/pub-img/best-part.jpeg',
+                                        albumCover = 'https://photos.rever.cyou/pub-img/best-part.jpeg',
                                         autoPlay = false
                                     }: MusicPlayerProps) {
     const [isPlaying, setIsPlaying] = useState(false)
