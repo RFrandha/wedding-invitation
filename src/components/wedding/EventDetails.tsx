@@ -52,7 +52,7 @@ export default function EventDetails() {
           <DecorativeLine variant="with-ornament" className="mt-6" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto px-4 sm:px-0">
           {events.map((event, index) => (
             <motion.div
               key={event.title}
@@ -80,45 +80,29 @@ export default function EventDetails() {
                 
                 
                 <div className="relative z-10">
-                  <motion.div 
-                    className="text-5xl mb-8 filter drop-shadow-lg"
-                    whileHover={{
-                      scale: 1.1,
-                      rotateZ: 5,
-                      y: -5,
-                      transition: {
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 8
-                      }
-                    }}
-                  >
-                    {event.icon}
-                  </motion.div>
-                  
-                  <h3 className="text-3xl font-serif font-medium text-white mb-6 tracking-wide">
+                  <h3 className="text-3xl font-serif font-medium text-white mb-6 tracking-wide text-center">
                     {event.title}
                   </h3>
                   
                   {/* Decorative line under title */}
                   <div className="h-0.5 rounded-full mx-auto w-16 mb-8" style={getBgColor(theme.colors.secondary[400])} />
                   
-                  <div className="space-y-6 text-white/90">
-                    <div className="flex items-center justify-center gap-3 transition-colors duration-300">
+                  <div className="space-y-6 text-white/90 max-w-xs mx-auto">
+                    <div className="flex items-center gap-3 transition-colors duration-300">
                       <div className="p-2 rounded-full text-white shadow-lg" style={getBgColor(theme.colors.secondary[500])}>
                         <Calendar className="w-4 h-4" />
                       </div>
                       <span className="font-light">{event.date}</span>
                     </div>
                     
-                    <div className="flex items-center justify-center gap-3 transition-colors duration-300">
+                    <div className="flex items-center gap-3 transition-colors duration-300">
                       <div className="p-2 rounded-full text-white shadow-lg" style={getBgColor(theme.colors.secondary[500])}>
                         <Clock className="w-4 h-4" />
                       </div>
                       <span className="font-light">{event.time}</span>
                     </div>
                     
-                    <div className="flex items-start justify-center gap-3 transition-colors duration-300">
+                    <div className="flex items-start gap-3 transition-colors duration-300">
                       <div className="p-2 rounded-full text-white shadow-lg mt-0.5" style={getBgColor(theme.colors.secondary[500])}>
                         <MapPin className="w-4 h-4" />
                       </div>

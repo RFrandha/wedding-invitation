@@ -297,7 +297,7 @@ export default function Home() {
               </motion.div>
               
               {/* Family Names */}
-              <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto mb-12">
+              <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto mb-12 px-4 sm:px-0">
                 <motion.div
                     whileHover={{ y: -5, scale: 1.02 }}
                     className="backdrop-blur-md rounded-2xl p-6"
@@ -322,7 +322,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="max-w-4xl mx-auto"
+                className="max-w-4xl mx-auto px-4 sm:px-0"
               >
                 <div className="backdrop-blur-lg rounded-3xl p-8 md:p-12 relative overflow-hidden" style={{ ...getBgColor('white', 0.05), borderWidth: '1px', borderColor: hexToRgba(theme.colors.secondary[500], 0.2) }}>
                   <div className="absolute inset-0" style={getBgColor(theme.colors.secondary[600], 0.05)}></div>

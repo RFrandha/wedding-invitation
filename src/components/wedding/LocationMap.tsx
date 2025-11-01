@@ -47,7 +47,7 @@ export default function LocationMap() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true, amount: 0.1 }}
-          className="group"
+          className="group px-4 sm:px-0"
         >
           <Card className="overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500" style={{ ...getBgColor(theme.colors.primary[700], 0.3), backdropFilter: 'blur(12px)', borderColor: hexToRgba(theme.colors.secondary[500], 0.3) }}>
             {/* Embedded Google Maps */}

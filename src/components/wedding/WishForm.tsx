@@ -106,7 +106,7 @@ export default function WishForm({ onWishSubmitted }: WishFormProps) {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
           viewport={{ once: true, amount: 0.05 }}
-          className="max-w-2xl mx-auto"
+          className="max-w-2xl mx-auto px-4 sm:px-0"
         >
           <div className="backdrop-blur-md rounded-3xl shadow-2xl p-8 md:p-12 relative overflow-hidden" style={{ ...getBgColor(theme.colors.primary[700], 0.3), borderColor: hexToRgba(theme.colors.secondary[500], 0.3), borderWidth: '1px' }}>
             {/* Gradient overlay */}

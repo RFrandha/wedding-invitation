@@ -170,21 +170,24 @@ export default function MusicPlayer({
                   />
               </motion.button>
 
-              {/* Quick Play/Pause Mini Button */}
-              <motion.button
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.8 }}
-                onClick={togglePlay}
-                disabled={!isLoaded}
-                className="absolute -top-2 -right-2 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform disabled:opacity-50"
-              >
-                  {isPlaying ? (
-                    <Pause className="w-4 h-4" fill="currentColor" style={{ color: theme.colors.primary[600] }} />
-                  ) : (
-                    <Play className="w-4 h-4 ml-0.5" fill="currentColor" style={{ color: theme.colors.primary[600] }} />
-                  )}
-              </motion.button>
+              {/* Quick Play/Pause Mini Button - Hidden when expanded */}
+              {!isExpanded && (
+                <motion.button
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0, opacity: 0 }}
+                  transition={{ delay: 0.8 }}
+                  onClick={togglePlay}
+                  disabled={!isLoaded}
+                  className="absolute -top-2 -right-2 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform disabled:opacity-50"
+                >
+                    {isPlaying ? (
+                      <Pause className="w-4 h-4" fill="currentColor" style={{ color: theme.colors.primary[600] }} />
+                    ) : (
+                      <Play className="w-4 h-4 ml-0.5" fill="currentColor" style={{ color: theme.colors.primary[600] }} />
+                    )}
+                </motion.button>
+              )}
           </motion.div>
 
           {/* Expanded Player Panel - Compact */}
@@ -218,9 +221,9 @@ export default function MusicPlayer({
                           x: -20
                       }}
                       transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                      className="fixed bottom-6 left-24 z-50"
+                      className="fixed bottom-24 left-6 sm:left-24 sm:bottom-6 z-50 max-w-[calc(100vw-3rem)]"
                     >
-                        <div className="rounded-2xl shadow-2xl p-4 w-80 relative border overflow-hidden" style={{ ...getBgColor(theme.colors.primary[700], 0.3), backdropFilter: 'blur(12px)', borderColor: hexToRgba(theme.colors.secondary[500], 0.3) }}>
+                        <div className="rounded-2xl shadow-2xl p-2 sm:p-4 w-56 sm:w-80 relative border overflow-hidden" style={{ ...getBgColor(theme.colors.primary[700], 0.3), backdropFilter: 'blur(12px)', borderColor: hexToRgba(theme.colors.secondary[500], 0.3) }}>
                             {/* Subtle overlay */}
                             <div className="absolute inset-0" style={getBgColor(theme.colors.secondary[500], 0.05)}></div>
                             
@@ -243,9 +246,9 @@ export default function MusicPlayer({
                                 </button>
 
                             {/* Compact layout with album art and controls side by side */}
-                            <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-1.5 sm:gap-4">
                                 {/* Album Cover */}
-                                <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 shadow-lg">
+                                <div className="relative w-10 h-10 sm:w-16 sm:h-16 rounded-lg overflow-hidden flex-shrink-0 shadow-lg">
                                     {/* Album cover image */}
                                     <Image 
                                         src={albumCover} 
@@ -259,19 +262,19 @@ export default function MusicPlayer({
                                 {/* Song details and controls */}
                                 <div className="flex-1 min-w-0">
                                         {/* Song details */}
-                                        <div className="mb-2">
-                                            <h3 className="text-sm font-serif font-medium truncate text-white">
+                                        <div className="mb-0.5 sm:mb-2">
+                                            <h3 className="text-[10px] sm:text-sm font-serif font-medium truncate text-white leading-tight">
                                                 {songTitle}
                                             </h3>
-                                            <p className="text-xs truncate text-white/70">
+                                            <p className="text-[9px] sm:text-xs truncate text-white/70">
                                                 {artist}
                                             </p>
                                         </div>
 
                                     {/* Progress bar */}
                                     {isLoaded && (
-                                      <div className="mb-2">
-                                          <div className="relative h-1.5 rounded-full overflow-hidden mb-1" style={{ backgroundColor: theme.colors.neutral[200] }}>
+                                      <div className="mb-0.5 sm:mb-2">
+                                          <div className="relative h-0.5 sm:h-1.5 rounded-full overflow-hidden mb-0.5 sm:mb-1" style={{ backgroundColor: theme.colors.neutral[200] }}>
                                               <motion.div
                                                 className="absolute inset-y-0 left-0 rounded-full"
                                                 style={{
@@ -289,7 +292,7 @@ export default function MusicPlayer({
                                                 className="absolute inset-0 w-full opacity-0 cursor-pointer z-10"
                                               />
                                           </div>
-                                          <div className="flex items-center justify-between text-xs text-white/60">
+                                          <div className="flex items-center justify-between text-[8px] sm:text-xs text-white/60">
                                               <span>{formatTime(currentTime)}</span>
                                               <span>{formatTime(duration)}</span>
                                           </div>
@@ -297,35 +300,35 @@ export default function MusicPlayer({
                                     )}
 
                                     {/* Controls */}
-                                    <div className="flex items-center gap-3">
+                                    <div className="flex items-center gap-1.5 sm:gap-3">
                                         {/* Play/Pause button */}
                                         <button
                                           onClick={togglePlay}
                                           disabled={!isLoaded}
-                                          className="w-8 h-8 rounded-full shadow transition-all duration-300 flex items-center justify-center disabled:opacity-50 flex-shrink-0"
+                                          className="w-6 h-6 sm:w-8 sm:h-8 rounded-full shadow transition-all duration-300 flex items-center justify-center disabled:opacity-50 flex-shrink-0"
                                           style={{
                                               background: `linear-gradient(to bottom right, ${theme.colors.primary[600]}, ${theme.colors.secondary[500]})`
                                           }}
                                         >
                                             {isPlaying ? (
-                                              <Pause className="w-4 h-4 text-white" fill="white" />
+                                              <Pause className="w-2.5 h-2.5 sm:w-4 sm:h-4 text-white" fill="white" />
                                             ) : (
-                                              <Play className="w-4 h-4 text-white ml-0.5" fill="white" />
+                                              <Play className="w-2.5 h-2.5 sm:w-4 sm:h-4 text-white ml-0.5" fill="white" />
                                             )}
                                         </button>
 
                                         {/* Volume control */}
-                                        <div className="flex items-center gap-2 flex-1">
+                                        <div className="flex items-center gap-0.5 sm:gap-2 flex-1">
                                             <button
                                               onClick={toggleMute}
-                                              className="w-6 h-6 rounded-full flex items-center justify-center transition-colors flex-shrink-0 text-white/70"
+                                              className="w-4 h-4 sm:w-6 sm:h-6 rounded-full flex items-center justify-center transition-colors flex-shrink-0 text-white/70"
                                               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = hexToRgba(theme.colors.neutral[100], 0.2)}
                                               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                                             >
                                                 {isMuted || volume === 0 ? (
-                                                  <VolumeX className="w-3.5 h-3.5" />
+                                                  <VolumeX className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5" />
                                                 ) : (
-                                                  <Volume2 className="w-3.5 h-3.5" />
+                                                  <Volume2 className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5" />
                                                 )}
                                             </button>
                                             <div className="flex-1">

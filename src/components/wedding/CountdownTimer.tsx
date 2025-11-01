@@ -144,7 +144,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
             </Card>
           </motion.div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 px-4 sm:px-0">
             {timeUnits.map((unit, index) => (
               <motion.div
                 key={unit.label}
