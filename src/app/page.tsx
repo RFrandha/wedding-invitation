@@ -182,9 +182,9 @@ export default function Home() {
       </motion.button>
 
         <MusicPlayer
-            audioUrl="/best_part.mp3"
-            songTitle="Best Part"
-            artist="Daniel Caesar"
+            audioUrl="https://photos.rever.cyou/pub-img/like_it_was_meant_to_be.mp3"
+            songTitle="Like It Was Meant To Be"
+            artist="Vira Talisa"
             autoPlay={true}
         />
       

@@ -97,7 +97,6 @@ export default function WishForm({ onWishSubmitted }: WishFormProps) {
             Berikan ucapan dan doa terbaik untuk perjalanan baru kami
           </p>
 
-          <DecorativeLine variant="with-ornament" className="mt-6" />
         </motion.div>
 
         {/* Wish Form */}

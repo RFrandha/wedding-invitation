@@ -13,16 +13,16 @@ interface MusicPlayerProps {
 }
 
 export default function MusicPlayer({
-                                        audioUrl = '/audio/best_part.mp3',
-                                        songTitle = 'Best Part',
-                                        artist = 'Daniel Caesar',
-                                        albumCover = 'https://photos.rever.cyou/pub-img/best-part.jpeg',
+                                        audioUrl = 'https://photos.rever.cyou/pub-img/like_it_was_meant_to_be.mp3',
+                                        songTitle = 'Like It Was Meant To be',
+                                        artist = 'Vira Talisa',
+                                        albumCover = 'https://photos.rever.cyou/pub-img/vira-talisa.jpeg',
                                         autoPlay = false
                                     }: MusicPlayerProps) {
     const [isPlaying, setIsPlaying] = useState(false)
     const [isMuted, setIsMuted] = useState(false)
     const [isExpanded, setIsExpanded] = useState(false)
-    const [volume, setVolume] = useState(0.1)
+    const [volume, setVolume] = useState(0.3)
     const [currentTime, setCurrentTime] = useState(0)
     const [duration, setDuration] = useState(0)
     const [isLoaded, setIsLoaded] = useState(false)

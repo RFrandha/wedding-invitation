@@ -1,4 +1,5 @@
 'use client'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
@@ -6,10 +7,36 @@ import { MapPin, Navigation } from 'lucide-react'
 import { DecorativeLine } from '@/components/ui/decorative-line'
 import { theme, hexToRgba, getBgColor } from '@/lib/theme'
 
+type Location = 'pekanbaru' | 'bukittinggi'
+
+interface LocationData {
+  name: string
+  address: string
+  mapUrl: string
+  embedUrl: string
+}
+
+const locations: Record<Location, LocationData> = {
+  pekanbaru: {
+    name: 'Balai Prajurit Pulanggeni',
+    address: 'Jl Perhentian Marpoyan, Marpoyan Damai, Pekanbaru',
+    mapUrl: 'https://maps.app.goo.gl/rSe2fwgKWjqESxmo6',
+    embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.689759923739!2d101.42348241151502!3d0.4599555637858805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5a91bceae6673%3A0x7b85002e85b38269!2sBalai%20Prajurit%20Pulanggeni!5e0!3m2!1sen!2sid!4v1755594749564!5m2!1sen!2sid'
+  },
+  bukittinggi: {
+    name: 'Bungo bed & breakfast workation',
+    address: 'Jl Irigasi No 7, Gulai Bancah, Bukittinggi, Sumatera Barat',
+    mapUrl: 'https://www.google.com/maps/place/Bungo+bed+%26+breakfast+workation/@-0.2888769,100.3729814,20z',
+    embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d333.73778397706116!2d100.37298139841779!3d-0.28887691886770844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd539d072d51fc7%3A0xcd227a1eecf18eaa!2sBungo%20bed%20%26%20breakfast%20workation!5e0!3m2!1sen!2sid!4v1763347671925!5m2!1sen!2sid'
+  }
+}
+
 export default function LocationMap() {
+  const [selectedLocation, setSelectedLocation] = useState<Location>('pekanbaru')
+  const currentLocation = locations[selectedLocation]
+
   const openGoogleMaps = () => {
-    const mapsUrl = "https://maps.app.goo.gl/rSe2fwgKWjqESxmo6"
-    window.open(mapsUrl, '_blank')
+    window.open(currentLocation.mapUrl, '_blank')
   }
 
   return (
@@ -38,8 +65,31 @@ export default function LocationMap() {
             Kami akan sangat bahagia jika Anda berkenan hadir dan memberikan doa restu di hari bahagia kami
           </p>
 
-          {/* Bottom Decorative Element */}
-          <DecorativeLine variant="with-ornament" className="mt-6" />
+          {/* Location Switcher */}
+          <div className="flex justify-center gap-3 mt-8">
+            <button
+              onClick={() => setSelectedLocation('pekanbaru')}
+              className={`px-6 py-2 rounded-full font-light tracking-wide transition-all duration-300 ${
+                selectedLocation === 'pekanbaru'
+                  ? 'text-white shadow-lg'
+                  : 'text-white/60 hover:text-white/80'
+              }`}
+              style={selectedLocation === 'pekanbaru' ? getBgColor(theme.colors.secondary[500]) : { backgroundColor: 'transparent', border: `1px solid ${hexToRgba(theme.colors.secondary[500], 0.3)}` }}
+            >
+              Pekanbaru
+            </button>
+            <button
+              onClick={() => setSelectedLocation('bukittinggi')}
+              className={`px-6 py-2 rounded-full font-light tracking-wide transition-all duration-300 ${
+                selectedLocation === 'bukittinggi'
+                  ? 'text-white shadow-lg'
+                  : 'text-white/60 hover:text-white/80'
+              }`}
+              style={selectedLocation === 'bukittinggi' ? getBgColor(theme.colors.secondary[500]) : { backgroundColor: 'transparent', border: `1px solid ${hexToRgba(theme.colors.secondary[500], 0.3)}` }}
+            >
+              Bukittinggi
+            </button>
+          </div>
         </motion.div>
 
         <motion.div
@@ -53,7 +103,8 @@ export default function LocationMap() {
             {/* Embedded Google Maps */}
             <div className="h-64 md:h-80 relative overflow-hidden">
               <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.689759923739!2d101.42348241151502!3d0.4599555637858805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5a91bceae6673%3A0x7b85002e85b38269!2sBalai%20Prajurit%20Pulanggeni!5e0!3m2!1sen!2sid!4v1755594749564!5m2!1sen!2sid"
+                  key={selectedLocation}
+                  src={currentLocation.embedUrl}
                   width="100%"
                   height="100%"
                   style={{border: 0, filter: 'grayscale(20%) sepia(10%) saturate(120%) hue-rotate(200deg)'}}
@@ -61,7 +112,7 @@ export default function LocationMap() {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className="rounded-t-lg"
-                  title="Balai Prajurit Pulanggeni Pekanbaru Location"
+                  title={`${currentLocation.name} Location`}
               />
 
               {/* Map overlay with location info */}
@@ -74,10 +125,10 @@ export default function LocationMap() {
                     </div>
                     <div className="text-left">
                       <h3 className="font-serif font-medium text-lg">
-                        Balai Prajurit Pulanggeni
+                        {currentLocation.name}
                       </h3>
                       <p className="text-sm opacity-90">
-                        Jl Perhentian Marpoyan, Marpoyan Damai, Pekanbaru
+                        {currentLocation.address}
                       </p>
                     </div>
                   </div>
@@ -119,6 +170,9 @@ export default function LocationMap() {
             </div>
           </Card>
         </motion.div>
+
+        {/* Bottom Decorative Element */}
+        <DecorativeLine variant="with-ornament" className="mt-6" />
       </div>
     </section>
   )

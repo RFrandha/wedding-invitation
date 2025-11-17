@@ -69,7 +69,6 @@ export default function WishesDisplay({ refreshTrigger = 0 }: WishesDisplayProps
           viewport={{ once: true, amount: 0.05 }}
           className="text-center mb-16"
         >
-          <DecorativeLine variant="with-dots" className="mb-6" />
 
           <h2 className="text-3xl md:text-4xl font-serif font-light tracking-wider text-white mb-4">
             Ucapan & Doa
@@ -77,8 +76,6 @@ export default function WishesDisplay({ refreshTrigger = 0 }: WishesDisplayProps
           <p className="text-white/80 font-light max-w-2xl mx-auto">
             Terima kasih atas ucapan dan doa yang telah diberikan
           </p>
-
-          <DecorativeLine variant="with-ornament" className="mt-6" />
         </motion.div>
 
         {/* Error Message */}
@@ -202,6 +199,7 @@ export default function WishesDisplay({ refreshTrigger = 0 }: WishesDisplayProps
           </motion.div>
         </div>
       </div>
+      <DecorativeLine variant="with-ornament" className="mt-6" />
     </section>
   )
 }

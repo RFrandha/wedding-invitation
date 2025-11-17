@@ -280,29 +280,25 @@ export default function PhotoMosaic({ side }: PhotoMosaicProps) {
             }}
           >
             
-            {/* Photo container with shape and gold border */}
+            {/* Photo container with shape */}
             <div 
               className={`w-full h-full ${getShapeClass(photoItem.shape)} overflow-hidden relative shadow-2xl`}
               style={{
-                background: theme.colors.secondary[400],
-                padding: '0px',
                 boxShadow: '0 15px 50px rgba(0,0,0,0.4), 0 5px 15px rgba(0,0,0,0.3)'
               }}
             >
-              <div className={`w-full h-full ${getShapeClass(photoItem.shape)} overflow-hidden relative`}>
-                <Image
-                  src={photoItem.url}
-                  alt={`Pre-wedding photo ${index + 1}`}
-                  fill
-                  className={`object-cover transition-transform duration-300 group-hover:scale-105 ${
-                    isDiamond ? '-rotate-45' : ''
-                  }`}
-                  sizes="320px"
-                />
-                
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
+              <Image
+                src={photoItem.url}
+                alt={`Pre-wedding photo ${index + 1}`}
+                fill
+                className={`object-cover transition-transform duration-300 group-hover:scale-105 ${
+                  isDiamond ? '-rotate-45' : ''
+                }`}
+                sizes="320px"
+              />
+              
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
               {/* Gold accent border on hover */}
               <div 

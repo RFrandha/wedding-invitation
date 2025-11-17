@@ -14,13 +14,13 @@ export default function GiftSection() {
   const accounts = [
     {
       bank: 'BCA',
-      accountNumber: '1234567890',
+      accountNumber: '8691669181',
       accountName: 'Restow Frandha',
       logo: 'https://photos.rever.cyou/pub-img/bca.jpeg',
     },
     {
       bank: 'BNI',
-      accountNumber: '0987654321',
+      accountNumber: '0458116505',
       accountName: 'Verina Mardhatillah',
       logo: 'https://photos.rever.cyou/pub-img/bni.jpeg',
     },
@@ -55,9 +55,6 @@ export default function GiftSection() {
           <p className="text-white/80 font-light max-w-2xl mx-auto">
             Your presence is the greatest gift, but if you wish to bless us, you may do so through:
           </p>
-
-          {/* Bottom Decorative Element */}
-          <DecorativeLine variant="with-ornament" className="mt-6" />
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto px-4 sm:px-0">
@@ -172,6 +169,8 @@ export default function GiftSection() {
           </p>
         </motion.div>
       </div>
+      {/* Bottom Decorative Element */}
+      <DecorativeLine variant="with-ornament" className="mt-6" />
     </section>
   );
 }

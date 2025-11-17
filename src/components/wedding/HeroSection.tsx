@@ -76,7 +76,7 @@ export default function HeroSection() {
                   transition={{ duration: 0.8, delay: 1.6 }}
               >
                 <h3 className="text-2xl md:text-3xl font-serif font-light text-white mb-2">
-                  Verina Mardhatillah
+                  Verina Mardhatillah, S.Psi.
                 </h3>
                 <div className="h-0.5 rounded-full mx-auto w-16 mb-3" style={getBgColor(theme.colors.secondary[400])} />
                 <p className="text-white/80 font-light leading-relaxed">
@@ -125,7 +125,7 @@ export default function HeroSection() {
                   transition={{ duration: 0.8, delay: 1 }}
               >
                 <h3 className="text-2xl md:text-3xl font-serif font-light text-white mb-2">
-                  Restow Frandha
+                  Restow Frandha, S.Kom.
                 </h3>
                 <div className="h-0.5 rounded-full mx-auto w-16 mb-3" style={getBgColor(theme.colors.secondary[500])} />
                 <p className="text-white/80 font-light leading-relaxed">
