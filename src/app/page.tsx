@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ArrowUp, Sparkles, Heart, Star } from 'lucide-react'
 import CoverPage from '@/components/wedding/CoverPage'
+import QuoteSection from '@/components/wedding/QuoteSection'
 import HeroSection from '@/components/wedding/HeroSection'
 import EventDetails from '@/components/wedding/EventDetails'
 import CountdownTimer from '@/components/wedding/CountdownTimer'
@@ -79,6 +80,9 @@ export default function Home() {
 
       {/* Continuous Flow Layout Container - Elevated effect */}
       <div className="relative space-y-0 xl:mx-80 xl:shadow-2xl xl:border-x" style={{ borderColor: hexToRgba(theme.colors.secondary[500], 0.2) }}>
+        {/* Quote Section */}
+        <QuoteSection />
+        
         {/* Hero Section */}
         <HeroSection />
 

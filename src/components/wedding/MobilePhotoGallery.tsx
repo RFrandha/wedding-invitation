@@ -47,7 +47,7 @@ export default function MobilePhotoGallery() {
         className="text-center mb-6"
       >
         <h3 className="text-xl font-serif font-light text-white mb-2">
-          Our Memories
+          Our Gallery
         </h3>
         <div 
           className="h-px" 

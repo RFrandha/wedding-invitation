@@ -14,20 +14,22 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Wedding Verina & Restow",
-  description: "The Wedding of Verina & Restow",
+  title: "The Wedding of Verina & Restow",
+  description: "Sabtu, 6 Desember 2025",
   openGraph: {
-    title: "Wedding Verina & Restow",
-    description: "The Wedding of Verina & Restow",
+    title: "The Wedding of Verina & Restow",
+    description: "Sabtu, 6 Desember 2025",
     images: [
       {
-        url: "https://photos.rever.cyou/prewed-album/ZEN08434-Edit.jpg",
+        url: "https://photos.rever.cyou/pub-img/cover2.jpg",
+        secureUrl: "https://photos.rever.cyou/pub-img/cover2.jpg",
         width: 1200,
         height: 630,
-        alt: "The Wedding Verina & Restow",
+        alt: "The Wedding of Verina & Restow",
       },
     ],
     type: "website",
+    url: "https://rever.cyou"
   },
 };
 
