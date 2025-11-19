@@ -1,8 +1,9 @@
 'use client'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { Star } from 'lucide-react'
 import { DecorativeLine } from '@/components/ui/decorative-line'
-import { theme, getBgColor } from '@/lib/theme'
+import { theme, getBgColor, hexToRgba } from '@/lib/theme'
 
 export default function HeroSection() {
   return (
@@ -137,11 +138,34 @@ export default function HeroSection() {
 
           </motion.div>
 
+          {/* Quote Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 2.0 }}
+            className="max-w-4xl mx-auto px-4 sm:px-0 mb-12"
+          >
+            <div className="backdrop-blur-lg rounded-3xl p-8 md:p-12 relative overflow-hidden" style={{ ...getBgColor('white', 0.05), borderWidth: '1px', borderColor: hexToRgba(theme.colors.secondary[500], 0.2) }}>
+              <div className="absolute inset-0" style={getBgColor(theme.colors.secondary[600], 0.05)}></div>
+              <div className="relative z-10">
+                <div className="text-6xl font-serif mb-4" style={{ color: hexToRgba(theme.colors.secondary[400], 0.4) }}>&ldquo;</div>
+                <p className="text-sm md:text-base text-white/80 font-light leading-relaxed mb-4 italic">
+                  Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang.
+                </p>
+                <div className="flex items-center justify-center gap-2 text-sm font-light" style={{ color: hexToRgba(theme.colors.secondary[400], 0.8) }}>
+                  <Star className="w-4 h-4" style={{ fill: hexToRgba(theme.colors.secondary[400], 0.5) }} />
+                  <span>QS. Ar-Rum: 21</span>
+                  <Star className="w-4 h-4" style={{ fill: hexToRgba(theme.colors.secondary[400], 0.5) }} />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Bottom Decorative Element */}
           <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 1.8 }}
+              transition={{ duration: 1, delay: 2.2 }}
           >
             <DecorativeLine variant="with-ornament" />
           </motion.div>

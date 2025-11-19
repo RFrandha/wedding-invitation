@@ -22,17 +22,17 @@ export default function EventDetails() {
       title: 'Akad Nikah',
       date: 'Sabtu, 06 Desember 2025',
       time: '09.00 - 10.00 WIB',
-      venue: 'Balai prajurit Pulanggeni Pekanbaru',
-      address: 'Jl. Perhentian Marpoyan, Marpoyan Damai, Pekanbaru',
+      venue: 'Balai Prajurit Pulanggeni Pekanbaru',
+      address: 'Jl. Inpres, Pekanbaru, Riau',
       icon: '🕌',
       gradient: theme.gradients.eventPrimary
     },
     {
       title: 'Resepsi',
       date: 'Sabtu, 06 Desember 2025',
-      time: '11.00 - 17.00 WIB',
-      venue: 'Balai prajurit Pulanggeni Pekanbaru',
-      address: 'Jl. Perhentian Marpoyan, Marpoyan Damai, Pekanbaru',
+      time: '12.00 - 17.00 WIB',
+      venue: 'Balai Prajurit Pulanggeni Pekanbaru',
+      address: 'Jl. Inpres, Pekanbaru, Riau',
       icon: '🎉',
       gradient: theme.gradients.eventSecondary
     },
