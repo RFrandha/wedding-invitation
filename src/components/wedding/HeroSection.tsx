@@ -33,7 +33,7 @@ export default function HeroSection() {
             {/*  The Wedding of Verina & Restow*/}
             {/*</h1>*/}
             <p className="text-xl font-medium tracking-wider text-white opacity-90 italic mb-2">
-              Assalamu'alaikum Wr. Wb.
+              Assalamu&apos;alaikum Wr. Wb.
             </p>
             <p className="text-base md:text-lg text-white max-w-3xl mx-auto mb-12 leading-relaxed font-light opacity-80">
               Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i

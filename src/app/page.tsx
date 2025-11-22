@@ -1,6 +1,5 @@
 'use client'
 import { useState, useEffect } from 'react'
-import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ArrowUp, Sparkles, Heart, Star } from 'lucide-react'
 import CoverPage from '@/components/wedding/CoverPage'

@@ -1,7 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Star } from 'lucide-react'
 import { DecorativeLine } from '@/components/ui/decorative-line'
 import { theme, getBgColor, hexToRgba } from '@/lib/theme'
 
