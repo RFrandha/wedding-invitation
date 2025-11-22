@@ -22,9 +22,14 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://photos.rever.cyou/pub-img/opengraph_cover.png",
-        secureUrl: "https://photos.rever.cyou/pub-img/opengraph_cover.png",
         width: 1200,
         height: 630,
+        alt: "The Wedding of Verina & Restow",
+      },
+      {
+        url: "https://photos.rever.cyou/pub-img/opengraph_cover.png",
+        width: 400,
+        height: 400,
         alt: "The Wedding of Verina & Restow",
       },
     ],
