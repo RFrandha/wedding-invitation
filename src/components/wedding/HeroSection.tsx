@@ -29,16 +29,16 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
           >
-            <p className="text-sm font-light tracking-wider text-white opacity-90 italic mb-2">
-              Bismillahirrahmanirrahim
+            {/*<h1 className="text-2xl md:text-3xl font-light tracking-[0.2em] text-white mb-6">*/}
+            {/*  The Wedding of Verina & Restow*/}
+            {/*</h1>*/}
+            <p className="text-xl font-medium tracking-wider text-white opacity-90 italic mb-2">
+              Assalamu'alaikum Wr. Wb.
             </p>
             <p className="text-base md:text-lg text-white max-w-3xl mx-auto mb-12 leading-relaxed font-light opacity-80">
-              Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan
-              resepsi pernikahan putra-putri kami
+              Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i
+              untuk menghadiri resepsi pernikahan kami.
             </p>
-            <h1 className="text-2xl md:text-3xl font-light tracking-[0.2em] text-white mb-6">
-              The Wedding of
-            </h1>
           </motion.div>
 
           <motion.div
@@ -79,8 +79,8 @@ export default function HeroSection() {
                 </h3>
                 <div className="h-0.5 rounded-full mx-auto w-16 mb-3" style={getBgColor(theme.colors.secondary[400])} />
                 <p className="text-white/80 font-light leading-relaxed">
-                  Putri dari<br />
-                  Bapak Anveriyendi & Ibu Machdalena
+                  Putri pertama dari<br />
+                  Bapak Ir. Anveriyendi & Ibu Machdalena, M.Kom.
                 </p>
               </motion.div>
             </div>
@@ -128,8 +128,8 @@ export default function HeroSection() {
                 </h3>
                 <div className="h-0.5 rounded-full mx-auto w-16 mb-3" style={getBgColor(theme.colors.secondary[500])} />
                 <p className="text-white/80 font-light leading-relaxed">
-                  Putra dari<br />
-                  Bapak Andi & Ibu Ilfita Onenda
+                  Putra pertama dari<br />
+                  Bapak Andi S. & Ibu Ilfita Onenda, S.A.B.
                 </p>
               </motion.div>
             </div>

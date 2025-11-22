@@ -50,12 +50,22 @@ export default function QuoteSection() {
             <div className="relative z-10">
               <div className="text-6xl font-serif mb-4" style={{ color: hexToRgba(theme.colors.secondary[400], 0.4) }}>&ldquo;</div>
               <p className="text-sm md:text-base text-white/80 font-light leading-relaxed mb-4 italic">
-                Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang.
+                Dan di antara tanda-tanda
+                (kebesaran)-Nya ialah Dia
+                menciptakan pasangan-pasangan untukmu dari
+                jenismu sendiri, agar kamu
+                cenderung dan merasa
+                tenteram kepadanya, dan
+                Dia menjadikan di antaramu
+                rasa kasih dan sayang.
+                Sungguh, pada yang demikian
+                itu benar-benar terdapat
+                tanda-tanda (kebesaran
+                Allah) bagi kaum yang
+                berpikir.
               </p>
-              <div className="flex items-center justify-center gap-2 text-sm font-light" style={{ color: hexToRgba(theme.colors.secondary[400], 0.8) }}>
-                <Star className="w-4 h-4" style={{ fill: hexToRgba(theme.colors.secondary[400], 0.5) }} />
-                <span>QS. Ar-Rum: 21</span>
-                <Star className="w-4 h-4" style={{ fill: hexToRgba(theme.colors.secondary[400], 0.5) }} />
+              <div className="text-sm font-light" style={{ color: hexToRgba(theme.colors.secondary[400], 0.8) }}>
+                (QS. Ar-Rum: 21)
               </div>
             </div>
           </div>

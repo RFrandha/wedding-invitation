@@ -289,6 +289,21 @@ export default function Home() {
                 </div>
               </div>
 
+              {/* Thank You Message */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="max-w-3xl mx-auto px-4 sm:px-0"
+              >
+                <p className="text-base md:text-lg text-white/90 font-light leading-relaxed text-center mb-6">
+                  Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i
+                  berkenan hadir dan memberikan do&apos;a restu kepada kami.
+                </p>
+              </motion.div>
+              <br/>
+
               {/* Greeting */}
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -299,13 +314,13 @@ export default function Home() {
                   Wassalamualaikum Wr. Wb.
                 </p>
               </motion.div>
-              
+
               {/* Family Names */}
               <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto mb-12 px-4 sm:px-0">
                 <motion.div
-                    whileHover={{ y: -5, scale: 1.02 }}
-                    className="backdrop-blur-md rounded-2xl p-6"
-                    style={{ ...getBgColor('white', 0.05), borderWidth: '1px', borderColor: hexToRgba(theme.colors.secondary[500], 0.2) }}
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  className="backdrop-blur-md rounded-2xl p-6"
+                  style={{ ...getBgColor('white', 0.05), borderWidth: '1px', borderColor: hexToRgba(theme.colors.secondary[500], 0.2) }}
                 >
                   <div className="text-sm font-light mb-2" style={{ color: theme.colors.secondary[400] }}>Keluarga Besar</div>
                   <div className="text-xl font-serif font-medium text-white">{config.brideName.split(' ')[0]}</div>
@@ -319,23 +334,6 @@ export default function Home() {
                   <div className="text-xl font-serif font-medium text-white">{config.groomName.split(' ')[0]}</div>
                 </motion.div>
               </div>
-
-              {/* Thank You Message */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="max-w-3xl mx-auto px-4 sm:px-0"
-              >
-                <p className="text-base md:text-lg text-white/90 font-light leading-relaxed text-center mb-6">
-                  Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i,
-                  berkenan hadir dan memberikan do&apos;a restu kepada putra-putri kami.
-                </p>
-                <p className="text-sm md:text-base text-white/70 font-light text-center italic">
-                  Atas kehadiran dan do&apos;a restunya, kami mengucapkan terima kasih.
-                </p>
-              </motion.div>
 
               {/* Bottom Decorative */}
               <motion.div

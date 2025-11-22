@@ -30,7 +30,7 @@ export default function EventDetails() {
     {
       title: 'Resepsi',
       date: 'Sabtu, 06 Desember 2025',
-      time: '12.00 - 17.00 WIB',
+      time: '12.00 - 16.00 WIB',
       venue: 'Balai Prajurit Pulanggeni Pekanbaru',
       address: 'Jl. Inpres, Pekanbaru, Riau',
       icon: '🎉',
@@ -65,7 +65,7 @@ export default function EventDetails() {
             Detail Acara
           </h2>
           <p className="text-white/80 font-light max-w-2xl mx-auto">
-            Dengan penuh kebahagiaan, kami mengundang Anda untuk turut merayakan momen bersejarah ini bersama kami
+            Dengan penuh kebahagiaan, kami mengundang Bapak/Ibu/Saudara/i untuk turut merayakan momen bersejarah ini bersama kami
           </p>
         </motion.div>
 

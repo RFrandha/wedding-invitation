@@ -90,7 +90,7 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
 
           {/* Main Title */}
           <div className="space-y-6">
-            <h1 className="text-xl font-light tracking-[0.2em] opacity-90">
+            <h1 className="text-2xl font-light tracking-[0.2em] opacity-90">
               The Wedding of
             </h1>
 
@@ -119,10 +119,6 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
                 month: 'long', 
                 year: 'numeric'
               })}
-            </p>
-            <p className="text-sm opacity-80 font-light">
-              Balai Prajurit Pulanggeni<br />
-              Pekanbaru, Riau
             </p>
           </div>
 

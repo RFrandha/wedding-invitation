@@ -62,7 +62,7 @@ export default function LocationMap() {
             Lokasi Acara
           </h2>
           <p className="text-white/80 font-light max-w-2xl mx-auto">
-            Kami akan sangat bahagia jika Anda berkenan hadir dan memberikan doa restu di hari bahagia kami
+            Kami akan sangat bahagia jika Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu di hari bahagia kami
           </p>
 
           {/* Location Switcher */}
@@ -159,13 +159,6 @@ export default function LocationMap() {
                     <span>Buka di Google Maps</span>
                   </div>
                 </Button>
-
-                {/* Additional info */}
-                <div className="mt-6 pt-4" style={{ borderTopWidth: '1px', borderTopColor: hexToRgba(theme.colors.secondary[500], 0.2) }}>
-                  <p className="text-xs text-white/60 font-light">
-                    Tempat parkir tersedia • Mudah diakses dengan kendaraan umum
-                  </p>
-                </div>
               </div>
             </div>
           </Card>

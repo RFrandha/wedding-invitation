@@ -53,7 +53,7 @@ export default function GiftSection() {
             Wedding Gift
           </h2>
           <p className="text-white/80 font-light max-w-2xl mx-auto">
-            Your presence is the greatest gift, but if you wish to bless us, you may do so through:
+            Kehadiran Bapak/Ibu/Saudara/i di hari istimewa kami adalah anugerah terindah. Namun, jika ingin memberikan hadiah pernikahan, kami menyediakan pilihan berikut:
           </p>
         </motion.div>
 
