@@ -20,12 +20,12 @@ export const metadata: Metadata = {
     title: "The Wedding of Verina & Restow",
     description: "Sabtu, 6 Desember 2025",
     images: [
-      {
-        url: "https://photos.rever.cyou/pub-img/opengraph_cover.png",
-        width: 1200,
-        height: 630,
-        alt: "The Wedding of Verina & Restow",
-      },
+      // {
+      //   url: "https://photos.rever.cyou/pub-img/opengraph_cover.png",
+      //   width: 1200,
+      //   height: 630,
+      //   alt: "The Wedding of Verina & Restow",
+      // },
       {
         url: "https://photos.rever.cyou/pub-img/opengraph_cover.png",
         width: 400,
