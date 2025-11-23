@@ -1,3 +1,21 @@
+import {
+  Beau_Rivage,
+  Great_Vibes,
+  Hurricane, Italianno,
+  Meow_Script,
+  Norican,
+  Rouge_Script,
+  Style_Script,
+  Tangerine
+} from 'next/font/google';
+
+// Font configuration
+export const writing = Great_Vibes({
+  variable: '--font-writing-sans',
+  subsets: ['latin'],
+  weight: '400'
+});
+
 // Centralized color theme for wedding invitation
 // Elegant Navy, Gold & Cream color scheme
 export const theme = {
@@ -273,8 +291,6 @@ export const getCSSVariables = () => {
     '--color-neutral': theme.colors.neutral[600],
     '--shadow-soft': theme.shadows.soft,
     '--shadow-glow': theme.shadows.glow,
-    '--font-serif': theme.typography.fontFamily.serif,
-    '--font-display': theme.typography.fontFamily.display,
     '--animation-spring': theme.animations.easing.spring,
   }
 }

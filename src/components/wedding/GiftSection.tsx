@@ -49,7 +49,7 @@ export default function GiftSection() {
           {/* Top Decorative Element */}
           <DecorativeLine variant="with-dots" className="mb-6" />
 
-          <h2 className="text-3xl md:text-4xl font-serif font-light tracking-wider text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-light tracking-wider text-white mb-4">
             Wedding Gift
           </h2>
           <p className="text-white/80 font-light max-w-2xl mx-auto">
@@ -107,7 +107,7 @@ export default function GiftSection() {
                     />
                   </motion.div>
 
-                  <h3 className="text-3xl font-serif font-medium text-white mb-6 tracking-wide">
+                  <h3 className="text-3xl font-medium text-white mb-6 tracking-wide">
                     {account.bank}
                   </h3>
                   

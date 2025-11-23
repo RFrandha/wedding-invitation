@@ -42,9 +42,6 @@ export default function PhotoMosaic({ side }: PhotoMosaicProps) {
     'https://photos.rever.cyou/prewed-album/ZEN08502-Edit.jpg',
     'https://photos.rever.cyou/prewed-album/ZEN08518-Edit.jpg',
     'https://photos.rever.cyou/prewed-album/ZEN08529-Edit.jpg',
-    'https://photos.rever.cyou/prewed-album/ZEN08550-2.jpg',
-    'https://photos.rever.cyou/prewed-album/ZEN08550-2.jpg',
-    'https://photos.rever.cyou/prewed-album/ZEN08550.jpg',
     'https://photos.rever.cyou/prewed-album/ZEN08601-Edit.jpg',
     'https://photos.rever.cyou/prewed-album/ZEN08609-Edit.jpg',
   ], [])

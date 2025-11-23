@@ -26,7 +26,6 @@ export default function MobilePhotoGallery() {
     'https://photos.rever.cyou/prewed-album/ZEN08426-2.jpg',
     'https://photos.rever.cyou/prewed-album/ZEN08518-Edit.jpg',
     'https://photos.rever.cyou/prewed-album/ZEN08529-Edit.jpg',
-    'https://photos.rever.cyou/prewed-album/ZEN08550.jpg',
     'https://photos.rever.cyou/prewed-album/ZEN08467-Edit.jpg',
   ]
 
@@ -46,7 +45,7 @@ export default function MobilePhotoGallery() {
         viewport={{ once: true, amount: 0.05 }}
         className="text-center mb-6"
       >
-        <h3 className="text-xl font-serif font-light text-white mb-2">
+        <h3 className="text-xl font-light text-white mb-2">
           Our Gallery
         </h3>
         <div 

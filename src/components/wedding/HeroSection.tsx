@@ -32,7 +32,7 @@ export default function HeroSection() {
             {/*<h1 className="text-2xl md:text-3xl font-light tracking-[0.2em] text-white mb-6">*/}
             {/*  The Wedding of Verina & Restow*/}
             {/*</h1>*/}
-            <p className="text-base font-medium tracking-wider text-white opacity-90 italic mb-2">
+            <p className="text-base font-semibold tracking-wider text-white opacity-90 italic mb-2">
               Assalamu&apos;alaikum Wr. Wb.
             </p>
             <p className="text-base md:text-lg text-white max-w-3xl mx-auto mb-12 leading-relaxed font-light opacity-80">
@@ -74,7 +74,7 @@ export default function HeroSection() {
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.8, delay: 1.6 }}
               >
-                <h3 className="text-2xl md:text-3xl font-serif font-light text-white mb-2">
+                <h3 className="text-2xl md:text-3xl font-light text-white mb-2">
                   Verina Mardhatillah, S.Psi.
                 </h3>
                 <div className="h-0.5 rounded-full mx-auto w-16 mb-3" style={getBgColor(theme.colors.secondary[400])} />
@@ -90,7 +90,7 @@ export default function HeroSection() {
                 initial={{ scale: 0, rotate: -180 }}
                 animate={{ scale: 1, rotate: 0 }}
                 transition={{ duration: 0.8, delay: 1.2 }}
-                className="text-4xl md:text-6xl font-serif drop-shadow-sm"
+                className="text-4xl md:text-6xl drop-shadow-sm"
                 style={{ color: theme.colors.secondary[400] }}
             >
               &
@@ -123,7 +123,7 @@ export default function HeroSection() {
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.8, delay: 1 }}
               >
-                <h3 className="text-2xl md:text-3xl font-serif font-light text-white mb-2">
+                <h3 className="text-2xl md:text-3xl font-light text-white mb-2">
                   Restow Frandha, S.Kom.
                 </h3>
                 <div className="h-0.5 rounded-full mx-auto w-16 mb-3" style={getBgColor(theme.colors.secondary[500])} />

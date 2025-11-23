@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import {Ampersand, Mail, Sparkles} from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { theme, getCardOverlayStyle } from '@/lib/theme';
+import {theme, getCardOverlayStyle, writing} from '@/lib/theme';
 
 interface CoverPageProps {
   onOpen: () => void;
@@ -73,12 +73,12 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
             initial={{ opacity: 0, y: 30, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="max-w-lg w-full text-center text-white space-y-8 bg-black/20 backdrop-blur-md rounded-2xl p-8 border border-white/10 shadow-2xl"
+            className="max-w-lg w-full text-center text-white bg-black/20 backdrop-blur-md rounded-2xl px-8 py-16 border border-white/10 shadow-2xl"
             style={getCardOverlayStyle()}
           >
           
           {/* Decorative Top Element */}
-          <div className="flex items-center justify-center space-x-4 mb-8">
+          <div className="flex items-center justify-center space-x-4">
             <div className="h-px flex-1" style={{ backgroundColor: theme.colors.secondary[500], opacity: 0.4 }} />
             <div className="flex space-x-1">
               <div className="w-1 h-1 rounded-full" style={{ backgroundColor: theme.colors.secondary[400] }} />
@@ -89,30 +89,50 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
           </div>
 
           {/* Main Title */}
-          <div className="space-y-6">
-            <h1 className="text-2xl font-light tracking-[0.2em] opacity-90">
-              The Wedding of
+          <div className="space-y-6 mt-8">
+            <h1 className="text-xl md:text-2xl font-light tracking-[0.2em] opacity-90">
+              THE WEDDING OF
             </h1>
+            <br/>
 
             {/* Couple Names */}
-            <div className="space-y-2">
-              <h2 className={`text-4xl md:text-3xl font-serif font-light tracking-wider ${theme.gradients.textPrimary} bg-clip-text`}>
+            <div className="space-y-3">
+              <h2 className={`${writing.className} text-5xl md:text-6xl font-medium tracking-wider ${theme.gradients.textPrimary} bg-clip-text`}>
                 {brideName}
               </h2>
-              <div className="flex items-center justify-center space-x-6 my-4">
-                <div className="h-px w-16" style={{ backgroundColor: theme.colors.secondary[400], opacity: 0.4 }} />
+              <div className={`${writing.className} flex items-center justify-center space-x-6 my-1`}>
                 <Ampersand className="w-6 h-6" style={{ color: theme.colors.secondary[400], opacity: 0.5 }} />
-                <div className="h-px w-16" style={{ backgroundColor: theme.colors.secondary[400], opacity: 0.4 }} />
               </div>
-              <h2 className={`text-4xl md:text-4xl font-serif font-light tracking-wider ${theme.gradients.textSecondary} bg-clip-text`}>
+              <h2 className={`${writing.className} text-5xl md:text-6xl font-medium tracking-wider ${theme.gradients.textSecondary} bg-clip-text`}>
                 {groomName}
               </h2>
             </div>
           </div>
+            {/* Decorative Top Element */}
+            {/*<div className="flex items-center justify-center space-x-4 mb-8">*/}
+            {/*  <div className="h-px flex-1" style={{ backgroundColor: theme.colors.secondary[500], opacity: 0.4 }} />*/}
+            {/*  <div className="flex space-x-1">*/}
+            {/*    <div className="w-1 h-1 rounded-full" style={{ backgroundColor: theme.colors.secondary[400] }} />*/}
+            {/*    <div className="w-1 h-1 rounded-full" style={{ backgroundColor: theme.colors.secondary[400] }} />*/}
+            {/*    <div className="w-1 h-1 rounded-full" style={{ backgroundColor: theme.colors.secondary[400] }} />*/}
+            {/*  </div>*/}
+            {/*  <div className="h-px flex-1" style={{ backgroundColor: theme.colors.secondary[500], opacity: 0.4 }} />*/}
+            {/*</div>*/}
+
+            {/* Decorative Middle Element */}
+            {/*<div className="flex justify-center py-3">*/}
+            {/*  <div className="flex items-center space-x-2">*/}
+            {/*    <div className="w-8 h-px" style={{ backgroundColor: theme.colors.secondary[400], opacity: 0.4 }} />*/}
+            {/*    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: theme.colors.secondary[400] }} />*/}
+            {/*    <div className="w-12 h-px" style={{ backgroundColor: theme.colors.secondary[400], opacity: 0.4 }} />*/}
+            {/*    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: theme.colors.secondary[400] }} />*/}
+            {/*    <div className="w-8 h-px" style={{ backgroundColor: theme.colors.secondary[400], opacity: 0.4 }} />*/}
+            {/*  </div>*/}
+            {/*</div>*/}
 
           {/* Wedding Date */}
-          <div className="space-y-2">
-            <p className="text-lg font-light tracking-wide">
+          <div className="space-y-2 mt-16">
+            <p className="text-md md:text-lg font-light tracking-wide">
               {weddingDate.toLocaleDateString('id-ID', {
                 weekday: 'long',
                 day: 'numeric',
@@ -122,24 +142,13 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
             </p>
           </div>
 
-          {/* Decorative Middle Element */}
-          <div className="flex justify-center py-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-px" style={{ backgroundColor: theme.colors.secondary[400], opacity: 0.4 }} />
-              <div className="w-2 h-2 rounded-full" style={{ backgroundColor: theme.colors.secondary[400] }} />
-              <div className="w-12 h-px" style={{ backgroundColor: theme.colors.secondary[400], opacity: 0.4 }} />
-              <div className="w-2 h-2 rounded-full" style={{ backgroundColor: theme.colors.secondary[400] }} />
-              <div className="w-8 h-px" style={{ backgroundColor: theme.colors.secondary[400], opacity: 0.4 }} />
-            </div>
-          </div>
-
           {/* Guest Name Section */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6" style={{ borderColor: theme.colors.secondary[500], borderWidth: '1px'}}>
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 mt-8" style={{ borderColor: theme.colors.secondary[500], borderWidth: '1px'}}>
             <p className="text-sm font-light tracking-wide opacity-90 mb-3">
               Kepada Yth.
             </p>
             <div className="space-y-2">
-              <p className={`text-lg sm:text-xl md:text-2xl font-serif font-semibold ${theme.gradients.textPrimary} bg-clip-text drop-shadow-md break-words px-2`}>
+              <p className={`text-lg sm:text-xl md:text-2xl font-semibold ${theme.gradients.textPrimary} bg-clip-text drop-shadow-md break-words px-2`}>
                 {invitedName}
               </p>
               {/* Themed underline effect */}
@@ -148,7 +157,7 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
           </div>
 
           {/* Open Invitation Button */}
-          <div className="pt-4">
+          <div className="mt-8">
             <Button
               onClick={onOpen}
               size="lg"

@@ -70,7 +70,7 @@ export default function WishesDisplay({ refreshTrigger = 0 }: WishesDisplayProps
           className="text-center mb-16"
         >
 
-          <h2 className="text-3xl md:text-4xl font-serif font-light tracking-wider text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-light tracking-wider text-white mb-4">
             Ucapan & Doa
           </h2>
           <p className="text-white/80 font-light max-w-2xl mx-auto">
@@ -106,7 +106,7 @@ export default function WishesDisplay({ refreshTrigger = 0 }: WishesDisplayProps
           >
             {/* Chat Header */}
             <div className="p-6 text-center" style={{ ...getBgColor(theme.colors.primary[700], 0.5), borderBottom: `1px solid ${hexToRgba(theme.colors.secondary[500], 0.2)}` }}>
-              <h3 className="text-lg font-serif font-light text-white mb-2">
+              <h3 className="text-lg font-light text-white mb-2">
                 Ucapan dari Tamu
               </h3>
               <p className="text-sm text-white/60">{wishes.length} ucapan</p>
@@ -134,7 +134,7 @@ export default function WishesDisplay({ refreshTrigger = 0 }: WishesDisplayProps
                   <div className="inline-block p-4 rounded-full mb-4" style={getBgColor(theme.colors.secondary[500], 0.2)}>
                     <span className="text-4xl">✨</span>
                   </div>
-                  <h3 className="text-xl font-serif font-light text-white mb-2">
+                  <h3 className="text-xl font-light text-white mb-2">
                     Belum ada ucapan
                   </h3>
                   <p className="text-white/60 font-light">

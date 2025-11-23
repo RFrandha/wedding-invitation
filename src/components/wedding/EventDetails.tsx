@@ -61,7 +61,7 @@ export default function EventDetails() {
           {/* Top Decorative Element */}
           <DecorativeLine variant="with-dots" className="mb-6" />
 
-          <h2 className="text-3xl md:text-4xl font-serif font-light tracking-wider text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-light tracking-wider text-white mb-4">
             Detail Acara
           </h2>
           <p className="text-white/80 font-light max-w-2xl mx-auto">
@@ -78,7 +78,7 @@ export default function EventDetails() {
           className="mb-12"
         >
           <div className="text-center mb-8">
-            <h3 className="text-2xl md:text-3xl font-serif font-light text-white mb-2">
+            <h3 className="text-2xl md:text-3xl font-light text-white mb-2">
               Pekanbaru
             </h3>
             <div className="h-0.5 rounded-full mx-auto w-24" style={getBgColor(theme.colors.secondary[400])} />
@@ -112,7 +112,7 @@ export default function EventDetails() {
                   
                   
                   <div className="relative z-10">
-                    <h3 className="text-3xl font-serif font-medium text-white mb-6 tracking-wide text-center">
+                    <h3 className="text-3xl font-medium text-white mb-6 tracking-wide text-center">
                       {event.title}
                     </h3>
                     
@@ -172,7 +172,7 @@ export default function EventDetails() {
           viewport={{ once: true, amount: 0.1 }}
         >
           <div className="text-center mb-8">
-            <h3 className="text-2xl md:text-3xl font-serif font-light text-white mb-2">
+            <h3 className="text-2xl md:text-3xl font-light text-white mb-2">
               Bukittinggi
             </h3>
             <div className="h-0.5 rounded-full mx-auto w-24" style={getBgColor(theme.colors.secondary[400])} />
@@ -206,7 +206,7 @@ export default function EventDetails() {
                   
                   
                   <div className="relative z-10">
-                    <h3 className="text-3xl font-serif font-medium text-white mb-6 tracking-wide text-center">
+                    <h3 className="text-3xl font-medium text-white mb-6 tracking-wide text-center">
                       {event.title}
                     </h3>
                     

@@ -90,7 +90,7 @@ export default function WishForm({ onWishSubmitted }: WishFormProps) {
         >
           <DecorativeLine variant="with-dots" className="mb-6" />
 
-          <h2 className="text-3xl md:text-4xl font-serif font-light tracking-wider text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-light tracking-wider text-white mb-4">
             Kirim Ucapan & Doa
           </h2>
           <p className="text-white/80 font-light max-w-2xl mx-auto">

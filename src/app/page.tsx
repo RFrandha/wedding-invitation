@@ -277,7 +277,7 @@ export default function Home() {
                   <Heart className="w-8 h-8" style={{ color: theme.colors.secondary[400] }} />
                 </motion.div>
                 
-                <h2 className="text-4xl md:text-5xl font-serif font-light mb-4" style={{ color: theme.colors.secondary[300] }}>
+                <h2 className="text-4xl md:text-5xl font-light mb-4" style={{ color: theme.colors.secondary[300] }}>
                   Terima Kasih
                 </h2>
                 
@@ -309,7 +309,7 @@ export default function Home() {
                 transition={{ type: "spring", stiffness: 300 }}
                 className="inline-block"
               >
-                <p className="text-xl md:text-2xl font-serif font-light tracking-wide mb-8 text-neutral-200">
+                <p className="text-xl md:text-2xl font-light tracking-wide mb-8 text-neutral-200">
                   Wassalamualaikum Wr. Wb.
                 </p>
               </motion.div>
@@ -322,7 +322,7 @@ export default function Home() {
                   style={{ ...getBgColor('white', 0.05), borderWidth: '1px', borderColor: hexToRgba(theme.colors.secondary[500], 0.2) }}
                 >
                   <div className="text-sm font-light mb-2" style={{ color: theme.colors.secondary[400] }}>Keluarga Besar</div>
-                  <div className="text-xl font-serif font-medium text-white">{config.brideName.split(' ')[0]}</div>
+                  <div className="text-xl font-medium text-white">{config.brideName.split(' ')[0]}</div>
                 </motion.div>
                 <motion.div
                   whileHover={{ y: -5, scale: 1.02 }}
@@ -330,7 +330,7 @@ export default function Home() {
                   style={{ ...getBgColor('white', 0.05), borderWidth: '1px', borderColor: hexToRgba(theme.colors.secondary[500], 0.2) }}
                 >
                   <div className="text-sm font-light mb-2" style={{ color: theme.colors.secondary[400] }}>Keluarga Besar</div>
-                  <div className="text-xl font-serif font-medium text-white">{config.groomName.split(' ')[0]}</div>
+                  <div className="text-xl font-medium text-white">{config.groomName.split(' ')[0]}</div>
                 </motion.div>
               </div>
 

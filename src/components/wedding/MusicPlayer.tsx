@@ -263,7 +263,7 @@ export default function MusicPlayer({
                                 <div className="flex-1 min-w-0">
                                         {/* Song details */}
                                         <div className="mb-0.5 sm:mb-2">
-                                            <h3 className="text-[10px] sm:text-sm font-serif font-medium truncate text-white leading-tight">
+                                            <h3 className="text-[10px] sm:text-sm font-medium truncate text-white leading-tight">
                                                 {songTitle}
                                             </h3>
                                             <p className="text-[9px] sm:text-xs truncate text-white/70">

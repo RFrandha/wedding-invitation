@@ -73,7 +73,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
         </div>
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl font-serif font-light text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-light text-white mb-4">
             Menuju Hari Bahagia
           </h2>
           <p className="text-white/80 font-light mb-12 max-w-2xl mx-auto">
@@ -123,7 +123,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
           {/* Top Decorative Element */}
           <DecorativeLine variant="with-dots" className="mb-6" />
 
-          <h2 className="text-3xl md:text-4xl font-serif font-light text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-light text-white mb-4">
             Menuju Hari Bahagia
           </h2>
           <p className="text-white/80 font-light mb-12 max-w-2xl mx-auto">
@@ -139,7 +139,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
             viewport={{ once: true, amount: 0.2 }}
           >
             <Card className="p-8 text-white border-0 shadow-2xl" style={getBgColor(theme.colors.secondary[500])}>
-              <h3 className="text-2xl font-serif font-light mb-2">🎉 Hari Bahagia Telah Tiba! 🎉</h3>
+              <h3 className="text-2xl font-light mb-2">🎉 Hari Bahagia Telah Tiba! 🎉</h3>
               <p className="font-light">Terima kasih atas doa dan dukungan Anda</p>
             </Card>
           </motion.div>

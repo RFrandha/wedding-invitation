@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
-import {Geist_Mono, Montserrat} from "next/font/google";
+import {
+  Brawler,
+  Faculty_Glyphic,
+  Faustina,
+  Instrument_Serif,
+  Lato,
+  Playfair,
+  Plus_Jakarta_Sans,
+  Vidaloka
+} from "next/font/google";
 import "./globals.css";
 
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const montserrat = Montserrat({
-  variable: '--font-montserrat-sans',
+const generalFont = Brawler({
+  variable: '--font-lato-sans',
   subsets: ['latin'],
+  weight: "400"
 });
 
 export const metadata: Metadata = {
@@ -55,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en">
     <body
-      className={`${montserrat.variable} ${geistMono.variable} antialiased`}
+      className={`${generalFont.className} antialiased`}
     >
     {children}
     </body>
