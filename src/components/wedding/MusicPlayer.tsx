@@ -227,23 +227,24 @@ export default function MusicPlayer({
                             {/* Subtle overlay */}
                             <div className="absolute inset-0" style={getBgColor(theme.colors.secondary[500], 0.05)}></div>
                             
+                            {/* Close button - positioned relative to panel */}
+                            <button
+                              onClick={(e) => {
+                                  e.stopPropagation();
+                                  setIsExpanded(false);
+                              }}
+                              className="absolute top-2 right-2 w-6 h-6 rounded-full flex items-center justify-center transition-colors z-20"
+                              style={{
+                                  color: theme.colors.neutral[500] || '#ffffff',
+                              }}
+                              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = hexToRgba(theme.colors.neutral[100], 0.2)}
+                              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                            >
+                                <X className="w-3 h-3" />
+                            </button>
+                            
                             {/* Content wrapper with relative positioning */}
                             <div className="relative z-10">
-                                {/* Close button */}
-                                <button
-                                  onClick={(e) => {
-                                      e.stopPropagation();
-                                      setIsExpanded(false);
-                                  }}
-                                  className="absolute top-2 right-2 w-6 h-6 rounded-full flex items-center justify-center transition-colors z-20"
-                                  style={{
-                                      color: theme.colors.neutral[500] || '#ffffff',
-                                  }}
-                                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = hexToRgba(theme.colors.neutral[100], 0.2)}
-                                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-                                >
-                                    <X className="w-3 h-3" />
-                                </button>
 
                             {/* Compact layout with album art and controls side by side */}
                             <div className="flex items-center gap-1.5 sm:gap-4">

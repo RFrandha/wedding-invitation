@@ -32,10 +32,10 @@ export default function HeroSection() {
             {/*<h1 className="text-2xl md:text-3xl font-light tracking-[0.2em] text-white mb-6">*/}
             {/*  The Wedding of Verina & Restow*/}
             {/*</h1>*/}
-            <p className="text-base font-semibold tracking-wider text-white opacity-90 italic mb-2">
+            <p className="text-sm md:text-md font-semibold tracking-wider text-white opacity-90 italic mb-2">
               Assalamu&apos;alaikum Wr. Wb.
             </p>
-            <p className="text-base md:text-lg text-white max-w-3xl mx-auto mb-12 leading-relaxed font-light opacity-80">
+            <p className="text-xs md:text-lg text-white max-w-3xl mx-auto mb-12 leading-relaxed font-light opacity-80">
               Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i
               untuk menghadiri resepsi pernikahan kami.
             </p>
@@ -74,11 +74,11 @@ export default function HeroSection() {
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.8, delay: 1.6 }}
               >
-                <h3 className="text-2xl md:text-3xl font-light text-white mb-2">
+                <h3 className="text-lg md:text-2xl font-light text-white mb-2">
                   Verina Mardhatillah, S.Psi.
                 </h3>
                 <div className="h-0.5 rounded-full mx-auto w-16 mb-3" style={getBgColor(theme.colors.secondary[400])} />
-                <p className="text-white/80 font-light leading-relaxed">
+                <p className="text-xs md:text-lg text-white/80 font-light leading-relaxed">
                   Putri pertama dari<br />
                   Bapak Ir. Anveriyendi & Ibu Machdalena, M.Kom.
                 </p>
@@ -123,11 +123,11 @@ export default function HeroSection() {
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.8, delay: 1 }}
               >
-                <h3 className="text-2xl md:text-3xl font-light text-white mb-2">
+                <h3 className="text-lg md:text-2xl font-light text-white mb-2">
                   Restow Frandha, S.Kom.
                 </h3>
                 <div className="h-0.5 rounded-full mx-auto w-16 mb-3" style={getBgColor(theme.colors.secondary[500])} />
-                <p className="text-white/80 font-light leading-relaxed">
+                <p className="text-xs md:text-lg text-white/80 font-light leading-relaxed">
                   Putra pertama dari<br />
                   Bapak Andi S. & Ibu Ilfita Onenda, S.A.B.
                 </p>
