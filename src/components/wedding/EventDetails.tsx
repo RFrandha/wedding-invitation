@@ -61,10 +61,10 @@ export default function EventDetails() {
           {/* Top Decorative Element */}
           <DecorativeLine variant="with-dots" className="mb-6" />
 
-          <h2 className="text-3xl md:text-4xl font-light tracking-wider text-white mb-4">
+          <h2 className="text-2xl md:text-4xl font-light tracking-wider text-white mb-4">
             Detail Acara
           </h2>
-          <p className="text-white/80 font-light max-w-2xl mx-auto">
+          <p className="text-xs md:text-lg text-white/80 font-light max-w-2xl mx-auto">
             Dengan penuh kebahagiaan, kami mengundang Bapak/Ibu/Saudara/i untuk turut merayakan momen bersejarah ini bersama kami
           </p>
         </motion.div>
@@ -78,7 +78,7 @@ export default function EventDetails() {
           className="mb-12"
         >
           <div className="text-center mb-8">
-            <h3 className="text-2xl md:text-3xl font-light text-white mb-2">
+            <h3 className="text-xl md:text-3xl font-light text-white mb-2">
               Pekanbaru
             </h3>
             <div className="h-0.5 rounded-full mx-auto w-24" style={getBgColor(theme.colors.secondary[400])} />
@@ -112,7 +112,7 @@ export default function EventDetails() {
                   
                   
                   <div className="relative z-10">
-                    <h3 className="text-3xl font-medium text-white mb-6 tracking-wide text-center">
+                    <h3 className="text-xl md:text-3xl font-medium text-white mb-6 tracking-wide text-center">
                       {event.title}
                     </h3>
                     
@@ -124,14 +124,14 @@ export default function EventDetails() {
                         <div className="p-2 rounded-full text-white shadow-lg" style={getBgColor(theme.colors.secondary[500])}>
                           <Calendar className="w-4 h-4" />
                         </div>
-                        <span className="font-light">{event.date}</span>
+                        <span className="text-xs md:text-base font-light">{event.date}</span>
                       </div>
                       
                       <div className="flex items-center gap-3 transition-colors duration-300">
                         <div className="p-2 rounded-full text-white shadow-lg" style={getBgColor(theme.colors.secondary[500])}>
                           <Clock className="w-4 h-4" />
                         </div>
-                        <span className="font-light">{event.time}</span>
+                        <span className="text-xs md:text-base font-light">{event.time}</span>
                       </div>
                       
                       <div className="flex items-start gap-3 transition-colors duration-300">
@@ -139,8 +139,8 @@ export default function EventDetails() {
                           <MapPin className="w-4 h-4" />
                         </div>
                         <div className="text-left">
-                          <div className="font-medium font-light">{event.venue}</div>
-                          <div className="text-sm text-white/60 font-light leading-relaxed mt-1">{event.address}</div>
+                          <div className="text-xs md:text-base font-medium font-light">{event.venue}</div>
+                          <div className="text-xs md:text-sm text-white/60 font-light leading-relaxed mt-1">{event.address}</div>
                         </div>
                       </div>
                     </div>
@@ -149,7 +149,7 @@ export default function EventDetails() {
                       href={generateCalendarLink(event)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-light text-white transition-all duration-300 hover:scale-105"
+                      className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs md:text-sm font-light text-white transition-all duration-300 hover:scale-105"
                       style={getBgColor(theme.colors.secondary[500])}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -172,7 +172,7 @@ export default function EventDetails() {
           viewport={{ once: true, amount: 0.1 }}
         >
           <div className="text-center mb-8">
-            <h3 className="text-2xl md:text-3xl font-light text-white mb-2">
+            <h3 className="text-xl md:text-3xl font-light text-white mb-2">
               Bukittinggi
             </h3>
             <div className="h-0.5 rounded-full mx-auto w-24" style={getBgColor(theme.colors.secondary[400])} />
@@ -206,7 +206,7 @@ export default function EventDetails() {
                   
                   
                   <div className="relative z-10">
-                    <h3 className="text-3xl font-medium text-white mb-6 tracking-wide text-center">
+                    <h3 className="text-xl md:text-3xl font-medium text-white mb-6 tracking-wide text-center">
                       {event.title}
                     </h3>
                     
@@ -218,14 +218,14 @@ export default function EventDetails() {
                         <div className="p-2 rounded-full text-white shadow-lg" style={getBgColor(theme.colors.secondary[500])}>
                           <Calendar className="w-4 h-4" />
                         </div>
-                        <span className="font-light">{event.date}</span>
+                        <span className="text-xs md:text-base font-light">{event.date}</span>
                       </div>
                       
                       <div className="flex items-center gap-3 transition-colors duration-300">
                         <div className="p-2 rounded-full text-white shadow-lg" style={getBgColor(theme.colors.secondary[500])}>
                           <Clock className="w-4 h-4" />
                         </div>
-                        <span className="font-light">{event.time}</span>
+                        <span className="text-xs md:text-base font-light">{event.time}</span>
                       </div>
                       
                       <div className="flex items-start gap-3 transition-colors duration-300">
@@ -233,8 +233,8 @@ export default function EventDetails() {
                           <MapPin className="w-4 h-4" />
                         </div>
                         <div className="text-left">
-                          <div className="font-medium font-light">{event.venue}</div>
-                          <div className="text-sm text-white/60 font-light leading-relaxed mt-1">{event.address}</div>
+                          <div className="text-xs md:text-base font-medium font-light">{event.venue}</div>
+                          <div className="text-xs md:text-sm text-white/60 font-light leading-relaxed mt-1">{event.address}</div>
                         </div>
                       </div>
                     </div>
@@ -243,7 +243,7 @@ export default function EventDetails() {
                       href={generateCalendarLink(event)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-light text-white transition-all duration-300 hover:scale-105"
+                      className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs md:text-sm font-light text-white transition-all duration-300 hover:scale-105"
                       style={getBgColor(theme.colors.secondary[500])}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}

@@ -48,7 +48,7 @@ export default function QuoteSection() {
             <div className="absolute inset-0" style={getBgColor(theme.colors.secondary[600], 0.05)}></div>
             <div className="relative z-10">
               <div className="text-6xl mb-4" style={{ color: hexToRgba(theme.colors.secondary[400], 0.4) }}>&ldquo;</div>
-              <p className="text-sm md:text-base text-white/80 font-light leading-relaxed mb-4 italic">
+              <p className="text-xs md:text-base text-white/80 font-light leading-relaxed mb-4 italic">
                 Dan di antara tanda-tanda
                 (kebesaran)-Nya ialah Dia
                 menciptakan pasangan-pasangan untukmu dari
@@ -63,7 +63,7 @@ export default function QuoteSection() {
                 Allah) bagi kaum yang
                 berpikir.
               </p>
-              <div className="text-sm font-light" style={{ color: hexToRgba(theme.colors.secondary[400], 0.8) }}>
+              <div className="text-xs md:text-sm font-light" style={{ color: hexToRgba(theme.colors.secondary[400], 0.8) }}>
                 (QS. Ar-Rum: 21)
               </div>
             </div>

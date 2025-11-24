@@ -70,10 +70,10 @@ export default function WishesDisplay({ refreshTrigger = 0 }: WishesDisplayProps
           className="text-center mb-16"
         >
 
-          <h2 className="text-3xl md:text-4xl font-light tracking-wider text-white mb-4">
+          <h2 className="text-2xl md:text-4xl font-light tracking-wider text-white mb-4">
             Ucapan & Doa
           </h2>
-          <p className="text-white/80 font-light max-w-2xl mx-auto">
+          <p className="text-xs md:text-lg text-white/80 font-light max-w-2xl mx-auto">
             Terima kasih atas ucapan dan doa yang telah diberikan
           </p>
         </motion.div>
@@ -106,10 +106,10 @@ export default function WishesDisplay({ refreshTrigger = 0 }: WishesDisplayProps
           >
             {/* Chat Header */}
             <div className="p-6 text-center" style={{ ...getBgColor(theme.colors.primary[700], 0.5), borderBottom: `1px solid ${hexToRgba(theme.colors.secondary[500], 0.2)}` }}>
-              <h3 className="text-lg font-light text-white mb-2">
+              <h3 className="text-base md:text-lg font-light text-white mb-2">
                 Ucapan dari Tamu
               </h3>
-              <p className="text-sm text-white/60">{wishes.length} ucapan</p>
+              <p className="text-xs md:text-sm text-white/60">{wishes.length} ucapan</p>
             </div>
 
             {/* Scrollable Wishes Area */}
@@ -134,10 +134,10 @@ export default function WishesDisplay({ refreshTrigger = 0 }: WishesDisplayProps
                   <div className="inline-block p-4 rounded-full mb-4" style={getBgColor(theme.colors.secondary[500], 0.2)}>
                     <span className="text-4xl">✨</span>
                   </div>
-                  <h3 className="text-xl font-light text-white mb-2">
+                  <h3 className="text-lg md:text-xl font-light text-white mb-2">
                     Belum ada ucapan
                   </h3>
-                  <p className="text-white/60 font-light">
+                  <p className="text-xs md:text-base text-white/60 font-light">
                     Jadilah yang pertama memberikan ucapan dan doa untuk kami
                   </p>
                 </div>
@@ -173,17 +173,17 @@ export default function WishesDisplay({ refreshTrigger = 0 }: WishesDisplayProps
                           {wish.name.charAt(0).toUpperCase()}
                         </div>
                         <div className="flex-1">
-                          <h3 className="font-medium text-white text-sm">
+                          <h3 className="font-medium text-white text-xs md:text-sm">
                             {wish.name}
                           </h3>
-                          <span className="text-xs text-white/50">
+                          <span className="text-[10px] md:text-xs text-white/50">
                             {formatDate(wish.createdAt)}
                           </span>
                         </div>
                       </div>
                       
                       {/* Message */}
-                      <p className="text-white/90 font-light leading-relaxed text-sm pl-11">
+                      <p className="text-white/90 font-light leading-relaxed text-xs md:text-sm pl-11">
                         {wish.message}
                       </p>
                     </div>

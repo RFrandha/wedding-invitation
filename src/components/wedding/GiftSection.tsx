@@ -49,10 +49,10 @@ export default function GiftSection() {
           {/* Top Decorative Element */}
           <DecorativeLine variant="with-dots" className="mb-6" />
 
-          <h2 className="text-3xl md:text-4xl font-light tracking-wider text-white mb-4">
+          <h2 className="text-2xl md:text-4xl font-light tracking-wider text-white mb-4">
             Wedding Gift
           </h2>
-          <p className="text-white/80 font-light max-w-2xl mx-auto">
+          <p className="text-xs md:text-lg text-white/80 font-light max-w-2xl mx-auto">
             Kehadiran Bapak/Ibu/Saudara/i di hari istimewa kami adalah anugerah terindah. Namun, jika ingin memberikan hadiah pernikahan kami menyediakan pilihan berikut:
           </p>
         </motion.div>
@@ -107,7 +107,7 @@ export default function GiftSection() {
                     />
                   </motion.div>
 
-                  <h3 className="text-3xl font-medium text-white mb-6 tracking-wide">
+                  <h3 className="text-2xl md:text-3xl font-medium text-white mb-6 tracking-wide">
                     {account.bank}
                   </h3>
                   
@@ -116,12 +116,12 @@ export default function GiftSection() {
                   
                   <div className="space-y-6 text-white/90">
                     <div className="space-y-2">
-                      <div className="text-sm font-light text-white/70">Account Number</div>
+                      <div className="text-xs md:text-sm font-light text-white/70">Account Number</div>
                       <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={() => copyToClipboard(account.accountNumber, account.bank)}
-                        className="text-2xl font-mono font-bold tracking-wider text-white cursor-pointer hover:text-white/80 transition-colors w-full relative group flex items-center justify-center gap-3"
+                        className="text-lg md:text-2xl font-mono font-bold tracking-wider text-white cursor-pointer hover:text-white/80 transition-colors w-full relative group flex items-center justify-center gap-3"
                       >
                         {account.accountNumber}
                         <motion.div
@@ -144,8 +144,8 @@ export default function GiftSection() {
                     </div>
                     
                     <div className="space-y-2">
-                      <div className="text-sm font-light text-white/70">Account Name</div>
-                      <div className="font-light text-white">
+                      <div className="text-xs md:text-sm font-light text-white/70">Account Name</div>
+                      <div className="text-sm md:text-base font-light text-white">
                         {account.accountName}
                       </div>
                     </div>
@@ -164,7 +164,7 @@ export default function GiftSection() {
           viewport={{ once: true, amount: 0.5 }}
           className="text-center mt-12"
         >
-          <p className="text-white/70 font-light italic">
+          <p className="text-xs md:text-base text-white/70 font-light italic">
             Thank you for your love and generosity
           </p>
         </motion.div>

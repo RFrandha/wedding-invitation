@@ -132,7 +132,7 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
 
           {/* Wedding Date */}
           <div className="space-y-2 mt-16">
-            <p className="text-md md:text-lg font-light tracking-wide">
+            <p className="text-xs md:text-lg font-light tracking-wide">
               {weddingDate.toLocaleDateString('id-ID', {
                 weekday: 'long',
                 day: 'numeric',
@@ -144,11 +144,11 @@ export default function CoverPage ({ onOpen, groomName, brideName, weddingDate }
 
           {/* Guest Name Section */}
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 mt-8" style={{ borderColor: theme.colors.secondary[500], borderWidth: '1px'}}>
-            <p className="text-sm font-light tracking-wide opacity-90 mb-3">
+            <p className="text-xs md:text-base font-light tracking-wide opacity-90 mb-3">
               Kepada Yth.
             </p>
             <div className="space-y-2">
-              <p className={`text-lg sm:text-xl md:text-2xl font-semibold ${theme.gradients.textPrimary} bg-clip-text drop-shadow-md break-words px-2`}>
+              <p className={`text-lg md:text-2xl font-semibold ${theme.gradients.textPrimary} bg-clip-text drop-shadow-md break-words px-2`}>
                 {invitedName}
               </p>
               {/* Themed underline effect */}

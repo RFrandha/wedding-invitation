@@ -60,10 +60,10 @@ export default function LocationMap() {
           {/* Top Decorative Element */}
           <DecorativeLine variant="with-dots" className="mb-6"/>
 
-          <h2 className="text-3xl md:text-4xl font-light tracking-wider text-white mb-4">
+          <h2 className="text-2xl md:text-4xl font-light tracking-wider text-white mb-4">
             Lokasi Acara
           </h2>
-          <p className="text-white/80 font-light max-w-2xl mx-auto">
+          <p className="text-xs md:text-lg text-white/80 font-light max-w-2xl mx-auto">
             Kami akan sangat bahagia jika Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu di hari bahagia
             kami
           </p>
@@ -72,7 +72,7 @@ export default function LocationMap() {
           <div className="flex justify-center gap-3 mt-8">
             <button
               onClick={() => setSelectedLocation('pekanbaru')}
-              className={`px-6 py-2 rounded-full font-light tracking-wide transition-all duration-300 ${
+              className={`px-6 py-2 rounded-full text-xs md:text-base font-light tracking-wide transition-all duration-300 ${
                 selectedLocation === 'pekanbaru'
                   ? 'text-white shadow-lg'
                   : 'text-white/60 hover:text-white/80'
@@ -86,7 +86,7 @@ export default function LocationMap() {
             </button>
             <button
               onClick={() => setSelectedLocation('bukittinggi')}
-              className={`px-6 py-2 rounded-full font-light tracking-wide transition-all duration-300 ${
+              className={`px-6 py-2 rounded-full text-xs md:text-base font-light tracking-wide transition-all duration-300 ${
                 selectedLocation === 'bukittinggi'
                   ? 'text-white shadow-lg'
                   : 'text-white/60 hover:text-white/80'
@@ -137,10 +137,10 @@ export default function LocationMap() {
                       <MapPin className="w-5 h-5"/>
                     </div>
                     <div className="text-left">
-                      <h3 className="font-medium text-lg">
+                      <h3 className="text-sm md:text-lg font-medium">
                         {currentLocation.name}
                       </h3>
-                      <p className="text-sm opacity-90">
+                      <p className="text-xs md:text-sm opacity-90">
                         {currentLocation.address}
                       </p>
                     </div>
@@ -157,7 +157,7 @@ export default function LocationMap() {
             <div className="p-8 text-center"
                  style={{...getBgColor(theme.colors.primary[700], 0.2), backdropFilter: 'blur(8px)'}}>
               <div className="space-y-4">
-                <p className="text-white/70 font-light text-sm">
+                <p className="text-xs md:text-sm text-white/70 font-light">
                   Klik tombol di bawah untuk membuka lokasi di Google Maps
                 </p>
 
