@@ -12,14 +12,16 @@ import {
 
 export default function MobilePhotoGallery() {
   const photos = [
+    'https://photos.rever.cyou/prewed-album/ZEN08609-Edit.jpg',
+    'https://photos.rever.cyou/prewed-album/ZEN08606-Edit.jpg',
+    'https://photos.rever.cyou/prewed-album/ZEN08314-Edit.jpg',
+    'https://photos.rever.cyou/prewed-album/ZEN08404-Edit.jpg',
     'https://photos.rever.cyou/prewed-album/ZEN08288-Edit.jpg',
     'https://photos.rever.cyou/prewed-album/ZEN08290-Edit.jpg',
     'https://photos.rever.cyou/prewed-album/ZEN08312.jpg',
-    'https://photos.rever.cyou/prewed-album/ZEN08314-Edit.jpg',
     'https://photos.rever.cyou/prewed-album/ZEN08318-Edit.jpg',
     'https://photos.rever.cyou/prewed-album/ZEN08378-Edit.jpg',
     'https://photos.rever.cyou/prewed-album/ZEN08400-Edit.jpg',
-    'https://photos.rever.cyou/prewed-album/ZEN08404-Edit.jpg',
     'https://photos.rever.cyou/prewed-album/ZEN08426-2.jpg',
     'https://photos.rever.cyou/prewed-album/ZEN08434-Edit.jpg',
     'https://photos.rever.cyou/prewed-album/ZEN08461-Edit.jpg',
@@ -36,8 +38,8 @@ export default function MobilePhotoGallery() {
     'https://photos.rever.cyou/prewed-album/ZEN08571-Edit.jpg',
     'https://photos.rever.cyou/prewed-album/ZEN08580-Edit.jpg',
     'https://photos.rever.cyou/prewed-album/ZEN08601-Edit.jpg',
-    'https://photos.rever.cyou/prewed-album/ZEN08606-Edit.jpg',
-    'https://photos.rever.cyou/prewed-album/ZEN08609-Edit.jpg',
+    'https://photos.rever.cyou/prewed-album/ZEN08293-Edit.jpg',
+    'https://photos.rever.cyou/prewed-album/ZEN08481-Edit.jpg',
   ]
 
   // Split photos into chunks for 2 rows per slide (2x2 grid)

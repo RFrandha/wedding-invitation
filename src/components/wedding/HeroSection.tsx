@@ -32,7 +32,7 @@ export default function HeroSection() {
             {/*<h1 className="text-2xl md:text-3xl font-light tracking-[0.2em] text-white mb-6">*/}
             {/*  The Wedding of Verina & Restow*/}
             {/*</h1>*/}
-            <p className="text-sm md:text-md font-semibold tracking-wider text-white opacity-90 italic mb-2">
+            <p className="text-xs md:text-lg font-semibold tracking-wider text-white opacity-90 italic mb-2">
               Assalamu&apos;alaikum Wr. Wb.
             </p>
             <p className="text-xs md:text-lg text-white max-w-3xl mx-auto mb-12 leading-relaxed font-light opacity-80">
