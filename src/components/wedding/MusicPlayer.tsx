@@ -340,7 +340,7 @@ export default function MusicPlayer({
                                                   step="0.01"
                                                   value={volume}
                                                   onChange={handleVolumeChange}
-                                                  className="w-full h-1 rounded-full appearance-none cursor-pointer"
+                                                  className="w-full h-2 sm:h-1 rounded-full appearance-none cursor-pointer outline-none volume-slider"
                                                   style={{
                                                       background: `linear-gradient(to right, ${theme.colors.primary[500]} ${volume * 100}%, ${theme.colors.neutral[200]} ${volume * 100}%)`
                                                   }}
