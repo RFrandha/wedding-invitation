@@ -11,10 +11,10 @@
 /* Theme variables for Tailwind v4 */
 @theme inline {
   /* Wedding Colors */
-  --color-wedding-primary: #1E3A8A; /* Deep Navy */
-  --color-wedding-secondary: #3B82F6; /* Sky Blue */
-  --color-wedding-accent: #D4AF37; /* Gold */
-  --color-wedding-gold: #d4af37;
+  --color-wedding-primary: #902426; /* Royal Maroon */
+  --color-wedding-secondary: #c28846; /* Antique Gold */
+  --color-wedding-accent: #d6a2a6; /* Dusty Rose */
+  --color-wedding-gold: #c28846;
 
   /* Default theme colors */
   --color-background: var(--background);
