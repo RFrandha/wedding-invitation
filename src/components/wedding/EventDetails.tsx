@@ -39,7 +39,7 @@ export default function EventDetails() {
     {
       title: 'Resepsi',
       date: 'Kamis, 26 Maret 2026',
-      time: '11.00 - 17.00 WIB',
+      time: '11.00 WIB - Selesai',
       venue: 'Kediaman Mempelai Pria',
       address: 'Jl. Irigasi No 7, Gulai Bancah, Bukittinggi, Sumatera Barat',
       icon: '🎉',
@@ -69,19 +69,19 @@ export default function EventDetails() {
           </p>
         </motion.div>
 
-        {/* Pekanbaru Events */}
+        {/* Pekanbaru Events - Completed */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 0.5, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true, amount: 0.1 }}
-          className="mb-12"
+          className="mb-12 opacity-60 grayscale"
         >
           <div className="text-center mb-8">
-            <h3 className="text-xl md:text-3xl font-light text-white mb-2">
-              Pekanbaru
+            <h3 className="text-xl md:text-3xl font-light text-gray-400 mb-2">
+              Pekanbaru ✓
             </h3>
-            <div className="h-0.5 rounded-full mx-auto w-24" style={getBgColor(theme.colors.secondary[400])} />
+            <div className="h-0.5 rounded-full mx-auto w-24" style={{ backgroundColor: '#6b7280' }} />
           </div>
           
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto px-4 sm:px-0">
@@ -89,74 +89,56 @@ export default function EventDetails() {
               <motion.div
                 key={event.title + index}
                 initial={{ opacity: 0, y: 0 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 0.6, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 viewport={{ once: true, amount: 0.1 }}
-                whileHover={{
-                  y: -8,
-                  scale: 1.02,
-                  transition: { 
-                    type: "spring", 
-                    stiffness: 400, 
-                    damping: 10 
-                  }
-                }}
                 className="group"
               >
-                <Card className="p-8 text-center border shadow-xl hover:shadow-2xl transition-all duration-500 relative overflow-hidden" style={{ ...getBgColor(theme.colors.primary[700], 0.3), backdropFilter: 'blur(12px)', borderColor: hexToRgba(theme.colors.secondary[500], 0.3) }}>
-                  {/* Subtle overlay */}
-                  <div className="absolute inset-0" style={getBgColor(theme.colors.secondary[500], 0.05)}></div>
+                <Card className="p-8 text-center border shadow-lg transition-all duration-500 relative overflow-hidden" style={{ backgroundColor: 'rgba(107, 114, 128, 0.2)', backdropFilter: 'blur(12px)', borderColor: '#6b7280' }}>
+                  {/* Grayed overlay */}
+                  <div className="absolute inset-0" style={{ backgroundColor: 'rgba(107, 114, 128, 0.1)' }}></div>
                   
-                  {/* Border accent effect */}
-                  <div className="absolute inset-0 rounded-lg border-t-2 transition-colors duration-500" style={{ borderTopColor: 'transparent' }}></div>
-                  
+                  {/* Completed indicator */}
+                  <div className="absolute top-4 right-4 text-green-400 text-lg">✓</div>
                   
                   <div className="relative z-10">
-                    <h3 className="text-xl md:text-3xl font-medium text-white mb-6 tracking-wide text-center">
+                    <h3 className="text-xl md:text-3xl font-medium text-gray-400 mb-6 tracking-wide text-center">
                       {event.title}
                     </h3>
                     
                     {/* Decorative line under title */}
-                    <div className="h-0.5 rounded-full mx-auto w-16 mb-8" style={getBgColor(theme.colors.secondary[400])} />
+                    <div className="h-0.5 rounded-full mx-auto w-16 mb-8" style={{ backgroundColor: '#6b7280' }} />
                     
-                    <div className="space-y-6 text-white/90 max-w-xs mx-auto">
-                      <div className="flex items-center gap-3 transition-colors duration-300">
-                        <div className="p-2 rounded-full text-white shadow-lg" style={getBgColor(theme.colors.secondary[500])}>
+                    <div className="space-y-6 text-gray-500 max-w-xs mx-auto">
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 rounded-full text-gray-400" style={{ backgroundColor: '#6b7280' }}>
                           <Calendar className="w-4 h-4" />
                         </div>
                         <span className="text-xs md:text-base font-light">{event.date}</span>
                       </div>
                       
-                      <div className="flex items-center gap-3 transition-colors duration-300">
-                        <div className="p-2 rounded-full text-white shadow-lg" style={getBgColor(theme.colors.secondary[500])}>
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 rounded-full text-gray-400" style={{ backgroundColor: '#6b7280' }}>
                           <Clock className="w-4 h-4" />
                         </div>
                         <span className="text-xs md:text-base font-light">{event.time}</span>
                       </div>
                       
-                      <div className="flex items-start gap-3 transition-colors duration-300">
-                        <div className="p-2 rounded-full text-white shadow-lg mt-0.5" style={getBgColor(theme.colors.secondary[500])}>
+                      <div className="flex items-start gap-3">
+                        <div className="p-2 rounded-full text-gray-400 mt-0.5" style={{ backgroundColor: '#6b7280' }}>
                           <MapPin className="w-4 h-4" />
                         </div>
                         <div className="text-left">
                           <div className="text-xs md:text-base font-medium font-light">{event.venue}</div>
-                          <div className="text-xs md:text-sm text-white/60 font-light leading-relaxed mt-1">{event.address}</div>
+                          <div className="text-xs md:text-sm text-gray-600 font-light leading-relaxed mt-1">{event.address}</div>
                         </div>
                       </div>
                     </div>
                     
-                    <motion.a
-                      href={generateCalendarLink(event)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs md:text-sm font-light text-white transition-all duration-300 hover:scale-105"
-                      style={getBgColor(theme.colors.secondary[500])}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <CalendarPlus className="w-4 h-4" />
-                      Add to Calendar
-                    </motion.a>
+                    <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs md:text-sm font-light text-gray-500" style={{ backgroundColor: 'rgba(107, 114, 128, 0.5)' }}>
+                      <span className="text-green-400">✓</span>
+                      Selesai
+                    </div>
                   </div>
                 </Card>
               </motion.div>

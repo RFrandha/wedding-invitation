@@ -82,8 +82,8 @@ export default function MusicPlayer({
         setIsMuted(!isMuted)
     }
 
-    const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const newVolume = parseFloat(e.target.value)
+    const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement> | React.FormEvent<HTMLInputElement>) => {
+        const newVolume = parseFloat((e.target as HTMLInputElement).value)
         setVolume(newVolume)
         if (newVolume > 0 && isMuted) {
             setIsMuted(false)
@@ -339,6 +339,7 @@ export default function MusicPlayer({
                                                   max="1"
                                                   step="0.01"
                                                   value={volume}
+                                                  onInput={handleVolumeChange}
                                                   onChange={handleVolumeChange}
                                                   className="w-full h-2 sm:h-1 rounded-full appearance-none cursor-pointer outline-none volume-slider"
                                                   style={{

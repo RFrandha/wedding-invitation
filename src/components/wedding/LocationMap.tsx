@@ -32,7 +32,7 @@ const locations: Record<Location, LocationData> = {
 }
 
 export default function LocationMap() {
-  const [selectedLocation, setSelectedLocation] = useState<Location>('pekanbaru')
+  const [selectedLocation, setSelectedLocation] = useState<Location>('bukittinggi')
   const currentLocation = locations[selectedLocation]
 
   const openGoogleMaps = () => {
@@ -71,20 +71,6 @@ export default function LocationMap() {
           {/* Location Switcher */}
           <div className="flex justify-center gap-3 mt-8">
             <button
-              onClick={() => setSelectedLocation('pekanbaru')}
-              className={`px-6 py-2 rounded-full text-xs md:text-base font-light tracking-wide transition-all duration-300 ${
-                selectedLocation === 'pekanbaru'
-                  ? 'text-white shadow-lg'
-                  : 'text-white/60 hover:text-white/80'
-              }`}
-              style={selectedLocation === 'pekanbaru' ? getBgColor(theme.colors.secondary[500]) : {
-                backgroundColor: 'transparent',
-                border: `1px solid ${hexToRgba(theme.colors.secondary[500], 0.3)}`
-              }}
-            >
-              Pekanbaru
-            </button>
-            <button
               onClick={() => setSelectedLocation('bukittinggi')}
               className={`px-6 py-2 rounded-full text-xs md:text-base font-light tracking-wide transition-all duration-300 ${
                 selectedLocation === 'bukittinggi'
@@ -97,6 +83,20 @@ export default function LocationMap() {
               }}
             >
               Bukittinggi
+            </button>
+            <button
+              onClick={() => setSelectedLocation('pekanbaru')}
+              className={`px-6 py-2 rounded-full text-xs md:text-base font-light tracking-wide transition-all duration-300 ${
+                selectedLocation === 'pekanbaru'
+                  ? 'text-white shadow-lg'
+                  : 'text-white/60 hover:text-white/80'
+              }`}
+              style={selectedLocation === 'pekanbaru' ? getBgColor(theme.colors.secondary[500]) : {
+                backgroundColor: 'transparent',
+                border: `1px solid ${hexToRgba(theme.colors.secondary[500], 0.3)}`
+              }}
+            >
+              Pekanbaru
             </button>
           </div>
         </motion.div>
