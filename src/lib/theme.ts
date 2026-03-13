@@ -17,63 +17,63 @@ export const writing = Great_Vibes({
 });
 
 // Centralized color theme for wedding invitation
-// Elegant Maroon, Gold & Blush color scheme
+// Elegant Navy, Gold & Cream color scheme
 export const theme = {
   colors: {
-    // Primary - Royal Maroon (replacing Navy)
+    // Primary - Elegant Navy Blue
     primary: {
-      50: '#f9f2f2',   // White with red tint
-      100: '#f4e0e0',  // Very light red
-      200: '#eac2c2',  // Light reddish-pink
-      300: '#dd9e9f',  // Soft muted red
-      400: '#cc7072',  // Medium red
-      500: '#902426',  // Royal Maroon (main)
-      600: '#721d1e',  // Deep Maroon
-      700: '#561617',  // Dark Maroon
-      800: '#3c0f10',  // Very Dark Maroon
-      900: '#240909',  // Blackish Red
+      50: '#f0f4f8',   // Very light blue-gray
+      100: '#dce4ec',  // Light blue-gray
+      200: '#b8cfe0',  // Soft blue
+      300: '#8cafd2',  // Medium blue
+      400: '#5a8dc4',  // Blue
+      500: '#2c5f8d',  // Navy blue (main)
+      600: '#234a6f',  // Deep navy
+      700: '#1a3851',  // Darker navy
+      800: '#122838',  // Very dark navy
+      900: '#0a1a24',  // Almost black navy
     },
     
-    // Secondary - Rich Antique Gold
+    // Secondary - Warm Gold/Champagne
     secondary: {
-      50: '#fbf9f4',
-      100: '#f6f1e6',
-      200: '#ebdcc5',
-      300: '#dfc29d',
-      400: '#d2a673',
-      500: '#c28846',  // Antique Gold (main)
-      600: '#9b6d38',
-      700: '#74522a',
-      800: '#4d361c',
-      900: '#271b0e',
+      50: '#fefdfb',   // Almost white gold
+      100: '#fef9f0',  // Cream white
+      200: '#fcefd6',  // Light champagne
+      300: '#f9e2b8',  // Soft gold
+      400: '#f5d08f',  // Light gold
+      500: '#d4a574',  // Champagne gold (main)
+      600: '#b8824f',  // Rich gold
+      700: '#96663d',  // Deep gold
+      800: '#6f4a2d',  // Bronze
+      900: '#4a301e',  // Dark bronze
     },
     
-    // Neutral - Warm Sand/Grey
+    // Neutral - Warm grays and creams
     neutral: {
-      50: '#faf9f8',
-      100: '#f5f4f2',
-      200: '#e8e6e3',
-      300: '#d7d4cf',
-      400: '#a9a49d',
-      500: '#7a756f',
-      600: '#595551',
-      700: '#45423e',
-      800: '#2a2826',
-      900: '#1c1b1a',
+      50: '#fafaf9',   // Warm white
+      100: '#f5f5f4',  // Off white
+      200: '#e7e5e4',  // Light gray
+      300: '#d6d3d1',  // Soft gray
+      400: '#a8a29e',  // Medium gray
+      500: '#78716c',  // Gray
+      600: '#57534e',  // Dark gray
+      700: '#44403c',  // Charcoal
+      800: '#292524',  // Very dark gray
+      900: '#1c1917',  // Almost black
     },
     
-    // Accent - Romantic Blush/Rose (replacing Beige)
+    // Accent - Subtle Cream/Beige (replaces pink)
     accent: {
-      50: '#fdfbfb',
-      100: '#faf5f5',
-      200: '#f5ebea',
-      300: '#eedadb',
-      400: '#e4c2c4',
-      500: '#d6a2a6',  // Dusty Rose
-      600: '#ab8285',
-      700: '#806164',
-      800: '#564142',
-      900: '#2b2021',
+      50: '#fdfcfb',   // Ivory white
+      100: '#faf8f5',  // Cream
+      200: '#f5f1eb',  // Light beige
+      300: '#ebe5dc',  // Soft beige
+      400: '#ded4c8',  // Beige
+      500: '#c9baa8',  // Warm beige
+      600: '#b09b87',  // Taupe
+      700: '#8e7968',  // Brown taupe
+      800: '#6b5b4d',  // Dark taupe
+      900: '#4a3f36',  // Deep brown
     },
     
     // Success, warning, error states
@@ -119,17 +119,17 @@ export const theme = {
   
   // Gradient combinations - cohesive and elegant
   gradients: {
-    // Primary maroon gradients
+    // Primary navy gradients
     primary: 'from-primary-500 via-primary-600 to-primary-700',
     
     // Gold gradients
     secondary: 'from-secondary-400 via-secondary-500 to-secondary-600',
     
-    // Elegant combined gradients (maroon + gold)
+    // Elegant combined gradients (navy + gold)
     elegant: 'from-primary-600 via-primary-500 to-secondary-500',
     elegantReverse: 'from-secondary-500 via-primary-500 to-primary-600',
     
-    // Romantic/soft blush gradient
+    // Romantic/soft cream gradient
     romantic: 'from-accent-100 via-accent-50 to-white',
     
     // Subtle background gradients
@@ -139,7 +139,7 @@ export const theme = {
     
     // Dark background gradients
     coverDark: 'from-primary-900 via-primary-800 to-primary-700',
-    darkNavy: 'from-primary-800 via-primary-900 to-neutral-900', // Kept name for compatibility, but is dark maroon
+    darkNavy: 'from-primary-800 via-primary-900 to-neutral-900',
     
     // Light background gradients  
     lightBackground: 'from-white via-accent-50/40 to-secondary-50/40',
@@ -148,8 +148,8 @@ export const theme = {
     
     // Text gradients (for bg-clip-text)
     textPrimary: 'from-secondary-400 via-secondary-500 to-secondary-600',    // Gold text
-    textSecondary: 'from-primary-400 via-primary-500 to-primary-600',       // Maroon text
-    textElegant: 'from-primary-600 via-primary-700 to-primary-800',         // Deep maroon text
+    textSecondary: 'from-primary-400 via-primary-500 to-primary-600',       // Navy text
+    textElegant: 'from-primary-600 via-primary-700 to-primary-800',         // Deep navy text
     textGold: 'from-secondary-500 via-secondary-600 to-secondary-700',      // Rich gold text
     
     // Button gradients
@@ -159,12 +159,12 @@ export const theme = {
     buttonHover: 'hover:from-primary-700 hover:to-primary-800',
     
     // Event and card gradients (monochromatic for cohesion)
-    eventPrimary: 'from-primary-500 to-primary-600',      // Maroon event
+    eventPrimary: 'from-primary-500 to-primary-600',      // Navy event
     eventSecondary: 'from-secondary-500 to-secondary-600', // Gold event
     cardPrimary: 'from-primary-500/5 to-primary-600/10',
     cardGold: 'from-secondary-400/5 to-secondary-500/10',
     
-    // Timer unit gradients (consistent maroon tones)
+    // Timer unit gradients (consistent navy tones)
     timerDay: 'from-primary-500 to-primary-600',
     timerHour: 'from-primary-600 to-primary-700',
     timerMinute: 'from-primary-500 to-primary-600',
@@ -187,8 +187,8 @@ export const theme = {
     soft: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
     medium: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
     large: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-    glow: '0 0 20px rgba(144, 36, 38, 0.15), 0 0 40px rgba(194, 136, 70, 0.12)', // Maroon glow
-    romantic: '0 8px 32px rgba(194, 136, 70, 0.18)',
+    glow: '0 0 20px rgba(44, 95, 141, 0.15), 0 0 40px rgba(212, 165, 116, 0.12)',
+    romantic: '0 8px 32px rgba(212, 165, 116, 0.18)',
   },
   
   // Typography scale
@@ -278,7 +278,7 @@ export const getInlineGradient = (gradient: keyof typeof theme.gradients, direct
 // Helper for card overlay inline style (commonly used pattern)
 export const getCardOverlayStyle = () => {
   return {
-    background: 'linear-gradient(135deg, rgba(144, 36, 38, 0.4) 0%, rgba(194, 136, 70, 0.15) 100%)' // Maroon to gold overlay
+    background: 'linear-gradient(135deg, rgba(44, 95, 141, 0.4) 0%, rgba(212, 165, 116, 0.15) 100%)' // Navy to gold overlay
   }
 }
 
