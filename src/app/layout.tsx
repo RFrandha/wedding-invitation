@@ -19,10 +19,10 @@ const generalFont = Brawler({
 
 export const metadata: Metadata = {
   title: "The Wedding of Restow & Verina",
-  description: "Sabtu, 6 Desember 2025",
+  description: "Kamis, 26 Maret 2026",
   openGraph: {
     title: "The Wedding of Restow & Verina",
-    description: "Sabtu, 6 Desember 2025",
+    description: "Kamis, 26 Maret 2026",
     images: [
       {
         url: "https://photos.rever.cyou/pub-img/opengraph_maroon.png",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "The Wedding of Restow & Verina",
-    description: "Sabtu, 6 Desember 2025",
+    description: "Kamis, 26 Maret 2026",
     images: ["https://photos.rever.cyou/pub-img/opengraph_maroon.png"],
   },
   metadataBase: new URL("https://rever.cyou"),
