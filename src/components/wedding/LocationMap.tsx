@@ -40,7 +40,7 @@ export default function LocationMap() {
   }
 
   return (
-    <section className="py-20 px-4 relative overflow-hidden" style={getBgColor(theme.colors.primary[800])}>
+    <section className="py-20 px-4 relative overflow-hidden" style={getBgColor(theme.colors.primary[900])}>
       {/* Background decorative elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-16 right-16 w-80 h-80 rounded-full blur-3xl"

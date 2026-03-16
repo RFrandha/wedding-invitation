@@ -65,7 +65,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
   // Don't render until mounted to prevent hydration mismatch
   if (!mounted) {
     return (
-      <section className="py-20 px-4 relative overflow-hidden" style={getBgColor(theme.colors.primary[800])}>
+      <section className="py-20 px-4 relative overflow-hidden" style={getBgColor(theme.colors.primary[900])}>
         {/* Background decorative elements */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-20 w-72 h-72 rounded-full blur-3xl" style={getBgColor(theme.colors.secondary[500])}></div>
@@ -106,7 +106,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
   ]
 
   return (
-    <section className="py-20 px-4 relative overflow-hidden" style={getBgColor(theme.colors.primary[800])}>
+    <section className="py-20 px-4 relative overflow-hidden" style={getBgColor(theme.colors.primary[900])}>
       {/* Background decorative elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-20 w-72 h-72 rounded-full blur-3xl" style={getBgColor(theme.colors.secondary[500])}></div>

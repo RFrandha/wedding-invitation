@@ -50,7 +50,7 @@ export default function MobilePhotoGallery() {
   }
 
   return (
-    <section className="xl:hidden py-20 px-4" style={{ backgroundColor: theme.colors.primary[800] }}>
+    <section className="xl:hidden py-20 px-4" style={{ backgroundColor: theme.colors.primary[900] }}>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

@@ -17,35 +17,35 @@ export const writing = Great_Vibes({
 });
 
 // Centralized color theme for wedding invitation
-// Elegant Navy, Gold & Cream color scheme
+// Elegant Maroon & Antique Gold color scheme
 export const theme = {
   colors: {
-    // Primary - Elegant Navy Blue
+    // Primary - Warm Maroon (matching the traditional baju kurung fabric)
     primary: {
-      50: '#f0f4f8',   // Very light blue-gray
-      100: '#dce4ec',  // Light blue-gray
-      200: '#b8cfe0',  // Soft blue
-      300: '#8cafd2',  // Medium blue
-      400: '#5a8dc4',  // Blue
-      500: '#2c5f8d',  // Navy blue (main)
-      600: '#234a6f',  // Deep navy
-      700: '#1a3851',  // Darker navy
-      800: '#122838',  // Very dark navy
-      900: '#0a1a24',  // Almost black navy
+      50: '#faf2f0',   // Warm light blush
+      100: '#f0d2cc',  // Light warm rose
+      200: '#d8a498',  // Soft terracotta rose
+      300: '#b87060',  // Warm medium
+      400: '#984840',  // Warm rose-maroon
+      500: '#7d3030',  // Warm maroon (main)
+      600: '#622424',  // Deep warm maroon
+      700: '#4c1c1c',  // Dark warm maroon
+      800: '#3c1818',  // Very dark warm maroon
+      900: '#301414',  // Darkest warm maroon
     },
     
-    // Secondary - Warm Gold/Champagne
+    // Secondary - Antique Gold (inspired by pelaminan ornaments)
     secondary: {
       50: '#fefdfb',   // Almost white gold
-      100: '#fef9f0',  // Cream white
-      200: '#fcefd6',  // Light champagne
-      300: '#f9e2b8',  // Soft gold
-      400: '#f5d08f',  // Light gold
-      500: '#d4a574',  // Champagne gold (main)
-      600: '#b8824f',  // Rich gold
-      700: '#96663d',  // Deep gold
-      800: '#6f4a2d',  // Bronze
-      900: '#4a301e',  // Dark bronze
+      100: '#fef8ea',  // Cream white
+      200: '#fcf0d0',  // Light champagne
+      300: '#f7e2a8',  // Soft gold
+      400: '#ddc06a',  // Light antique gold
+      500: '#c9a84c',  // Antique gold (main)
+      600: '#b09540',  // Rich gold
+      700: '#8c7530',  // Deep gold
+      800: '#685622',  // Bronze
+      900: '#453916',  // Dark bronze
     },
     
     // Neutral - Warm grays and creams
@@ -187,8 +187,8 @@ export const theme = {
     soft: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
     medium: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
     large: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-    glow: '0 0 20px rgba(44, 95, 141, 0.15), 0 0 40px rgba(212, 165, 116, 0.12)',
-    romantic: '0 8px 32px rgba(212, 165, 116, 0.18)',
+    glow: '0 0 20px rgba(125, 48, 48, 0.15), 0 0 40px rgba(201, 168, 76, 0.12)',
+    romantic: '0 8px 32px rgba(201, 168, 76, 0.18)',
   },
   
   // Typography scale
@@ -278,7 +278,7 @@ export const getInlineGradient = (gradient: keyof typeof theme.gradients, direct
 // Helper for card overlay inline style (commonly used pattern)
 export const getCardOverlayStyle = () => {
   return {
-    background: 'linear-gradient(135deg, rgba(44, 95, 141, 0.4) 0%, rgba(212, 165, 116, 0.15) 100%)' // Navy to gold overlay
+    background: 'linear-gradient(135deg, rgba(48, 20, 20, 0.5) 0%, rgba(201, 168, 76, 0.12) 100%)' // Warm maroon to gold overlay
   }
 }
 
@@ -286,7 +286,7 @@ export const getCardOverlayStyle = () => {
 export const getCSSVariables = () => {
   return {
     '--color-primary': theme.colors.primary[500],
-    '--color-secondary': theme.colors.secondary[400],
+    '--color-secondary': theme.colors.secondary[500],
     '--color-accent': theme.colors.accent[400],
     '--color-neutral': theme.colors.neutral[600],
     '--shadow-soft': theme.shadows.soft,

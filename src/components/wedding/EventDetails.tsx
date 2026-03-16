@@ -48,7 +48,7 @@ export default function EventDetails() {
   ]
 
   return (
-    <section className="py-20 px-4 relative overflow-hidden" style={getBgColor(theme.colors.primary[800])}>
+    <section className="py-20 px-4 relative overflow-hidden" style={getBgColor(theme.colors.primary[900])}>
 
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
