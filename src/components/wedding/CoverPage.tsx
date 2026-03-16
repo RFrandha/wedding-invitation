@@ -38,7 +38,7 @@ export default function CoverPage({ onOpen, groomName, brideName, weddingDate }:
         className="lg:hidden absolute inset-0"
       >
         <Image
-          src="https://photos.rever.cyou/pub-img/cover4.jpg"
+          src="https://photos.rever.cyou/pub-img/cover5.jpg"
           alt="Wedding background"
           fill
           priority
@@ -54,7 +54,7 @@ export default function CoverPage({ onOpen, groomName, brideName, weddingDate }:
         {/* Left side - Photo (2/3 on desktop, hidden on mobile) */}
         <div className="hidden lg:block lg:w-2/3 relative overflow-hidden">
           <Image
-            src="https://photos.rever.cyou/pub-img/cover4.jpg"
+            src="https://photos.rever.cyou/pub-img/cover5.jpg"
             alt="Wedding couple"
             fill
             priority

@@ -25,13 +25,13 @@ export const metadata: Metadata = {
     description: "Sabtu, 6 Desember 2025",
     images: [
       {
-        url: "https://photos.rever.cyou/pub-img/opengraph_cover.jpg",
+        url: "https://photos.rever.cyou/pub-img/opengraph_maroon.png",
         width: 1200,
         height: 630,
         alt: "The Wedding of Restow & Verina",
       },
       {
-        url: "https://photos.rever.cyou/pub-img/opengraph_cover_square.jpg",
+        url: "https://photos.rever.cyou/pub-img/opengraph_maroon.png",
         width: 400,
         height: 400,
         alt: "The Wedding of Restow & Verina",
@@ -46,23 +46,23 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "The Wedding of Restow & Verina",
     description: "Sabtu, 6 Desember 2025",
-    images: ["https://photos.rever.cyou/pub-img/opengraph_cover.png"],
+    images: ["https://photos.rever.cyou/pub-img/opengraph_maroon.png"],
   },
   metadataBase: new URL("https://rever.cyou"),
 };
 
 export default function RootLayout({
-                                     children,
-                                   }: Readonly<{
+  children,
+}: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-    <body
-      className={`${generalFont.className} antialiased`}
-    >
-    {children}
-    </body>
+      <body
+        className={`${generalFont.className} antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }

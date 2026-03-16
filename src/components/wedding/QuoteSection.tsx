@@ -10,7 +10,7 @@ export default function QuoteSection() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <Image
-          src="https://photos.rever.cyou/prewed-album/ZEN08499-Edit.jpg"
+          src="https://photos.rever.cyou/pub-img/cover5.jpg"
           alt="Background"
           fill
           priority
