@@ -25,13 +25,13 @@ export const metadata: Metadata = {
     description: "Kamis, 26 Maret 2026",
     images: [
       {
-        url: "https://photos.rever.cyou/pub-img/opengraph_maroon.png",
+        url: "https://photos.rever.cyou/pub-img/opengraph_maroon2.png",
         width: 1200,
         height: 630,
         alt: "The Wedding of Restow & Verina",
       },
       {
-        url: "https://photos.rever.cyou/pub-img/opengraph_maroon.png",
+        url: "https://photos.rever.cyou/pub-img/opengraph_maroon2_square.png",
         width: 400,
         height: 400,
         alt: "The Wedding of Restow & Verina",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "The Wedding of Restow & Verina",
     description: "Kamis, 26 Maret 2026",
-    images: ["https://photos.rever.cyou/pub-img/opengraph_maroon.png"],
+    images: ["https://photos.rever.cyou/pub-img/opengraph_maroon2.png"],
   },
   metadataBase: new URL("https://rever.cyou"),
 };
