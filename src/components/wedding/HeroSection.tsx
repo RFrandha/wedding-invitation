@@ -47,55 +47,6 @@ export default function HeroSection() {
               transition={{ duration: 1, delay: 0.6 }}
               className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 mb-12"
           >
-            {/* Bride */}
-            <div className="text-center">
-              <motion.div
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 1.4 }}
-                  className="relative"
-              >
-                <div className="absolute inset-0 rounded-full blur-md transform scale-110" style={getBgColor(theme.colors.secondary[400], 0.3)}></div>
-                <div className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-4 border-4 border-white/80 shadow-2xl relative z-10 rounded-full overflow-hidden">
-                  <Image
-                      src="https://photos.rever.cyou/pub-img/verina.jpg"
-                      alt="Verina Mardhatillah"
-                      width={160}
-                      height={160}
-                      priority
-                      className="object-cover object-[50%_10%] w-full h-full"
-                      sizes="(max-width: 768px) 128px, 160px"
-                  />
-                </div>
-              </motion.div>
-
-              <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 1.6 }}
-              >
-                <h3 className="text-lg md:text-2xl font-light text-white mb-2">
-                  Verina Mardhatillah, S.Psi.
-                </h3>
-                <div className="h-0.5 rounded-full mx-auto w-16 mb-3" style={getBgColor(theme.colors.secondary[400])} />
-                <p className="text-xs md:text-lg text-white/80 font-light leading-relaxed">
-                  Putri pertama dari<br />
-                  Bapak Ir. Anveriyendi & Ibu Machdalena, M.Kom.
-                </p>
-              </motion.div>
-            </div>
-
-            {/* Ampersand */}
-            <motion.div
-                initial={{ scale: 0, rotate: -180 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{ duration: 0.8, delay: 1.2 }}
-                className="text-4xl md:text-6xl drop-shadow-sm"
-                style={{ color: theme.colors.secondary[400] }}
-            >
-              &
-            </motion.div>
-
             {/* Groom */}
             <div className="text-center">
               <motion.div
@@ -130,6 +81,55 @@ export default function HeroSection() {
                 <p className="text-xs md:text-lg text-white/80 font-light leading-relaxed">
                   Putra pertama dari<br />
                   Bapak Andi S. & Ibu Ilfita Onenda, S.A.B.
+                </p>
+              </motion.div>
+            </div>
+
+            {/* Ampersand */}
+            <motion.div
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ duration: 0.8, delay: 1.2 }}
+                className="text-4xl md:text-6xl drop-shadow-sm"
+                style={{ color: theme.colors.secondary[400] }}
+            >
+              &
+            </motion.div>
+
+            {/* Bride */}
+            <div className="text-center">
+              <motion.div
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 1.4 }}
+                  className="relative"
+              >
+                <div className="absolute inset-0 rounded-full blur-md transform scale-110" style={getBgColor(theme.colors.secondary[400], 0.3)}></div>
+                <div className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-4 border-4 border-white/80 shadow-2xl relative z-10 rounded-full overflow-hidden">
+                  <Image
+                      src="https://photos.rever.cyou/pub-img/verina.jpg"
+                      alt="Verina Mardhatillah"
+                      width={160}
+                      height={160}
+                      priority
+                      className="object-cover object-[50%_10%] w-full h-full"
+                      sizes="(max-width: 768px) 128px, 160px"
+                  />
+                </div>
+              </motion.div>
+
+              <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 1.6 }}
+              >
+                <h3 className="text-lg md:text-2xl font-light text-white mb-2">
+                  Verina Mardhatillah, S.Psi.
+                </h3>
+                <div className="h-0.5 rounded-full mx-auto w-16 mb-3" style={getBgColor(theme.colors.secondary[400])} />
+                <p className="text-xs md:text-lg text-white/80 font-light leading-relaxed">
+                  Putri pertama dari<br />
+                  Bapak Ir. Anveriyendi & Ibu Machdalena, M.Kom.
                 </p>
               </motion.div>
             </div>

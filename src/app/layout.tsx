@@ -18,33 +18,33 @@ const generalFont = Brawler({
 });
 
 export const metadata: Metadata = {
-  title: "The Wedding of Verina & Restow",
+  title: "The Wedding of Restow & Verina",
   description: "Sabtu, 6 Desember 2025",
   openGraph: {
-    title: "The Wedding of Verina & Restow",
+    title: "The Wedding of Restow & Verina",
     description: "Sabtu, 6 Desember 2025",
     images: [
       {
         url: "https://photos.rever.cyou/pub-img/opengraph_cover.jpg",
         width: 1200,
         height: 630,
-        alt: "The Wedding of Verina & Restow",
+        alt: "The Wedding of Restow & Verina",
       },
       {
         url: "https://photos.rever.cyou/pub-img/opengraph_cover_square.jpg",
         width: 400,
         height: 400,
-        alt: "The Wedding of Verina & Restow",
+        alt: "The Wedding of Restow & Verina",
       }
     ],
     type: "website",
     url: "https://rever.cyou",
-    siteName: "The Wedding of Verina & Restow",
+    siteName: "The Wedding of Restow & Verina",
     locale: "id_ID",
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Wedding of Verina & Restow",
+    title: "The Wedding of Restow & Verina",
     description: "Sabtu, 6 Desember 2025",
     images: ["https://photos.rever.cyou/pub-img/opengraph_cover.png"],
   },

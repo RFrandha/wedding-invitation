@@ -322,7 +322,7 @@ export default function Home() {
                   style={{ ...getBgColor('white', 0.05), borderWidth: '1px', borderColor: hexToRgba(theme.colors.secondary[500], 0.2) }}
                 >
                   <div className="text-xs md:text-sm font-light mb-2" style={{ color: theme.colors.secondary[400] }}>Keluarga Besar</div>
-                  <div className="text-lg md:text-xl font-medium text-white">{config.brideName.split(' ')[0]}</div>
+                  <div className="text-lg md:text-xl font-medium text-white">{config.groomName.split(' ')[0]}</div>
                 </motion.div>
                 <motion.div
                   whileHover={{ y: -5, scale: 1.02 }}
@@ -330,7 +330,7 @@ export default function Home() {
                   style={{ ...getBgColor('white', 0.05), borderWidth: '1px', borderColor: hexToRgba(theme.colors.secondary[500], 0.2) }}
                 >
                   <div className="text-xs md:text-sm font-light mb-2" style={{ color: theme.colors.secondary[400] }}>Keluarga Besar</div>
-                  <div className="text-lg md:text-xl font-medium text-white">{config.groomName.split(' ')[0]}</div>
+                  <div className="text-lg md:text-xl font-medium text-white">{config.brideName.split(' ')[0]}</div>
                 </motion.div>
               </div>
 
